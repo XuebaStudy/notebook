@@ -1,0 +1,16 @@
+/* body { */
+    /* font-family: "LXGW WenKai", sans-serif; */
+    /* Lite version */
+    /* font-family: "LXGW WenKai Lite", sans-serif; */
+    /* TC version */
+    /* font-family: "LXGW WenKai TC", sans-serif; */
+    /* Screen version */
+    /* font-family: "LXGW WenKai Screen", sans-serif; */
+/* } */
+
+  :root {
+    --md-text-font: "LXGW WenKai Screen"; 
+    --md-code-font: "JetBrains Mono", "LXGW WenKai Screen";
+    /*思源中文:"Noto Serif SC"*/
+  }
+  

@@ -1,4 +1,7 @@
 site_name: xueba's notebook
+repo_url: https://github.com/XuebaStudy/notebook
+repo_name: XuebaStudy/notebook
+copyright: Copyright &copy; 2024-2024 <a href="https://github.com/XuebaStudy" target="_blank" rel="noopener">XuebaStudy</a>
 
 nav: 
   - 主页: index.md
@@ -7,3 +10,107 @@ nav:
 
 theme:
   name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - content.code.copy
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: grey
+      accent: cyan
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+ 
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: black
+      accent: cyan
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+  font: false
+  icon:
+    repo: fontawesome/brands/git-alt
+    admonition: 
+      note: octicons/tag-16
+      abstract: octicons/checklist-16
+      info: octicons/info-16
+      tip: octicons/squirrel-16
+      success: octicons/check-16
+      question: octicons/question-16
+      warning: octicons/alert-16
+      failure: octicons/x-circle-16
+      danger: octicons/zap-16
+      bug: octicons/bug-16
+      example: octicons/beaker-16
+      quote: octicons/quote-16
+  
+  language: zh
+
+extra:
+  generator: false
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition # 警告语法
+  - def_list
+  - footnotes
+  - abbr
+  - md_in_html
+  - attr_list
+  - meta # 支持Markdown文件上方自定义标题标签等
+  - tables
+  - pymdownx.arithmatex: # latex支持
+      generic: true
+  - toc:
+      permalink: true # 固定标题位置为当前位置
+      toc_depth: 3 # 目录深度
+  - pymdownx.highlight: # 代码块高亮
+      anchor_linenums: true
+      linenums: true # 显示行号
+      use_pygments: true # 代码高亮
+      pygments_lang_class: true
+      auto_title: true # 显示编程语言名称
+      linenums_style: pymdownx-inline # 行号样式,防止复制的时候复制行号
+  - pymdownx.betterem # 强调美化,比如**text**会被美化
+  - pymdownx.caret # 上标和下标
+  - pymdownx.mark # 上标和下标
+  - pymdownx.tilde # 上标和下标
+  - pymdownx.keys # 显示按键组合
+  - pymdownx.critic
+  - pymdownx.details # 可以折叠的代码块 ??? note 可以让警告变成折叠的
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink # 自动识别链接
+  - pymdownx.smartsymbols # 智能符号
+  - pymdownx.snippets # 代码段
+  - pymdownx.emoji:
+        emoji_index: !!python/name:material.extensions.emoji.twemoji
+        emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.superfences
+  - pymdownx.superfences: # 代码块中支持Mermaid
+        custom_fences: # 支持 Mermaid
+            - name: mermaid
+              class: mermaid
+              format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+        alternate_style: true
+        combine_header_slug: true
+  - pymdownx.tasklist:
+        custom_checkbox: true # 自定义复选框
+        clickable_checkbox: true
+
+extra_css:
+  - javascripts/mathjax.js
+
+  - _css/extra.css
+  - https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css
+  - https://cdn.tonycrane.cc/lxgw/lxgwscreen.css
+  - https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css
+  # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css
+  # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-tc-webfont@1.0.0/style.css
+  # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css

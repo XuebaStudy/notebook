@@ -6,17 +6,26 @@ copyright: Copyright &copy; 2024-2024 <a href="https://github.com/XuebaStudy" ta
 nav: 
   - Home: index.md
   - About: about.md
+  - Diary: 
+    - 14_days_challenge: 
+      - Diary/14_days_challenge/index.md
+      - 24.8: Diary/14_days_challenge/24.8.md
   - Belief:
-    - belief: belief.md
+    - charators: 
+      - 灰之魔女伊蕾娜: Belief/charactors/灰之魔女伊蕾娜.md
+      - 洛琪希: Belief/charactors/洛琪希.md
+    - sentences: Belief/sentences.md
 
 theme:
   name: material
   features:
     - navigation.tabs
-    - navigation.sections
+    # - navigation.sections
+    - navigation.expand
     - navigation.indexes
     - navigation.top
     - navigation.tracking
+    - navigation.path
     - content.code.copy
   palette:
     # Palette toggle for light mode

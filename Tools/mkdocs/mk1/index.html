@@ -1144,8 +1144,8 @@
 </div>
 <details class="note">
 <summary>如何在mkdocs中使用有色的数学公式(字体与背景)</summary>
-<details class="failure">
-<summary>本方法仅在本地渲染有效(mkdocs serve及markdown)，在Github-pages上无效</summary>
+<details class="success">
+<summary>使用 MathJax 命令 \color \bbox</summary>
 <p>MathJax 本身支持使用 \color 命令更改公式的字体颜色，用 \bbox 命令更改公式的背景颜色，但在 MkDocs 中你需要确保正确配置 MathJax:
 1.在 mkdocs.yml 文件中，启用 MathJax 并自定义配置：
 <div class="language-yaml highlight"><span class="filename">YAML</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="nt">markdown_extensions</span><span class="p">:</span>

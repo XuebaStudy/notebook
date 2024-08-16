@@ -6,7 +6,6 @@ $$\frac{\mathrm{d}y}{\psi(y)}=\frac{\mathrm{d}x}{\varphi(x)}
 $$
 然后积分
 
-$$\int\frac{\mathrm{d}y}{\psi(y)}=\int\frac{\mathrm{d}x}{\varphi(x)}
-$$
+$$\int\frac{\mathrm{d}y}{\psi(y)}=\int\frac{\mathrm{d}x}{\varphi(x)}$$
 !!! warning ""
     当 $\exists y^*$, 使得 $\psi(y)=0$, 则 $y=y^*$ 也是一解

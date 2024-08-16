@@ -33,12 +33,13 @@
         /* 更改行内公式的颜色 */
         .md-typeset .math.inline {
             color: red;
-            background-color: lightgrey
+            <!-- background-color: lightgrey -->
+            <!-- 暂未尝试 -->
         }
         /* 更改块级公式的颜色 */
         .md-typeset .math.display {
             color: blue;
-            background-color: lightgrey
+            <!-- background-color: lightgrey -->
         }
         ```
         2.更新 mkdocs.yml 配置文件：将 extra.css 文件添加到 extra_css 列表中：

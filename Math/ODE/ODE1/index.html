@@ -646,6 +646,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    <span class="md-ellipsis">
+      B. 齐次方程
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1177,6 +1186,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    <span class="md-ellipsis">
+      B. 齐次方程
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1199,18 +1217,23 @@
 
 <h2 id="a">A. 可分离变量方程<a class="headerlink" href="#a" title="Permanent link">&para;</a></h2>
 <p>$$
-\bbox[lightgrey]{\frac{\mathrm{d}}{\mathrm{d}x}=\varphi(x)\psi(y)}$$
+\bbox[background: Lightgrey]{\frac{\mathrm{d}y}{\mathrm{d}x}=\varphi(x)\psi(y)}$$
 方法：分离变量</p>
 <p>$$
-\frac{\mathrm{d}y}{\psi(y)}=\frac{\mathrm{d}x}{\varphi(x)}
-$$
+\frac{\mathrm{d}y}{\psi(y)}=\frac{\mathrm{d}x}{\varphi(x)}$$
 然后积分  </p>
 <div class="arithmatex">\[
-\int\frac{\mathrm{d}y}{\psi(y)}=\int\frac{\mathrm{d}x}{\varphi(x)}
-\]</div>
+\int\frac{\mathrm{d}y}{\psi(y)}=\int\frac{\mathrm{d}x}{\varphi(x)}\]</div>
 <div class="admonition warning">
 <p>当 <span class="arithmatex">\(\exists y^*\)</span>, 使得 <span class="arithmatex">\(\psi(y)=0\)</span>, 则 <span class="arithmatex">\(y=y^*\)</span> 也是一解</p>
 </div>
+<details class="example">
+<summary>eg: <span class="arithmatex">\(\sqrt{1-y^2}dx+y\sqrt{1-x^2}dy=0\)</span></summary>
+<p><span class="arithmatex">\(\frac{dx}{\sqrt{1-x^2}}=-\frac{ydy}{\sqrt{1-y^2}}\Rightarrow \arcsin x+c=\sqrt{1-y^2}, \text{ and }y=\pm 1\)</span></p>
+</details>
+<h2 id="b">B. 齐次方程<a class="headerlink" href="#b" title="Permanent link">&para;</a></h2>
+<div class="arithmatex">\[
+\bbox[lightgrey]{\frac{\mathrm{d}y}{\mathrm{d}x}=g(\frac{y}{x})}\]</div>
 
 
 

@@ -1146,15 +1146,14 @@
 <summary>如何在mkdocs中使用有色的数学公式(字体与背景)</summary>
 <details class="failure">
 <summary>本方法仅在本地渲染有效(mkdocs serve及markdown)，在Github-pages上无效</summary>
-<p>MathJax 本身支持使用 \color 命令更改公式的字体颜色，用 \bbox 命令更改公式的背景颜色，但在 MkDocs 中你需要确保正确配置 MathJax:</p>
-<p>1.在 mkdocs.yml 文件中，启用 MathJax 并自定义配置：
+<p>MathJax 本身支持使用 \color 命令更改公式的字体颜色，用 \bbox 命令更改公式的背景颜色，但在 MkDocs 中你需要确保正确配置 MathJax:
+1.在 mkdocs.yml 文件中，启用 MathJax 并自定义配置：
 <div class="language-yaml highlight"><span class="filename">YAML</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="nt">markdown_extensions</span><span class="p">:</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pymdownx.superfences</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pymdownx.highlight</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos="4 "></span></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pymdownx.arithmatex</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos="5 "></span></a>
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos="6 "></span></a><span class="nt">extra_javascript</span><span class="p">:</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a><a href="#__codelineno-0-7"><span class="linenos" data-linenos="7 "></span></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos="5 "></span></a><span class="nt">extra_javascript</span><span class="p">:</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos="6 "></span></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default</span>
 </code></pre></div>
 2.在 Markdown 文件中使用 \color 和 \bbox 命令来设置颜色:
 <div class="language-markdown highlight"><span class="filename">Markdown</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a>$$ \color{red}{\alpha + \beta = \gamma} $$
@@ -1185,22 +1184,26 @@ PS:如果你有特定的颜色需求，可以将 blue 替换为其他颜色值�
 <summary>特定公式不同颜色</summary>
 <ol>
 <li>行内公式: 使用 &lt;span&gt; 标签并设置 style 属性来更改颜色：
-<div class="language-markdown highlight"><span class="filename">Markdown</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos="1 "></span></a>&lt;span style=&quot;color: red;&quot;&gt;$a^2 + b^2 = c^2$&lt;/span&gt;
+<div class="language-markdown highlight"><span class="filename">Markdown</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos="1 "></span></a>&lt;span style=&quot;background-color: lightgrey; display: inline-block;color:red;&quot;&gt;
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><a href="#__codelineno-4-2"><span class="linenos" data-linenos="2 "></span></a>$a^2 + b^2 = c^2$
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><a href="#__codelineno-4-3"><span class="linenos" data-linenos="3 "></span></a>&lt;/span&gt;
 </code></pre></div>
-效果： <span style="color: red;"><span class="arithmatex">\(a^2 + b^2 = c^2\)</span></span></li>
-<li>块级公式: 使用 &lt;div&gt; 标签：
-<div class="language-markdown highlight"><span class="filename">Markdown</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a>&lt;div style=&quot;color: red;&quot;&gt;
+效果： <span style="background-color: lightgrey; display: inline-block;color:red;">
+<span class="arithmatex">\(a^2 + b^2 = c^2\)</span>
+</span></li>
+<li>块级公式: 使用 &lt;div&gt; 标签：(使用 &lt;span&gt; 在大多数情况下也可以)
+<div class="language-markdown highlight"><span class="filename">Markdown</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a>&lt;div style=&quot;text-align: center; background-color: lightgrey; display: inline-block;color:red;&quot;&gt;
 <a id="__codelineno-5-2" name="__codelineno-5-2"></a><a href="#__codelineno-5-2"><span class="linenos" data-linenos="2 "></span></a>$$
 <a id="__codelineno-5-3" name="__codelineno-5-3"></a><a href="#__codelineno-5-3"><span class="linenos" data-linenos="3 "></span></a>a^2 + b^2 = c^2
 <a id="__codelineno-5-4" name="__codelineno-5-4"></a><a href="#__codelineno-5-4"><span class="linenos" data-linenos="4 "></span></a>$$
 <a id="__codelineno-5-5" name="__codelineno-5-5"></a><a href="#__codelineno-5-5"><span class="linenos" data-linenos="5 "></span></a>&lt;/div&gt;
 </code></pre></div>
 效果：
-<div style="color: red;">
+<span style="text-align: center; background-color: lightgrey; display: inline-block;color:red;">
 $$
-a^2 + b^2 = c^2
+\frac{\mathrm{d}}{\mathrm{d}x} = \varphi(x)\psi(y)
 $$
-</div></li>
+</span></li>
 <li>还可以定义一个 CSS 类，然后在 Markdown 文件中应用该类:<br />
     1&gt; 在 extra.css 文件中定义一个类：
     <div class="language-css highlight"><span class="filename">CSS</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos="1 "></span></a><span class="p">.</span><span class="nc">color-math</span><span class="w"> </span><span class="p">{</span>

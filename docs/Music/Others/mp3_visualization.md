@@ -1,6 +1,6 @@
 !!! abstract
     1.本项目核心来源于CTF比赛：Hackergame 2021 的 p😭q  (generate_sound_visualization.py)  
-    2.原始动机在于希望他人愿意欣赏[魔女之旅的ED(piano)](/Belief/charactors/灰之魔女伊蕾娜)  
+    2.原始动机在于希望他人愿意欣赏[魔女之旅的ED(piano)](../../Belief/charactors/灰之魔女伊蕾娜.md)  
     3.主要使用了 python 与 [ffmpeg](https://en.wikipedia.org/wiki/FFmpeg){:target="_blank"} 进行处理
 
 ### 1. 使用 python 音频处理库 librosa 将 mp3文件 转换为 gif频谱动图
@@ -72,9 +72,9 @@
     - -shortest：确保视频的时长不超过 MP3 的时长。
 ### 3. 效果展示
 <div style="text-align: center;">
-    <video src="/assets/video/ilyina_ed.mp4" controls="controls"></video>
+    <video src="../../../assets/video/ilyina_ed.mp4" controls="controls"></video>
     <br>
-    <span style="font-size: 16px; color: #555;">The sound is from <a href="/Belief/charactors/灰之魔女伊蕾娜">《魔女の旅々》ED</a></span>
+    <span style="font-size: 16px; color: #555;">The sound is from <a href="../../../Belief/charactors/灰之魔女伊蕾娜">《魔女の旅々》ED</a></span>
 </div>
 
 

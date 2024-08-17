@@ -17,5 +17,6 @@ $$
 ## B. 齐次方程
 $$
 \bbox[lightgrey]{\frac{\mathrm{d}y}{\mathrm{d}x}=g(\frac{y}{x})}$$
+方法：
 
     

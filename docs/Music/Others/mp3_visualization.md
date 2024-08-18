@@ -6,54 +6,54 @@
 ### 1. 使用 python 音频处理库 librosa 将 mp3文件 转换为 gif频谱动图
 (文件较大时需要一定时间)
 ```python
-    from array2gif import write_gif  # version: 1.0.4
-    import librosa  # version: 0.10.2.post1
-    import numpy  # version: 1.26.4
+from array2gif import write_gif  # version: 1.0.4
+import librosa  # version: 0.10.2.post1
+import numpy  # version: 1.26.4
 
-    num_freqs = 32
-    quantize = 2
-    min_db = -60
-    max_db = 30
-    fft_window_size = 2048
-    frame_step_size = 512
-    window_function_type = 'hann'
-    color_pixel = (30, 144, 255)  # DodgerBlue
-    white_pixel = (255, 255, 255)  # Colors etc. can be modified by yourself
+num_freqs = 32
+quantize = 2
+min_db = -60
+max_db = 30
+fft_window_size = 2048
+frame_step_size = 512
+window_function_type = 'hann'
+color_pixel = (30, 144, 255)  # DodgerBlue
+white_pixel = (255, 255, 255)  # Colors etc. can be modified by yourself
 
-    def convert_to_gif(src, dst):
-        y, sample_rate = librosa.load(src)
+def convert_to_gif(src, dst):
+    y, sample_rate = librosa.load(src)
 
-        spectrogram = numpy.around(
-            librosa.power_to_db(
-                librosa.feature.melspectrogram(
-                    y=y, sr=sample_rate, n_mels=num_freqs,
-                    n_fft=fft_window_size,
-                    hop_length=frame_step_size,
-                    window=window_function_type
-                )
-            ) / quantize
-        ) * quantize
-
-        gif_data = [
-            numpy.kron(
-                numpy.array([
-                    [
-                        color_pixel if freq % 2 and i < round(
-                            frame[freq // 2]) else white_pixel
-                        for i in reversed(
-                            range(min_db, max_db + 1, quantize))
-                    ]
-                    for freq in range(num_freqs * 2 + 1)
-                ]),
-                numpy.ones([quantize, quantize, 1])
+    spectrogram = numpy.around(
+        librosa.power_to_db(
+            librosa.feature.melspectrogram(
+                y=y, sr=sample_rate, n_mels=num_freqs,
+                n_fft=fft_window_size,
+                hop_length=frame_step_size,
+                window=window_function_type
             )
-            for frame in spectrogram.transpose()
-        ]
+        ) / quantize
+    ) * quantize
 
-        write_gif(gif_data, dst, fps=sample_rate/frame_step_size)
+    gif_data = [
+        numpy.kron(
+            numpy.array([
+                [
+                    color_pixel if freq % 2 and i < round(
+                        frame[freq // 2]) else white_pixel
+                    for i in reversed(
+                        range(min_db, max_db + 1, quantize))
+                ]
+                for freq in range(num_freqs * 2 + 1)
+            ]),
+            numpy.ones([quantize, quantize, 1])
+        )
+        for frame in spectrogram.transpose()
+    ]
 
-    if __name__ == '__main__':
-        convert_to_gif('input.mp3', 'output.gif')  # sample rate is 22050 Hz
+    write_gif(gif_data, dst, fps=sample_rate/frame_step_size)
+
+if __name__ == '__main__':
+    convert_to_gif('input.mp3', 'output.gif')  # sample rate is 22050 Hz
 ```
 ### 2. 使用 ffmpeg 将 mp3文件 与 gif文件 合成为 mp4文件  
 - 在命令行用`ffmpeg -i input.mp3` 与 `ffmpeg -i output.gif` 分别求出时长：duration_of_mp3 、duration_of_gif  

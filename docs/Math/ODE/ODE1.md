@@ -17,6 +17,11 @@ $$
 ## B. 齐次方程
 $$
 \bbox[lightgrey]{\frac{\mathrm{d}y}{\mathrm{d}x}=g(\frac{y}{x})}$$
-方法：
+方法：令 $\color{red}{u=\frac{y}{x}}$ 即 $y=ux$ , 两边对$x$微分得 $\frac{dy}{dx}=x\frac{du}{dx}+u$ , 代入原方程得：
+$$
+\color{red}{\frac{du}{dx}=\frac{g(u)-u}{x}}$$
+即回到了“可分离变量”的情况
+!!! warning "分三种情况讨论"
+    ① $g(u)-u\neq0$ ② ③
 
     

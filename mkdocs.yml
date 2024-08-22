@@ -6,11 +6,11 @@ copyright: Copyright &copy; 2024-2024 <a href="https://github.com/XuebaStudy" ta
 nav: 
   - Home: index.md
   - About: about.md
-  - Math:
-    - 常微分方程:
-      - 一阶&全微分方程: Math/ODE/ODE1.md
-      - 二阶(高阶方法类似): Math/ODE/ODE2.md
-      - 线性方程组: Math/ODE/ODE3.md
+  # - Math:
+    # - 常微分方程:
+    #   - 一阶&全微分方程: Math/ODE/ODE1.md
+    #   - 二阶(高阶方法类似): Math/ODE/ODE2.md
+    #   - 线性方程组: Math/ODE/ODE3.md
   - Music:
     - 杂项: 
       - mp3->mp4(有声频谱): Music/Others/mp3_visualization.md

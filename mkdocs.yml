@@ -19,8 +19,8 @@ nav:
       - 杂项: Tools/mkdocs/mk1.md
   - Diary: 
     - 14_days_challenge: 
-      - Diary/14_days_challenge/index.md
-      - 24.8: Diary/14_days_challenge/24.8.md
+      - Diary/days_challenge/index.md
+      - 24.8: Diary/days_challenge/24.8.md
   - Belief:
     - charators: 
       - 灰之魔女伊蕾娜: Belief/charactors/灰之魔女伊蕾娜.md

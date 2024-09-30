@@ -18,7 +18,7 @@ nav:
     - Mkdocs: 
       - 杂项: Tools/mkdocs/mk1.md
   - Diary: 
-    - 14_days_challenge: 
+    - days_challenge: 
       - Diary/days_challenge/index.md
       - 24.8: Diary/days_challenge/24.8.md
   - Belief:

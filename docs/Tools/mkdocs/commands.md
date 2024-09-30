@@ -23,13 +23,13 @@ rm 'test.txt'           # 工作区删除文件
 git add test.txt        # 版本库删除文件，还需要 commit
 git commit -m "delete test"
 ```
-### mkdoks 使用
+### mkdocs 使用
 ``` title=''
 # 在本地渲染相关笔记，可设置端口(如8000，则网站根目录为127.0.0.1:8000)
 
 mkdocs serve    
 
-# 将本地的仓库提交到Github仓库中的gh-deploy分支(本地的git应为HEAD -> main)
+# 将本地的仓库提交到Github仓库中的gh-pages分支(本地的git应为HEAD -> main)
 
 mkdocs gh-deploy    
 

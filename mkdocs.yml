@@ -16,7 +16,8 @@ nav:
       - mp3->mp4(有声频谱): Music/Others/mp3_visualization.md
   - Tools:
     - Mkdocs: 
-      - 杂项: Tools/mkdocs/mk1.md
+      - 基础命令: Tools/mkdocs/commands.md
+      - 杂项: Tools/mkdocs/others.md
   - Diary: 
     - days_challenge: 
       - Diary/days_challenge/index.md

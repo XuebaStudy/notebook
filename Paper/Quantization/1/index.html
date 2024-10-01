@@ -722,6 +722,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    (Survey) Model Quantization for DNN in Image Classification
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -731,6 +742,52 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 简介
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 神经网络基本概念
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 量化的概念
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1374,6 +1431,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 简介
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 神经网络基本概念
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 量化的概念
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1394,7 +1486,79 @@
 <h4 id="paper-a-comprehensive-survey-on-model-quantization-for-deep-neural-networks-in-image-classification">Paper: <a href="https://dl.acm.org/doi/10.1145/3623402">A Comprehensive Survey on Model Quantization for Deep Neural Networks in Image Classification</a><a class="headerlink" href="#paper-a-comprehensive-survey-on-model-quantization-for-deep-neural-networks-in-image-classification" title="Permanent link">¶</a></h4>
 <div class="admonition abstract">
 <p class="admonition-title">Abstract</p>
-</div></div>
+<ul>
+<li>背景：Deep Neural Networks (DNNs) 在机器学习领域取得了重大进步，优点是精度高，缺点是存储消耗高，耗能高，这使得他们在有限的硬件资源上难以使用，量化 （Quantization）（the full-precision values are stored in low bit-width precision）即为解决这一难题的方法之一。</li>
+<li>Quantization的优点：1. Quantization not only reduces memory requirements but also replaces high-cost operations with low-cost ones. 2. DNN quantization offers flexibility and efficiency in hardware design, making it a widely adopted technique in various methods.</li>
+<li>贡献：<ol>
+<li>Consequently, we present a comprehensive <strong>survey of quantization</strong> concepts and methods, with a focus on image classification. </li>
+<li>We describe <strong>clustering-based quantization</strong> methods and explore <strong>the use of a scale factor</strong> parameter for approximating full-precision values. </li>
+<li>Moreover, we thoroughly review <strong>the training of a quantized DNN</strong>, including the use of a straight-through estimator and quantization regularization. We explain the replacement of floating-point operations with low-cost bitwise operations in a quantized DNN and the sensitivity of different layers in quantization. </li>
+<li>Furthermore, we highlight the evaluation <strong>metrics for quantization methods</strong> and important <strong>benchmarks in the image classification task</strong>. We also present the accuracy of the state-of-the-art methods on CIFAR-10 and ImageNet. </li>
+<li>This article attempts to make the readers familiar with the basic and advanced concepts of quantization, introduce important works in DNN quantization, and highlight challenges for future research in this field.</li>
+</ol>
+</li>
+</ul>
+</div>
+<h2 id="1">1 简介<a class="headerlink" href="#1" title="Permanent link">¶</a></h2>
+<ol>
+<li>Deep Convolutional Neural Network (DCNN) 成就斐然，但需要存储大量参数，进行大量计算（The main operation in DCNNs is multiply-accumulate
+(MAC) in convolution and Fully Connected (FC) layers.），所以DNNs的加速很有必要。</li>
+<li>In the beginning, the focus was on hardware optimization for processing speedup in DNN accelerators.<br>
+-&gt;  Later, researchers concluded that compression
+and software optimization of DNNs can be more effective before touching hardware.</li>
+<li>The approaches in DNN compression:<ul>
+<li><strong>Quantization</strong>: approximates the numerical network components with low bit-width precision.</li>
+<li><strong>Pruning</strong>: removing unnecessary or less important connections within the network and
+making a sparse network that reduces memory usage as well as computations.</li>
+<li><strong>Low-rank approximation</strong>: an approach to simplify matrices and images, creates a
+new matrix close to the weight matrix, which has lower dimensions and fewer computations in DNNs.</li>
+<li><strong>Knowledge Distillation (KD)</strong>: employ a simpler model that exhibits generalization and accuracy comparable to the complex model.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Advantages of quantization</p>
+<ul>
+<li>High compression, with less accuracy reduction.</li>
+<li>Flexibility<br>
+-- Since quantization is not dependent on the network architecture, a quantization algorithm can be
+applied to various types of DNNs. (Many quantization methods originally designed for
+DCNNs are also used for Recurrent Neural Networks (RNNs) and Long Short-Term Memory (LSTM) networks) .</li>
+<li>Smaller number of cycles on hardware<br>
+-- as high-cost floating-point operations are replaced with low-cost operations.</li>
+<li>Reduces the cost of hardware accelerator design.<br>
+-- For instance, in 1-bit quantization, a 32-bit floating-point multiplier can be replaced an XNOR operator, leading to a
+cost reduction of 200 times in Xilinx FPGA</li>
+<li>Contribute to controlling
+overfitting.<br>
+-- By simplifing parameters</li>
+</ul>
+</div>
+</li>
+<li>列举了一些关于各种Quantization方式的参考文献 (binary,mixed-precision,distillation-assisted,hardware-aware......)</li>
+<li>概况后续内容 (同abstract)</li>
+</ol>
+<h2 id="2">2 神经网络基本概念<a class="headerlink" href="#2" title="Permanent link">¶</a></h2>
+<ol>
+<li>A DCNN consists of various types of layers, and the common layers include <strong>convolution layer, normalization layer, pooling layer, and FC layer</strong>.</li>
+<li>
+<ul>
+<li>The main layer in DCNN is the convolution layer, which is formed in three
+    dimensions. </li>
+<li>This layer produces an output feature map by convolving multiple filters (weights)
+with the input feature map. </li>
+<li>There is weight sharing in the convolution layer, which means that
+each weight is applied to different connections. </li>
+<li>The majority of computationsin DCNNs are in this
+layer due to its three-dimensional structure and <strong>weight sharing</strong>.</li>
+</ul>
+</li>
+<li><strong>Weight sharing</strong> -&gt; a significant reduction in the number of parameters.<br>
+-&gt; the majority of parameters in DCNNs are typically in the FC layers, where each neuron
+is connected to all neurons in both the previous and next layers.</li>
+<li>As <strong>the convolution and FC layers</strong>
+contain the majority of <strong>computations and parameters in DCNNs</strong>, the primary focus is on these
+layers in accelerators and compression techniques.</li>
+</ol>
+<h2 id="3">3 量化的概念<a class="headerlink" href="#3" title="Permanent link">¶</a></h2></div>
 
 
 

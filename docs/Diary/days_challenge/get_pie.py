@@ -10,23 +10,21 @@ config = {
     }
 rcParams.update(config)
 
-date = "24.10.1"
+date = "24.10.2"
 data = """  
-概率论/R2.1&2.2/60min
-背单词/R70/25min
-计组/Lab1-report/65min
-科研/RP/40min
-科研/RP/35min
-pytorch学习/-2.1/45min
-背单词/R74/25min
-午休/TL/210min
-数值分析/R2.2(LE)/50min
-科研/RP/25min
-背单词/N60/20min
-小提琴/Free/90min
-休闲/bilibili/150min
-数值分析/R2.3-2.6/25min
-总结/blog/30min
+概率论/N2.3&H2.1/70min
+背单词/R80/25min
+数值分析/R6.n/25min
+休闲/biliblili/80min
+数值分析/R6.n/60min
+数值分析/Lab3/40min
+午休/NM/25min
+ADS/team-work/30min
+事务/scholarship/30min
+运动/NM/40min
+科研/RP/135min
+AI导/Lab2/100min
+总结/blog/20min
 """  
   
 # 定义固定颜色映射  
@@ -41,7 +39,11 @@ activity_colors = {
     '休闲': '#A9A9A9' ,
     '休息': '#A9A9A9' ,
     '小提琴':'#D2691E',
-    '总结': '#696969'
+    '总结': '#696969',
+    'AI导':'#48D1CC',
+    '运动':'#FFA500',
+    'ADS':'#6B8E23',
+    '事务':'#808080'    # Gray
 }  
   
 # 解析数据  

@@ -783,6 +783,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="3 量化的概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 (网络组成中)量化的对象
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 何时量化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-deterministicstochastic" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 确定性(deterministic)和随机(stochastic)量化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1462,6 +1495,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="3 量化的概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 (网络组成中)量化的对象
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 何时量化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-deterministicstochastic" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 确定性(deterministic)和随机(stochastic)量化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1483,7 +1549,7 @@
 
 
 <div><h1 id="_1"><a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
-<h4 id="paper-a-comprehensive-survey-on-model-quantization-for-deep-neural-networks-in-image-classification">Paper: <a href="https://dl.acm.org/doi/10.1145/3623402">A Comprehensive Survey on Model Quantization for Deep Neural Networks in Image Classification</a><a class="headerlink" href="#paper-a-comprehensive-survey-on-model-quantization-for-deep-neural-networks-in-image-classification" title="Permanent link">¶</a></h4>
+<h4 id="paper-a-comprehensive-survey-on-model-quantization-for-deep-neural-networks-in-image-classification">Paper: <a href="https://dl.acm.org/doi/10.1145/3623402" target="_blank">A Comprehensive Survey on Model Quantization for Deep Neural Networks in Image Classification</a><a class="headerlink" href="#paper-a-comprehensive-survey-on-model-quantization-for-deep-neural-networks-in-image-classification" title="Permanent link">¶</a></h4>
 <div class="admonition abstract">
 <p class="admonition-title">Abstract</p>
 <ul>
@@ -1558,7 +1624,89 @@ is connected to all neurons in both the previous and next layers.</li>
 contain the majority of <strong>computations and parameters in DCNNs</strong>, the primary focus is on these
 layers in accelerators and compression techniques.</li>
 </ol>
-<h2 id="3">3 量化的概念<a class="headerlink" href="#3" title="Permanent link">¶</a></h2></div>
+<h2 id="3">3 量化的概念<a class="headerlink" href="#3" title="Permanent link">¶</a></h2>
+<p>Quantization is mapping values from a continuous space to a discrete space, where full-precision
+values are mapped to new values with lower bit-width called quantization levels.</p>
+<h3 id="31">3.1 (网络组成中)量化的对象<a class="headerlink" href="#31" title="Permanent link">¶</a></h3>
+<ul>
+<li>Each numerical component in neural networks can be quantized. ‌These components are typically divided into three main categories: weights, activations, and gradients.</li>
+<li>Weights: the most common (But in
+most cases, biases and other parameters, such as batch normalization parameters, are kept in full
+precision in view of the fact that they include a minimal rate of neural network parameters, and the
+quantization of them is less efficient in compression.)</li>
+<li>Activations: 比weights的量化更困难 (While
+weightsremain fixed after training, activations change during the inference phase according to the
+input data.)，但仅仅对weights量化效率不高、内存使用率低, 故需共同量化</li>
+<li>Gradients: 仅对训练时的加速有用，更难量化 (While
+weightsremain fixed after training, activations change during the inference phase according to the
+input data.)</li>
+</ul>
+<h3 id="32">3.2 何时量化<a class="headerlink" href="#32" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Quantization-Aware Training (QAT)</th>
+<th>Post-Training Quantization (PTQ).</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>When</td>
+<td>After training</td>
+<td>During training</td>
+</tr>
+<tr>
+<td>Defect</td>
+<td>In a low bit-width precision quantized network, the convergence of the learning algorithm is challenging. -&gt; requires more iterations than the full-precision network for convergence. It needs customized solutions compatible with a discrete network.</td>
+<td>A reduction in model accuracy. -&gt; needs retraining, fine-tuning agter quantization -&gt; repeat to reach an acceptable accuracy.</td>
+</tr>
+<tr>
+<td>Speedup phase</td>
+<td>the training and inference phases</td>
+<td>the inference phase</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The model accuracy in the QAT approach is commonly higher than in PTQ, because the trained
+model is more compatible with the quantization process.</li>
+</ul>
+<h3 id="33-deterministicstochastic">3.3 确定性(deterministic)和随机(stochastic)量化<a class="headerlink" href="#33-deterministicstochastic" title="Permanent link">¶</a></h3>
+<h4 id="deterministitc-quantization-methods">Deterministitc Quantization Methods<a class="headerlink" href="#deterministitc-quantization-methods" title="Permanent link">¶</a></h4>
+<ul>
+<li>Binary quantization:</li>
+</ul>
+<div class="arithmatex">\[b=\text{Sign}\left(x\right)=\begin{cases}+1\quad x\geq0\\-1\quad x&lt;0\end{cases}.\]</div>
+<ul>
+<li>Ternary quantization:</li>
+</ul>
+<div class="arithmatex">\[t=\begin{cases}+1&amp;x&gt;\Delta\\0&amp;|x|\leq\Delta\\-1&amp;x&lt;-\Delta\end{cases}.\]</div>
+<ul>
+<li>Others:</li>
+</ul>
+<div class="arithmatex">\[Q\left(x\right)=Sign\left(x\right).d.\min\left(round\left(\frac{\left|x\right|}d\right),\frac{M-1}2\right)\]</div>
+<p>d represents the step size, and M is an odd number and determines the number
+of quantization levels. Consequently, the quantization levels include zero, positive, and negative
+values symmetrically.</p>
+<div class="arithmatex">\[quantize_k=\frac1{2^k-1}round\left(\left(2^k-1\right)x\right),0\leq x\leq1\]</div>
+<p>It maps the full-precision values in the range <span class="arithmatex">\(x\in[0,1]\)</span> to <span class="arithmatex">\(2^k\)</span> quantization levels within the same interval with step size <span class="arithmatex">\(\frac1{2^k-1}.\)</span> For <span class="arithmatex">\(k\)</span> bit-width, the quantization levels are <span class="arithmatex">\(L_q=\)</span> <span class="arithmatex">\(\{0,\frac1{2^k-1},\frac2{2^k-1},\ldots,1\}.\)</span> For example, for <span class="arithmatex">\(k=2\)</span>,there are <span class="arithmatex">\(2^2=4\)</span> quantization levels, which are <span class="arithmatex">\(L_q=\)</span> <span class="arithmatex">\(\{ 0\)</span>, ⅓, ⅔, <span class="arithmatex">\(1\} .\)</span></p>
+<ul>
+<li>Learned Quantization Network (LQ-Nets):</li>
+</ul>
+<div class="arithmatex">\[Q\left(x,v\right)=v^Te_l\ e_l\in\left\{-1,1\right\}^K,x\in\left(t_l,t_{l+1}\right).\]</div>
+<p>x represents full-precision values, <span class="arithmatex">\(\nu\in\mathbb{R}^{K}\)</span> denotes the learnable floating-point basis vector, and <span class="arithmatex">\(e_{l}\)</span> is a <span class="arithmatex">\(k\)</span>-bit binary vector from <span class="arithmatex">\([-1,-1,\ldots,-1]\mathrm{~to~}[1,1,\ldots,1].\)</span></p>
+<h4 id="stochastic-quantization-methods">Stochastic Quantization Methods<a class="headerlink" href="#stochastic-quantization-methods" title="Permanent link">¶</a></h4>
+<div class="arithmatex">\[b=\begin{cases}+1\:p=\sigma\:(x)\\-1\:q=1-p\end{cases}.\]</div>
+<div class="arithmatex">\[\sigma\left(x\right)=clip\left(\frac{x+1}2,0,1\right)=\max\left(0,\min\left(1,\frac{x+1}2\right)\right).\]</div>
+<div class="arithmatex">\[\begin{cases}\mathrm{if~}w&gt;0:p\left(t=1\right)=w;\quad p\left(t=0\right)=1-w\\\mathrm{if~}w&lt;0:p\left(t=-1\right)=-w;p\left(t=0\right)=1+w\end{cases}.\]</div>
+<h4 id="deterministic-and-stochastic-quantization-comparison">Deterministic and Stochastic Quantization Comparison.<a class="headerlink" href="#deterministic-and-stochastic-quantization-comparison" title="Permanent link">¶</a></h4>
+<ul>
+<li>Stochastic quantization has
+shown <strong>better model generalization</strong> compared to deterministic quantization.</li>
+<li>Implementation of stochastic quantization is <strong>more challenging and costly</strong> than deterministic quantization, particularly in hardware implementations, as it
+requires a random bit generator.</li>
+</ul></div>
 
 
 

@@ -10,27 +10,32 @@ config = {
     }
 rcParams.update(config)
 
-date = "24.10.2"
+date = "24.10.3"
 data = """  
-概率论/N2.3&H2.1/70min
-背单词/R80/25min
-数值分析/R6.n/25min
-休闲/biliblili/80min
-数值分析/R6.n/60min
-数值分析/Lab3/40min
-午休/NM/25min
-ADS/team-work/30min
-事务/scholarship/30min
-运动/NM/40min
-科研/RP/135min
-AI导/Lab2/100min
+概率论/H2/50min
+背单词/R70/30min
+物理/R28/15min
+休息/补眠/130min
+物理/R28/55min
+背单词/R53/20min
+物理/R28/55min
+物理/H28/30min
+午休/NM/20min
+整理/COnotes/20min
+计组/HW1/70min
+运动/NM/30min
+背单词/N60/25min
+数值分析/Lab3/60min
+科研/RP/90min
+pytorch/-2.2/30min
+pytorch/-2.3/40min
 总结/blog/20min
 """  
   
 # 定义固定颜色映射  
 activity_colors = {  
     '概率论': 'tab:green',  
-    'pytorch学习': 'tab:orange',  
+    'pytorch': 'tab:orange',  
     '背单词': 'tab:purple',  
     '数值分析': 'tab:brown',  
     '计组': 'tab:blue',  
@@ -43,7 +48,9 @@ activity_colors = {
     'AI导':'#48D1CC',
     '运动':'#FFA500',
     'ADS':'#6B8E23',
-    '事务':'#808080'    # Gray
+    '事务':'#808080',   # Gray
+    '物理':'#1E90FF',   # DodgerBlue
+    '整理':'#DCDCDC'    # Gainsboro
 }  
   
 # 解析数据  

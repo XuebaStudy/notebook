@@ -813,8 +813,26 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 由分布看量化方法的水平
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 量化神经网络的训练
+    </span>
+  </a>
   
 </li>
       
@@ -1525,8 +1543,26 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 由分布看量化方法的水平
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 量化神经网络的训练
+    </span>
+  </a>
   
 </li>
       
@@ -1580,8 +1616,8 @@ making a sparse network that reduces memory usage as well as computations.</li>
 new matrix close to the weight matrix, which has lower dimensions and fewer computations in DNNs.</li>
 <li><strong>Knowledge Distillation (KD)</strong>: employ a simpler model that exhibits generalization and accuracy comparable to the complex model.</li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Advantages of quantization</p>
+<details class="note">
+<summary>Advantages of quantization</summary>
 <ul>
 <li>High compression, with less accuracy reduction.</li>
 <li>Flexibility<br>
@@ -1597,7 +1633,7 @@ cost reduction of 200 times in Xilinx FPGA</li>
 overfitting.<br>
 -- By simplifing parameters</li>
 </ul>
-</div>
+</details>
 </li>
 <li>列举了一些关于各种Quantization方式的参考文献 (binary,mixed-precision,distillation-assisted,hardware-aware......)</li>
 <li>概况后续内容 (同abstract)</li>
@@ -1706,7 +1742,85 @@ values symmetrically.</p>
 shown <strong>better model generalization</strong> compared to deterministic quantization.</li>
 <li>Implementation of stochastic quantization is <strong>more challenging and costly</strong> than deterministic quantization, particularly in hardware implementations, as it
 requires a random bit generator.</li>
-</ul></div>
+</ul>
+<h3 id="34">3.4 由分布看量化方法的水平<a class="headerlink" href="#34" title="Permanent link">¶</a></h3>
+<h4 id="341-uniform-and-non-uniform-quantization">3.4.1 Uniform and Non-uniform Quantization<a class="headerlink" href="#341-uniform-and-non-uniform-quantization" title="Permanent link">¶</a></h4>
+<ul>
+<li>In non-uniform quantization, the step size is determined according to the distribution of the full-precision values, which
+makes it more complex and accurate than uniform quantization.</li>
+</ul>
+<figure>
+  <img alt="Image title" src="../pictures/1.1.png"></figure>
+<details class="note">
+<summary>base-2 logarithm quantization: (x represents full-precision values)</summary>
+<div class="arithmatex">\[Q\left(x\right)=\mathrm{Sign}\left(x\right)2^{round\left(\log_2\left|x\right|\right)}\]</div>
+<p>-&gt; Logarithmic quantization allows the encoding of a larger range of numbers using the same storage in comparison with uniform quantization
+by storing a small integer exponent instead of a floating-point number.</p>
+<ul>
+<li>
+<p>Previous studies have revealed that weights in DCNNs often follow a normal distribution with
+a mean of zero:
+<figure markdown="span">
+<img alt="Image title" src="../pictures/1.2.png"></figure>
+-&gt; In logarithmic quantization, the quantization levels are denser for
+values close to zero. Therefore, the distribution of quantization levelsin logarithmic quantization is
+matched to the distribution of the full-precision weights in DCNNs, which leads to more accurate
+quantization.</p>
+</li>
+<li>
+<p>The base-2 logarithm quantization is naturally a representation of the binary system.
+-&gt; it is well-matched to digital hardware and provides simple operations. </p>
+</li>
+</ul>
+</details>
+<h4 id="342-clustering-based-quantization">3.4.2 Clustering-based Quantization.<a class="headerlink" href="#342-clustering-based-quantization" title="Permanent link">¶</a></h4>
+<figure>
+  <img alt="Image title" src="../pictures/1.3.png"></figure>
+<ul>
+<li>DeepCompression method:<br>
+using the k-means algorithm, where the weight values in a cluster are close to each other and mapped to the same quantization
+level, which is the cluster center.</li>
+<li>Single Level Quantization (SLQ) (for high bit-width precision ):<br>
+the weights of each layer are
+clustered separately using the k-means algorithm.<br>
+-&gt; the clusters are grouped into
+two categories based on quantization loss.<br>
+-&gt; Low loss: quantization  ; High loss: retrain<br>
+-&gt; These steps are repeated until all the weights are
+quantized.<br>
+-&gt; SLQ is not suitable for low bit-width quantization due to the small number of clusters, which leads to significant quantization loss.</li>
+<li>Multiple Level Quantization (MLQ) (for 2-bit and 3-bit quantization.):<br>
+-&gt; (Compared to SLQ) partitions weights not only in the width but <strong>also in the depth</strong> of the network. Layers are quantized iteratively
+and incrementally (not at the same time).</li>
+<li>Extended Single Level Quantization (ESLQ):<br>
+changes cluster
+centers as quantization levels to values with a specific type. For example, quantization levels are
+mapped to the closest number in the form of Power Of Two (POT), making it well-suited for
+implementation on FPGA platforms.</li>
+</ul>
+<details class="note">
+<summary>Weighted entropy measure (for evaluating the quality of clustering)</summary>
+<p><figure markdown="span">
+<img alt="Image title" src="../pictures/1.4.png"></figure></p>
+</details>
+<details class="note">
+<summary>Challenges of the clustering-based approach</summary>
+<ol>
+<li>Not suitable for implementation
+in hardware and software due to their significant time complexity and computational requirements
+for codebook reconstruction.  </li>
+<li>The weights within a
+cluster are not contiguous in memory, which leads to irregular memory accesses with long delays.  </li>
+<li>The clustering-based approach is not suitable for activations quantization. (As weights are fixed during training, but activations are not)</li>
+</ol>
+</details>
+<h4 id="343-scale-factor">3.4.3 Scale Factor.  (未总结)<a class="headerlink" href="#343-scale-factor" title="Permanent link">¶</a></h4>
+<ul>
+<li>讲了 Ternary Weight Network (TWN) method, Accurate Binary Convolutional
+(ABC) method, Trained Ternary Quantization (TTQ), Explicit Loss-error-aware Quantization (ELQ) method......</li>
+<li>The effect of scale factor model on convergence &amp; Challenges of using scale factor</li>
+</ul>
+<h2 id="4">4 量化神经网络的训练<a class="headerlink" href="#4" title="Permanent link">¶</a></h2></div>
 
 
 

@@ -22,6 +22,8 @@ nav:
       - 基础命令: Tools/mkdocs/commands.md
       - 杂项: Tools/mkdocs/others.md
   - Diary: 
+    - Reflection: 
+      - interview: Diary/Reflection/interview.md
     - days_challenge: 
       - Diary/days_challenge/index.md
       - '24.8': Diary/days_challenge/24.8.md

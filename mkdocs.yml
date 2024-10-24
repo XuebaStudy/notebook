@@ -12,8 +12,9 @@ nav:
       # - 二阶(高阶方法类似): Math/ODE/ODE2.md
       # - 线性方程组: Math/ODE/ODE3.md
   - Paper:
-    - 神经网络加速之量化模型:
+    - 量化模型:
       - (Survey) Model Quantization for DNN in Image Classification: Paper/Quantization/1.md
+      - (Survey) Model Quantization and Hardware Acceleration for Vision Transformers: Paper/Quantization/2.md
   - Music:
     - 杂项: 
       - mp3->mp4(有声频谱): Music/Others/mp3_visualization.md

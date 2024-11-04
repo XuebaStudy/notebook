@@ -10,26 +10,27 @@ config = {
     }
 rcParams.update(config)
 
-date = "24.10.3"
+date = "24.11.4"
 data = """  
-概率论/H2/50min
-背单词/R70/30min
-物理/R28/15min
-休息/补眠/130min
-物理/R28/55min
-背单词/R53/20min
-物理/R28/55min
-物理/H28/30min
-午休/NM/20min
-整理/COnotes/20min
-计组/HW1/70min
-运动/NM/30min
-背单词/N60/25min
-数值分析/Lab3/60min
-科研/RP/90min
-pytorch/-2.2/30min
-pytorch/-2.3/40min
-总结/blog/20min
+概率论/review/45min
+背单词/R100/25min
+普物/review/20min
+休息/break/20min
+上课/physics/100min
+运动/NM/40min
+ADS/HW/35min
+博客/Lessons/55min
+数值分析/review/25min
+数值分析/review/20min
+背单词/R100/15min
+背单词/R100/25min
+科研/read paper/70min
+休息/break/25min
+数值分析/HW/50min
+ADS/DP/20min
+计组/lab4.c/20min
+计组/review/30min
+博客/conclusion/20min
 """  
   
 # 定义固定颜色映射  
@@ -44,13 +45,14 @@ activity_colors = {
     '休闲': '#A9A9A9' ,
     '休息': '#A9A9A9' ,
     '小提琴':'#D2691E',
-    '总结': '#696969',
+    '上课': '#696969',
     'AI导':'#48D1CC',
     '运动':'#FFA500',
     'ADS':'#6B8E23',
     '事务':'#808080',   # Gray
-    '物理':'#1E90FF',   # DodgerBlue
-    '整理':'#DCDCDC'    # Gainsboro
+    '普物':'#1E90FF',   # DodgerBlue
+    '整理':'#DCDCDC',   # Gainsboro
+    '博客':'#DCDCDC'
 }  
   
 # 解析数据  

@@ -5,12 +5,10 @@ copyright: Copyright &copy; 2024-2024 <a href="https://github.com/XuebaStudy" ta
 
 nav: 
   - Home: index.md
-  - About: about.md
-  - Math:
-    - 常微分方程: Math/ODE/note.md
-      # - 一阶&全微分方程: Math/ODE/ODE1.md
-      # - 二阶(高阶方法类似): Math/ODE/ODE2.md
-      # - 线性方程组: Math/ODE/ODE3.md
+  - Lessons:
+    - How to learn: Lessons/How_1.md
+    - Math:
+      - 常微分方程: Lessons/Math/ODE/note.md
   - Paper:
     - 量化模型:
       - (Survey) Model Quantization for DNN in Image Classification: Paper/Quantization/1.md

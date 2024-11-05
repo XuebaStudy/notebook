@@ -14,6 +14,9 @@ nav:
       - (Survey) Model Quantization for DNN in Image Classification: Paper/Quantization/1.md
       - (Survey) Model Quantization and Hardware Acceleration for Vision Transformers: Paper/Quantization/2.md
   - Music:
+    - Music with places:
+      - Music/places/index.md
+      - 浙大主图之夜: Music/places/ZJU_Mainlib.md
     - 杂项: 
       - mp3->mp4(有声频谱): Music/Others/mp3_visualization.md
   - Tools:

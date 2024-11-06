@@ -10,26 +10,21 @@ config = {
     }
 rcParams.update(config)
 
-date = "24.11.4"
+date = "24.11.6"
 data = """  
-概率论/review/45min
-背单词/R100/25min
-普物/review/20min
-休息/break/20min
+背单词/R60/20min
 上课/physics/100min
+博客/new css/25min
+计组/Lab4/120min
+休息/noon break/60min
+ADS/HW/95min
 运动/NM/40min
-ADS/HW/35min
-博客/Lessons/55min
-数值分析/review/25min
-数值分析/review/20min
-背单词/R100/15min
 背单词/R100/25min
-科研/read paper/70min
-休息/break/25min
-数值分析/HW/50min
-ADS/DP/20min
-计组/lab4.c/20min
-计组/review/30min
+计组/HW/70min
+博客/Music/25min
+科研/read paper/80min
+概率论/HW/30min
+概率论/review/35min
 博客/conclusion/20min
 """  
   

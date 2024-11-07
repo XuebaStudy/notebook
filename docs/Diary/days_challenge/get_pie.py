@@ -10,21 +10,20 @@ config = {
     }
 rcParams.update(config)
 
-date = "24.11.6"
+date = "24.11.7"
 data = """  
-背单词/R60/20min
-上课/physics/100min
-博客/new css/25min
-计组/Lab4/120min
-休息/noon break/60min
-ADS/HW/95min
-运动/NM/40min
-背单词/R100/25min
-计组/HW/70min
-博客/Music/25min
-科研/read paper/80min
+概率论/review/80min
+背单词/R100/20min
+AI导/Lab/60min
+上课&背单词/定向越野&R110/100min
+运动/NM/20min
+休息/noon break/20min
+上课&AI导/NA&Lab/125min
+背单词/R90/25min
+科研/RP/90min
 概率论/HW/30min
-概率论/review/35min
+物理/HW/15min
+概率论/HW/15min
 博客/conclusion/20min
 """  
   
@@ -36,8 +35,6 @@ activity_colors = {
     '数值分析': 'tab:brown',  
     '计组': 'tab:blue',  
     '科研': 'tab:cyan', 
-    '午休': '#A9A9A9' ,
-    '休闲': '#A9A9A9' ,
     '休息': '#A9A9A9' ,
     '小提琴':'#D2691E',
     '上课': '#696969',
@@ -45,9 +42,12 @@ activity_colors = {
     '运动':'#FFA500',
     'ADS':'#6B8E23',
     '事务':'#808080',   # Gray
-    '普物':'#1E90FF',   # DodgerBlue
+    '物理':'#1E90FF',   # DodgerBlue
     '整理':'#DCDCDC',   # Gainsboro
-    '博客':'#DCDCDC'
+    '博客':'#DCDCDC',
+    
+    '上课&背单词':'#6A5ACD',  # SlateBlue
+    '上课&AI导':'#6A5ACD'
 }  
   
 # 解析数据  

@@ -25,6 +25,7 @@ nav:
       - 杂项: Tools/mkdocs/others.md
   - Diary: 
     - Reflection: 
+      - exams: Diary/Reflection/exams.md
       - interview: Diary/Reflection/interview.md
     - days_challenge: 
       - Diary/days_challenge/index.md

@@ -27,6 +27,7 @@ nav:
     - Reflection: 
       - exams: Diary/Reflection/exams.md
       - interview: Diary/Reflection/interview.md
+      - Others: Diary/Reflection/Others.md
     - days_challenge: 
       - Diary/days_challenge/index.md
       - '24.8': Diary/days_challenge/24.8.md

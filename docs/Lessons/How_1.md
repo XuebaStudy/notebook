@@ -4,7 +4,7 @@
 ## NA
 - 在实例中检验似懂非懂的知识
 - 历年卷 good
-- Notebook : jiepeng / Jianjun Zhou's  
+- Notebook : [jiepeng](https://note.jiepeng.tech/CS/NA/) / [Jianjun Zhou's](https://zhoutimemachine.github.io/note/courses/numerical/analysis/)  
 
 Pre:  Notebook —— 黄PPT  
 
@@ -14,7 +14,7 @@ Aft:  课上疑惑【Dur*3】—— 作业（ —— Lab）
 
 Rev:  Notebook & 白PPT —— 黄PPT & 历年卷 （ —— 作业）  
 
-More:  书本【贯通理解】—— 404Blog【具体C代码】  
+More:  书本【贯通理解】—— 算法具体代码  
 
 ---
 
@@ -44,7 +44,7 @@ More:  书 & 网上找更多资料自学 —— Leetcode实战
 
 ---
 ## CO
-Pre:  mooc
+Pre: [mooc](https://www.bilibili.com/video/BV1YY4y1i7SN/?spm_id_from=333.999.0.0&vd_source=849b83e43b5b22394c70ac65d41267ff)
 
 Dur: PPT作注释
 

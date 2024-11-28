@@ -9,6 +9,9 @@ nav:
     - How to learn: Lessons/How_1.md
     - Math:
       - 常微分方程: Lessons/Math/ODE/note.md
+  - Code:
+    - Python:
+      - matplotlib.pyplot: Code/Python/matplotlib.pyplot/1.md
   - Paper:
     - 量化模型:
       - (Survey) Model Quantization for DNN in Image Classification: Paper/Quantization/1.md

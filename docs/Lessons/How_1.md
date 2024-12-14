@@ -31,6 +31,7 @@ Rev:  PPT —— 自行总结笔记  &《新概念物理》 —— 历年卷
 
 ## ADS
 - 勿忘随时加入note
+- Notebook : [Isshiki修's](https://note.isshikih.top/cour_note/D2CX_AdvancedDataStructure/) / [NoughtQ](https://note.noughtq.top/algorithms/ads/)  
 
 Pre:  Notebook
 

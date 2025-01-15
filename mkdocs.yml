@@ -6,13 +6,14 @@ copyright: Copyright &copy; 2024-2024 <a href="https://github.com/XuebaStudy" ta
 nav: 
   - Home: index.md
   - Lessons:
-    - NJU PA 2024: Lessons/NJU PA 2024/Tasks.md
+    - NJU ISC PA: Lessons/NJU ISC PA/Tasks.md
     - How to learn: Lessons/How_1.md
     - Math:
       - 常微分方程: Lessons/Math/ODE/note.md
   - Code:
     - Python:
       - matplotlib.pyplot: Code/Python/matplotlib.pyplot/1.md
+    - Regex(正则表达式): Code/Regex.md
   - Paper:
     - 量化模型:
       - (Survey) Model Quantization for DNN in Image Classification: Paper/Quantization/1.md
@@ -25,12 +26,15 @@ nav:
       - mp3->mp4(有声频谱): Music/Others/mp3_visualization.md
   - Tools:
     - Mkdocs: 
-      - 基础命令: Tools/mkdocs/commands.md
-      - 杂项: Tools/mkdocs/others.md
+      - Commands: Tools/mkdocs/commands.md
+      - Others: Tools/mkdocs/others.md
     - Linux:
-      - 命令与快捷键: Tools/Linux/commands.md
+      - Commands & shortcuts: Tools/Linux/commands.md
+      - Vim: Tools/Linux/vim.md
+      - Others: Tools/Linux/others.md
+    - Git: Tools/git.md
     - Adobe:
-      - PS 快捷键: Tools/Adobe/PS_shortcut.md
+      - PS shortcuts: Tools/Adobe/PS_shortcut.md
   - Diary: 
     - Reflection: 
       - exams: Diary/Reflection/exams.md
@@ -106,6 +110,12 @@ plugins:
   - search
   - mkdocs-video
   - mkdocs-pdf
+  # - add-number:
+  #     strict_mode: False
+  #     order: 1
+  #     excludes: 
+  #     includes:
+  #       - Code\Regex.md
 
 markdown_extensions:
   - admonition # 警告语法
@@ -166,10 +176,12 @@ extra_css:
   - https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
   - https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css
   - https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap
+
   # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css
   # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css
   # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-tc-webfont@1.0.0/style.css
   # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
+
 
 # extra:
 #   mathjax:

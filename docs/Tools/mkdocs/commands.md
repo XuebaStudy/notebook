@@ -12,7 +12,7 @@ git add .               # 将所有已更改文件添加到缓存区
 git commit -m "test"    # 将缓冲区文件提交，获得最新版本
 git commit -am "test"   # 上述两步，一次解决 (新加入的文件需要初次 add)
 
-# 只能修改已经追踪的文件和文件夹
+# 以下（git开头）只能修改已经追踪的文件和文件夹
 # 修改之后，相当于执行了 add ，直接 commit 就可以提交
 
 git mv -v oldfile newfile         # 重命名文件(-v 显示信息)

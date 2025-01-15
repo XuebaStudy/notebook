@@ -9,3 +9,6 @@ site
 
 # material src
 mkdocs-material
+
+# auto script
+auto.py

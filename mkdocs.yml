@@ -30,7 +30,6 @@ nav:
       - Others: Tools/mkdocs/others.md
     - Linux:
       - Commands & shortcuts: Tools/Linux/commands.md
-      - Vim: Tools/Linux/vim.md
       - Others: Tools/Linux/others.md
     - Git: Tools/git.md
     - Adobe:

@@ -30,7 +30,7 @@ Rev:  PPT —— 自行总结笔记  &《新概念物理》 —— 历年卷
 ---
 
 ## ADS
-- 勿忘随时加入note
+- 勿忘随时整理错题
 - Notebook : [Isshiki修's](https://note.isshikih.top/cour_note/D2CX_AdvancedDataStructure/) / [NoughtQ](https://note.noughtq.top/algorithms/ads/)  
 
 Pre:  Notebook
@@ -39,18 +39,20 @@ Dur:  Notebook
 
 Aft:  PPT & Notebook —— 他人作业 [[JJZ](https://zhoutimemachine.github.io/note/courses/ads-hw-review/)] ( —— 书) —— PTA —— 订正上次PTA（勿忘对答案）
 
-Rev (phased):  PPT & Notebook —— PTA —— 历年卷(网上&线下) ( —— 代码实现)
+Rev:  PPT & Notebook —— PTA —— 历年卷(网上&线下) ( —— 代码实现)
 
 More:  书 & 网上找更多资料自学 —— Leetcode实战
 
 ---
 ## CO
-Pre: [mooc](https://www.bilibili.com/video/BV1YY4y1i7SN/?spm_id_from=333.999.0.0&vd_source=849b83e43b5b22394c70ac65d41267ff)
+- Notebook : [NoughtQ](https://note.noughtq.top/system/co/)
+
+Pre: None
 
 Dur: PPT作注释
 
 Aft: PPT (& [马德智云](https://classroom.zju.edu.cn/coursedetail?course_id=49844&tenant_code=112)) —— Notebook —— 作业 ( —— Lab)
 
-Rev:
+Rev: PPT —— Notebook —— 自行推导一些重点（RISC-V、SCPU、PCPU、cache...） —— 边写A4纸边查缺补漏 —— 历年卷
 
 ---

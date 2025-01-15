@@ -6,6 +6,7 @@ copyright: Copyright &copy; 2024-2024 <a href="https://github.com/XuebaStudy" ta
 nav: 
   - Home: index.md
   - Lessons:
+    - NJU PA 2024: Lessons/NJU PA 2024/Tasks.md
     - How to learn: Lessons/How_1.md
     - Math:
       - 常微分方程: Lessons/Math/ODE/note.md
@@ -26,6 +27,10 @@ nav:
     - Mkdocs: 
       - 基础命令: Tools/mkdocs/commands.md
       - 杂项: Tools/mkdocs/others.md
+    - Linux:
+      - 命令与快捷键: Tools/Linux/commands.md
+    - Adobe:
+      - PS 快捷键: Tools/Adobe/PS_shortcut.md
   - Diary: 
     - Reflection: 
       - exams: Diary/Reflection/exams.md
@@ -158,8 +163,9 @@ extra_javascript:
   - http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default
 extra_css:
   - _css/extra.css
-  - https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css
-  - https://cdn.tonycrane.cc/lxgw/lxgwscreen.css
+  - https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
+  - https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css
+  - https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap
   # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css
   # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css
   # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-tc-webfont@1.0.0/style.css

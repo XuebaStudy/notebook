@@ -1,6 +1,7 @@
 ## tree
 ``` title='Linux下使用示例'
 $tree                   # 以树状图形式列出当前目录下所有文件的组织结构(含子目录)
+$tree <directory>       # 以树状图形式列出 directory 下所有文件的组织结构(含子目录)
 $tree ~/ > tree.txt     # 将用户目录下文件结构树状图保存在 tree.txt 文件中
 $tree -L 3              # 所列出树状图层数至多为3
 $tree -x                # 仅列出当前目录下树状图(不含子目录)

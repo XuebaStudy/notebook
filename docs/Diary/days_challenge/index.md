@@ -1,4 +1,4 @@
-# **days challenge**
+# **Days Challenge**
 !!! abstract
     **一百万年太久，只争朝夕！****全力以赴完成每天的挑战吧，信仰与你同在！**
 

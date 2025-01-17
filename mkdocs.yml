@@ -5,15 +5,16 @@ copyright: Copyright &copy; 2024-2024 <a href="https://github.com/XuebaStudy" ta
 
 nav: 
   - Home: index.md
-  - Lessons:
+  - Lessons: 
+    - Lessons/index.md
     - NJU ISC PA: Lessons/NJU ISC PA/Tasks.md
-    - How to learn: Lessons/How_1.md
+    - Learning Path (in ZJU): Lessons/How_1.md
     - Math:
       - 常微分方程: Lessons/Math/ODE/note.md
-  - Code:
+  - Code: 
     - Python:
       - matplotlib.pyplot: Code/Python/matplotlib.pyplot/1.md
-    - Regex(正则表达式): Code/Regex.md
+    - Regex (正则表达式): Code/Regex.md
   - Paper:
     - 量化模型:
       - (Survey) Model Quantization for DNN in Image Classification: Paper/Quantization/1.md
@@ -21,15 +22,16 @@ nav:
   - Music:
     - Music with places:
       - Music/places/index.md
-      - 浙大主图之夜: Music/places/ZJU_Mainlib.md
-    - 杂项: 
-      - mp3->mp4(有声频谱): Music/Others/mp3_visualization.md
+    - Others: 
+      - mp3->mp4 (有声频谱): Music/Others/mp3_visualization.md
   - Tools:
     - Mkdocs: 
       - Commands: Tools/mkdocs/commands.md
       - Others: Tools/mkdocs/others.md
     - Linux:
-      - Commands & shortcuts: Tools/Linux/commands.md
+      - Terminal: Tools/Linux/commands.md
+      - Vim: 
+        - Tools/Linux/Vim/tips.md
       - Others: Tools/Linux/others.md
     - Git: Tools/git.md
     - Adobe:
@@ -39,7 +41,7 @@ nav:
       - exams: Diary/Reflection/exams.md
       - interview: Diary/Reflection/interview.md
       - Others: Diary/Reflection/Others.md
-    - days_challenge: 
+    - Days_Challenge: 
       - Diary/days_challenge/index.md
       - '24.8': Diary/days_challenge/24.8.md
       - '24.10': Diary/days_challenge/24.10.md
@@ -48,7 +50,8 @@ nav:
     - Thinking:
       - Diary/Thinking/index.md
       - '24.12.5': Diary/Thinking/24.12.5.md
-  - Belief:
+  - Belief:  
+    - Belief/index.md
     - charators: 
       - 灰之魔女伊蕾娜: Belief/charactors/灰之魔女伊蕾娜.md
       - 洛琪希: Belief/charactors/洛琪希.md
@@ -59,7 +62,7 @@ theme:
   features:
     - navigation.tabs
     # - navigation.sections
-    - navigation.expand
+    # - navigation.expand
     - navigation.indexes
     - navigation.top
     - navigation.tracking
@@ -152,7 +155,7 @@ markdown_extensions:
         emoji_index: !!python/name:material.extensions.emoji.twemoji
         emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.superfences
-  - pymdownx.superfences: # 代码块中支持Mermaid
+  - pymdownx.superfences: # 代码块中支持 Mermaid
         custom_fences: # 支持 Mermaid
             - name: mermaid
               class: mermaid
@@ -170,11 +173,19 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML
   - http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default
+
 extra_css:
   - _css/extra.css
+  - _css/view.css
+  
   - https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
   - https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css
-  - https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap
+
+  - https://fonts.cdnfonts.com/css/noto-serif     # 用于英文text
+  # - https://fonts.cdnfonts.com/css/noto-mono    # 用于code
+
+  # - https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap
+  # - https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback
 
   # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css
   # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css

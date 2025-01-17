@@ -1,58 +1,73 @@
 !!! abstract 
-    介绍了笔者在大二上，一些校内课程的学习流程。
+    介绍了笔者在一些校内课程的学习流程。
 
-## NA
-- 在实例中检验似懂非懂的知识
-- 历年卷 good
-- Notebook : [jiepeng](https://note.jiepeng.tech/CS/NA/) / [Jianjun Zhou's](https://zhoutimemachine.github.io/note/courses/numerical/analysis/)  
+??? recommend "~~推荐的学习方式~~"
+    ```mermaid
+    graph LR
+      A[Start] --> B{Studing?};
+      B -->|Yes| C[Good!];
+      C -->|Energetic| B;
+      C -->|Tired| D[Ask yourself];
+      D -->|By changing task| B;
+      B -->|No| D;
+      D -->|Need break| E[Take a break];
+      E -->|OK| A;
+      A ----->F[Other things];
+    ```
 
-Pre:  Notebook —— 黄PPT  
+??? note "大二上"
+    ## NA
+    - 在实例中检验似懂非懂的知识
+    - 历年卷 good
+    - Notebook : [jiepeng](https://note.jiepeng.tech/CS/NA/) / [Jianjun Zhou's](https://zhoutimemachine.github.io/note/courses/numerical/analysis/)  
 
-Dur:  Notebook & 黄PPT & 白PPT  
+    Pre:  Notebook —— 黄PPT  
 
-Aft:  课上疑惑【Dur*3】—— 作业（ —— Lab）  
+    Dur:  Notebook & 黄PPT & 白PPT  
 
-Rev:  Notebook & 白PPT —— 黄PPT & 历年卷 （ —— 作业）  
+    Aft:  课上疑惑【Dur*3】—— 作业（ —— Lab）  
 
-More:  书本【贯通理解】—— 算法具体代码  
+    Rev:  Notebook & 白PPT —— 黄PPT & 历年卷 （ —— 作业）  
 
----
+    More:  书本【贯通理解】—— 算法具体代码  
 
-## Physics II（H）
-Pre:  《新概念物理》(讲解)  
+    ---
 
-Dur:  提炼PPT & 《新概念物理》(讲解&习题)  
+    ## Physics II（H）
+    Pre:  《新概念物理》(讲解)  
 
-Aft:  (提炼PPT ——) 作业 —— 《新概念物理》(讲解&习题)  
+    Dur:  提炼PPT & 《新概念物理》(讲解&习题)  
 
-Rev:  PPT —— 自行总结笔记  &《新概念物理》 —— 历年卷  
+    Aft:  (提炼PPT ——) 作业 —— 《新概念物理》(讲解&习题)  
 
----
+    Rev:  PPT —— 自行总结笔记  &《新概念物理》 —— 历年卷  
 
-## ADS
-- 勿忘随时整理错题
-- Notebook : [Isshiki修's](https://note.isshikih.top/cour_note/D2CX_AdvancedDataStructure/) / [NoughtQ](https://note.noughtq.top/algorithms/ads/)  
+    ---
 
-Pre:  Notebook
+    ## ADS
+    - 勿忘随时整理错题
+    - Notebook : [Isshiki修's](https://note.isshikih.top/cour_note/D2CX_AdvancedDataStructure/) / [NoughtQ](https://note.noughtq.top/algorithms/ads/)  
 
-Dur:  Notebook
+    Pre:  Notebook
 
-Aft:  PPT & Notebook —— 他人作业 [[JJZ](https://zhoutimemachine.github.io/note/courses/ads-hw-review/)] ( —— 书) —— PTA —— 订正上次PTA（勿忘对答案）
+    Dur:  Notebook
 
-Rev:  PPT & Notebook —— PTA —— 历年卷(网上&线下) ( —— 代码实现)
+    Aft:  PPT & Notebook —— 他人作业 [[JJZ](https://zhoutimemachine.github.io/note/courses/ads-hw-review/)] ( —— 书) —— PTA —— 订正上次PTA（勿忘对答案）
 
-More:  书 & 网上找更多资料自学 —— Leetcode实战
+    Rev:  PPT & Notebook —— PTA —— 历年卷(网上&线下) ( —— 代码实现)
 
----
-## CO
-- Notebook : [NoughtQ](https://note.noughtq.top/system/co/)
+    More:  书 & 网上找更多资料自学 —— Leetcode实战
 
-Pre: None
+    ---
+    ## CO
+    - Notebook : [NoughtQ](https://note.noughtq.top/system/co/)
 
-Dur: PPT作注释
+    Pre: None
 
-Aft: PPT (& [马德智云](https://classroom.zju.edu.cn/coursedetail?course_id=49844&tenant_code=112)) —— Notebook —— 作业 ( —— Lab)
+    Dur: PPT作注释
 
-Rev: PPT —— Notebook —— 自行推导一些重点（RISC-V、SCPU、PCPU、cache...） —— 边写A4纸边查缺补漏 —— 历年卷
+    Aft: PPT (& [马德智云](https://classroom.zju.edu.cn/coursedetail?course_id=49844&tenant_code=112)) —— Notebook —— 作业 ( —— Lab)
 
----
+    Rev: PPT —— Notebook —— 自行推导一些重点（RISC-V、SCPU、PCPU、cache...） —— 边写A4纸边查缺补漏 —— 历年卷
+
+    ---

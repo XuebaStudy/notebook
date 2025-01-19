@@ -17,8 +17,8 @@ nav:
     - Regex (正则表达式): Code/Regex.md
   - Research:
     - 量化模型:
-      - (Survey) Model Quantization for DNN in Image Classification: Paper/Quantization/1.md
-      - (Survey) Model Quantization and Hardware Acceleration for Vision Transformers: Paper/Quantization/2.md
+      - (Survey) Model Quantization for DNN in Image Classification: Research/Quantization/1.md
+      - (Survey) Model Quantization and Hardware Acceleration for Vision Transformers: Research/Quantization/2.md
   - Music:
     - Music with places:
       - Music/places/index.md

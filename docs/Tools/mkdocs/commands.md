@@ -1,5 +1,5 @@
 !!! abstract
-    记录一些使用mkdocs的基本命令
+    记录一些使用 mkdocs 的基本命令
 ### git 状态查看
 ``` title=''
 git status                  # 查看相关文件状态
@@ -16,8 +16,8 @@ git commit -am "test"   # 上述两步，一次解决 (新加入的文件需要�
 # 修改之后，相当于执行了 add ，直接 commit 就可以提交
 
 git mv -v oldfile newfile         # 重命名文件(-v 显示信息)
-git mv -v oldfolder newfolder     # 重命名文件夹(两种均可)
-git mv -v oldfolder/ newfolder/   # (若 newfolder 文件夹原本已经存在，则会将 oldfolder 移入 newfolder)
+git mv -v oldfolder newfolder     # 重命名文件夹 (若 newfolder 文件夹原本已经存在，则会将 oldfolder 移入 newfolder)
+git mv -v oldfolder/ newfolder/   # (同上)
 
 rm 'test.txt'           # 工作区删除文件
 git add test.txt        # 版本库删除文件，还需要 commit

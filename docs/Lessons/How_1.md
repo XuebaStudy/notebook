@@ -16,7 +16,7 @@
     ```
 
 ??? note "大二上"
-    ## NA
+    ## NA (绩点: 5.0)
     - 在实例中检验似懂非懂的知识
     - 历年卷 good
     - Notebook : [jiepeng](https://note.jiepeng.tech/CS/NA/) / [Jianjun Zhou's](https://zhoutimemachine.github.io/note/courses/numerical/analysis/)  
@@ -33,7 +33,7 @@
 
     ---
 
-    ## Physics II（H）
+    ## Physics II（H） (绩点: 4.2)
     Pre:  《新概念物理》(讲解)  
 
     Dur:  提炼PPT & 《新概念物理》(讲解&习题)  
@@ -44,7 +44,7 @@
 
     ---
 
-    ## ADS
+    ## ADS (绩点: 4.8)
     - 勿忘随时整理错题
     - Notebook : [Isshiki修's](https://note.isshikih.top/cour_note/D2CX_AdvancedDataStructure/) / [NoughtQ](https://note.noughtq.top/algorithms/ads/)  
 
@@ -59,7 +59,7 @@
     More:  书 & 网上找更多资料自学 —— Leetcode实战
 
     ---
-    ## CO
+    ## CO (绩点: 5.0)
     - Notebook : [NoughtQ](https://note.noughtq.top/system/co/)
 
     Pre: None

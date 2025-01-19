@@ -15,7 +15,7 @@ nav:
     - Python:
       - matplotlib.pyplot: Code/Python/matplotlib.pyplot/1.md
     - Regex (正则表达式): Code/Regex.md
-  - Paper:
+  - Research:
     - 量化模型:
       - (Survey) Model Quantization for DNN in Image Classification: Paper/Quantization/1.md
       - (Survey) Model Quantization and Hardware Acceleration for Vision Transformers: Paper/Quantization/2.md
@@ -41,6 +41,9 @@ nav:
       - exams: Diary/Reflection/exams.md
       - interview: Diary/Reflection/interview.md
       - Others: Diary/Reflection/Others.md
+    - Research:
+      - Progress: Diary/Research/progress.md
+      - Experience: Diary/Research/experience.md
     - Days_Challenge: 
       - Diary/days_challenge/index.md
       - '24.8': Diary/days_challenge/24.8.md

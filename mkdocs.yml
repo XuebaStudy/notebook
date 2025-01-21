@@ -1,7 +1,7 @@
 site_name: xueba's notebook
 repo_url: https://github.com/XuebaStudy/notebook
 repo_name: XuebaStudy/notebook
-copyright: Copyright &copy; 2024-2024 <a href="https://github.com/XuebaStudy" target="_blank" rel="noopener">XuebaStudy</a>
+copyright: Copyright &copy; 2024-2025 <a href="https://github.com/XuebaStudy" target="_blank" rel="noopener">XuebaStudy</a>
 
 nav: 
   - Home: index.md
@@ -14,6 +14,8 @@ nav:
   - Code: 
     - Python:
       - matplotlib.pyplot: Code/Python/matplotlib.pyplot/1.md
+    - MCM:
+      - 2020年 A题: Code/MCM/20A.md
     - Regex (正则表达式): Code/Regex.md
   - Research:
     - 量化模型:

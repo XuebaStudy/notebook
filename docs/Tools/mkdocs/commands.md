@@ -1,5 +1,5 @@
 !!! abstract
-    记录一些使用 mkdocs 的基本命令
+    记录一些使用 mkdocs 的基本命令，初次配置可参考：https://blog.csdn.net/qq_41261251/article/details/116021097
 ### git 状态查看
 ``` title=''
 git status                  # 查看相关文件状态
@@ -37,3 +37,15 @@ mkdocs gh-deploy
 
 git push -u origin main 
 ```
+
+!!! code "修改提交 便捷脚本"
+    ```python
+    import os
+    name = "commit description"
+
+    os.system('git add .')
+    com =''.join(['git commit -m ',name])
+    os.system(com)
+    os.system('git push -u origin main')
+    os.system('mkdocs gh-deploy')
+    ```

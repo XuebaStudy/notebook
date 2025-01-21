@@ -14,8 +14,9 @@ nav:
   - Code: 
     - Python:
       - matplotlib.pyplot: Code/Python/matplotlib.pyplot/1.md
-    - MCM:
-      - 2020年 A题: Code/MCM/20A.md
+    - CUMCM:
+      - Code/CUMCM/index.md
+      - 2020年 A题: Code/CUMCM/20A.md
     - Regex (正则表达式): Code/Regex.md
   - Research:
     - 量化模型:

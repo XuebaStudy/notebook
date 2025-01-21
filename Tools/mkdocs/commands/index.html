@@ -837,6 +837,10 @@
     
       
         
+          
+        
+      
+        
       
     
     
@@ -851,23 +855,33 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
-          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
-            
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Code/CUMCM/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
-    MCM
+    CUMCM
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
-            MCM
+            CUMCM
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
             
               
                 
@@ -876,7 +890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Code/MCM/20A/" class="md-nav__link">
+      <a href="../../../Code/CUMCM/20A/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2484,7 +2498,7 @@
 
 <div><div class="admonition abstract">
 <p class="admonition-title">Abstract</p>
-<p>记录一些使用 mkdocs 的基本命令</p>
+<p>记录一些使用 mkdocs 的基本命令，初次配置可参考：<a href="https://blog.csdn.net/qq_41261251/article/details/116021097">https://blog.csdn.net/qq_41261251/article/details/116021097</a></p>
 </div>
 <h3 id="git">git 状态查看<a class="headerlink" href="#git" title="Permanent link">¶</a></h3>
 <div class="language-text highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a>git status                  # 查看相关文件状态
@@ -2519,7 +2533,19 @@
 <a id="__codelineno-2-9" name="__codelineno-2-9"></a><a href="#__codelineno-2-9"><span class="linenos" data-linenos=" 9 "></span></a># 将Github仓库中的main分支更新至最新(HEAD -&gt; main处)，同时在线笔记将更新
 <a id="__codelineno-2-10" name="__codelineno-2-10"></a><a href="#__codelineno-2-10"><span class="linenos" data-linenos="10 "></span></a>
 <a id="__codelineno-2-11" name="__codelineno-2-11"></a><a href="#__codelineno-2-11"><span class="linenos" data-linenos="11 "></span></a>git push -u origin main 
-</code></pre></div></div>
+</code></pre></div>
+<div class="admonition code">
+<p class="admonition-title">修改提交 便捷脚本</p>
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos="1 "></span></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><a href="#__codelineno-3-2"><span class="linenos" data-linenos="2 "></span></a><span class="n">name</span> <span class="o">=</span> <span class="s2">"commit description"</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><a href="#__codelineno-3-3"><span class="linenos" data-linenos="3 "></span></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><a href="#__codelineno-3-4"><span class="linenos" data-linenos="4 "></span></a><span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">'git add .'</span><span class="p">)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><a href="#__codelineno-3-5"><span class="linenos" data-linenos="5 "></span></a><span class="n">com</span> <span class="o">=</span><span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">'git commit -m '</span><span class="p">,</span><span class="n">name</span><span class="p">])</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><a href="#__codelineno-3-6"><span class="linenos" data-linenos="6 "></span></a><span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="n">com</span><span class="p">)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><a href="#__codelineno-3-7"><span class="linenos" data-linenos="7 "></span></a><span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">'git push -u origin main'</span><span class="p">)</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><a href="#__codelineno-3-8"><span class="linenos" data-linenos="8 "></span></a><span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">'mkdocs gh-deploy'</span><span class="p">)</span>
+</code></pre></div>
+</div></div>
 
 
 

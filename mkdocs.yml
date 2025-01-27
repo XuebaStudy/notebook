@@ -39,6 +39,8 @@ nav:
     - Git: Tools/git.md
     - Adobe:
       - PS shortcuts: Tools/Adobe/PS_shortcut.md
+    - Others: 
+      - Terminal:如何使"命令"显示在"路径"下一行: Tools/Others/terminal_1.md
   - Diary: 
     - Reflection: 
       - exams: Diary/Reflection/exams.md

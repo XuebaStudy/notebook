@@ -61,5 +61,7 @@
             },
     }
     ```
-
+!!! warning
+    - PowerShell 使用这种方法会导致路径前无法显示conda环境名（如`(base)`（但可以用`conda env list`查看现在位于哪个环境），cmd 无影响。VSCode 中两者亦然。
+    - 同时也会让 PowerShell 和 cmd 每次打开的~~无用的~~提示信息不再输出（挺好的）
 <br><br><br><br>

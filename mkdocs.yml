@@ -4,7 +4,9 @@ repo_name: XuebaStudy/notebook
 copyright: Copyright &copy; 2024-2025 <a href="https://github.com/XuebaStudy" target="_blank" rel="noopener">XuebaStudy</a>
 
 nav: 
-  - Home: index.md
+  - Home: 
+    - index.md
+    - Co-links: links.md
   - Lessons: 
     - Lessons/index.md
     - NJU ISC PA: Lessons/NJU ISC PA/Tasks.md
@@ -42,11 +44,13 @@ nav:
     - Others: 
       - Terminal:如何使"命令"显示在"路径"下一行: Tools/Others/terminal_1.md
   - Diary: 
+    - Diary/index.md
     - Reflection: 
       - exams: Diary/Reflection/exams.md
       - interview: Diary/Reflection/interview.md
       - Others: Diary/Reflection/Others.md
     - Research:
+      - Comp: Diary/Research/comp1.md
       - Progress: Diary/Research/progress.md
       - Experience: Diary/Research/experience.md
     - Days_Challenge: 

@@ -4,7 +4,7 @@ import os
 date = '   24.12.19   '
 index =    1
 
-file_path = './docs/Diary/days_challenge/time_data.txt'
+file_path = './docs/Diary/days_challenge/GetChart/time_data.txt'
 output_dir = './docs/Diary/days_challenge/charts'
 
 # 确保输出目录存在
@@ -66,9 +66,10 @@ plt.xticks(rotation=45)
 # 保存图表到指定目录
 output_path = os.path.join(output_dir,'{}'.format(date).strip()+'_'+'{}'.format(index)+'_ts_line.png')
 plt.tight_layout()  # 自动调整布局
-plt.savefig(output_path)
 
+
+# plt.savefig(output_path)
 # 显示图表
-# plt.show()
+plt.show()
 
-# print(f"图表已保存到: {output_path}")
+

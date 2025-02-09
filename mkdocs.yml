@@ -14,22 +14,30 @@ nav:
     - Math:
       - 常微分方程: Lessons/Math/ODE/note.md
   - Code: 
+    - Code/index.md
     - Python:
       - matplotlib.pyplot: Code/Python/matplotlib.pyplot/1.md
+      - Mix:
+        - req_re_df_1: Code/Python/Mix/req_re_df_250209.md
     - CUMCM:
       - Code/CUMCM/index.md
       - 2020年 A题: Code/CUMCM/20A.md
     - Regex (正则表达式): Code/Regex.md
   - Research:
+    - Research/index.md
+    - 3DGS: 
+      - 3D Gaussian Splatting for Real-Time Radiance Field Rendering: Research/3DGS/1.md
     - 量化模型:
       - (Survey) Model Quantization for DNN in Image Classification: Research/Quantization/1.md
       - (Survey) Model Quantization and Hardware Acceleration for Vision Transformers: Research/Quantization/2.md
   - Music:
+    - Music/index.md
     - Music with places:
       - Music/places/index.md
     - Others: 
       - mp3->mp4 (有声频谱): Music/Others/mp3_visualization.md
   - Tools:
+    - Tools/index.md
     - Mkdocs: 
       - Commands: Tools/mkdocs/commands.md
       - Others: Tools/mkdocs/others.md
@@ -69,6 +77,16 @@ nav:
       - 灰之魔女伊蕾娜: Belief/charactors/灰之魔女伊蕾娜.md
       - 洛琪希: Belief/charactors/洛琪希.md
     - sentences: Belief/sentences.md
+
+# exclude_docs: |
+#   # Diary/days_challenge/charts/*
+# docs_dir: docs
+# extra_templates:
+#   - 'Diary\days_challenge\charts\bar-25.2.8.html'
+
+# static_files:
+#   - src: Diary/days_challenge/charts
+#     dest: html
 
 theme:
   name: material

@@ -1,0 +1,14 @@
+import os
+
+kind = 'test'
+
+order = '7.8'
+
+name = kind+order
+
+
+os.system('git add .')
+com =''.join(['git commit -m ',name])
+os.system(com)
+os.system('git push -u origin main')
+os.system('mkdocs gh-deploy')

@@ -2,7 +2,7 @@ import os
 
 kind = 'test'
 
-order = '8.0'
+order = '8.1'
 
 name = kind+order
 

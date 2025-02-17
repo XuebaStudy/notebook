@@ -7,14 +7,15 @@ def generate_markdown(root, data, prefix="    "):
             if isinstance(value, dict) or isinstance(value, list):  # 如果值是字典或列表
                 # 检查是否存在 index.md 文件
                 has_index = False
+                
                 if isinstance(value, dict):
                     has_index = any(v.endswith("index.md") for v in value.values() if isinstance(v, str))
                 elif isinstance(value, list):
-                    has_index = any(item.endswith("index.md") for item in value if isinstance(item, str))
-
+                    index_path = [item for item in value if isinstance(item, str) and item.endswith("index.md")]
+                    has_index = any(index_path)
                 # 如果存在 index.md 文件，则生成外层目录链接
                 if has_index:
-                    clean_path = f"{key}/index.md".replace(f"{root}/", "")
+                    clean_path = index_path[0].replace(f"{root}/", "")
                     markdown += f"{prefix}- [{key}]({clean_path})\n"
                 else:
                     # 如果不存在 index.md 文件，则只显示目录名
@@ -43,14 +44,16 @@ def generate_markdown(root, data, prefix="    "):
     return markdown
 
 def get_index(root, output_dir, yml_content, update_time):
+    """生成格式化的 index.md 文件"""
+
     # 直接解析 YAML 字符串
     data = yaml.safe_load(yml_content)
 
     # 生成 Markdown 内容
     # markdown = f"# {root}\n\n!!! abstract\n\t\t\n\n## Contents Tree\n"
-    markdown = f'# {root}\n\n!!! abstract\n\t\t\n\n!!! info "Contents Tree"\n'
+    markdown = f'# {root}\n\n!!! abstract\n\t\n\n!!! info "Contents Tree"\n'
     markdown += generate_markdown(root, data[root])
-    markdown += f"\n\n>Latest update time: {update_time}\n"
+    markdown += f"\n\t>Latest update time: {update_time}\n\n"
 
     # 写入输出文件
     with open(output_dir + 'index.md', 'w', encoding='utf-8') as file:
@@ -59,19 +62,33 @@ def get_index(root, output_dir, yml_content, update_time):
 if __name__ == "__main__":
 
     # 千万小心这是覆盖写，原index.md会丢失！！！
-    root = "Music"
+    root = "Diary"
     output_dir = f"./docs/{root}/"
-    update_time = "2025.2.9"
+    update_time = "2025.2.12"
 
     # yml文件内容注意正确缩进
     yml_content = """
     
-Music:
-    - Music/index.md
-    - Music with places:
-      - Music/places/index.md
-    - Others: 
-      - mp3->mp4 (有声频谱): Music/Others/mp3_visualization.md 
+  Diary: 
+    - Diary/index.md
+    - Reflection: 
+      - exams: Diary/Reflection/exams.md
+      - interview: Diary/Reflection/interview.md
+      - Others: Diary/Reflection/Others.md
+    - Research:
+      - Comp: Diary/Research/comp1.md
+      - Progress: Diary/Research/progress.md
+      - Experience: Diary/Research/experience.md
+    - Days_Challenge: 
+      - Diary/days_challenge/index.md
+      - '24.8': Diary/days_challenge/24.8.md
+      - '24.10': Diary/days_challenge/24.10.md
+      - '24.11': Diary/days_challenge/24.11.md
+      - '24.12': Diary/days_challenge/24.12.md
+      - '25.2': Diary/days_challenge/25.2.md
+    - Thinking:
+      - Diary/Thinking/index.md
+      - '24.12.5': Diary/Thinking/24.12.5.md
 
     """
 

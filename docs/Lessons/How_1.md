@@ -14,6 +14,13 @@
       E -->|OK| A;
       A ----->F[Other things];
     ```
+??? recommend "课程资料查询方式举隅"
+    - [学在浙大](https://courses.zju.edu.cn/user/index)
+    - [Turing Courses](https://zju-turing.github.io/TuringCourses/)
+    - [CC98]()
+    - [求是潮资料网站](https://qsctech.github.io/zju-icicles/)
+    - 众多学长、同辈的笔记
+    - 几位学长的“课程资料汇总”
 
 ??? note "大二上"
     ## NA (绩点: 5.0)
@@ -71,3 +78,14 @@
     Rev: PPT —— Notebook —— 自行推导一些重点（RISC-V、SCPU、PCPU、cache...） —— 边写A4纸边查缺补漏 —— 历年卷
 
     ---
+
+## 数据库系统
+Pre: None
+
+Dur:
+
+Aft: (实验) —— PPT(+复习) —— 讨论 —— 作业
+
+Rev:
+
+More: 探索MySQL操作 & 探索MySQL与C++/Python 的连接(数据库与前后端)

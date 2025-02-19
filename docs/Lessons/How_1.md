@@ -89,3 +89,14 @@ Aft: (实验) —— PPT(+复习) —— 讨论 —— 作业
 Rev:
 
 More: 探索MySQL操作 & 探索MySQL与C++/Python 的连接(数据库与前后端)
+
+## 计算机体系结构
+Pre: 
+
+Dur:
+
+Aft: 
+
+Rev:
+
+More: 

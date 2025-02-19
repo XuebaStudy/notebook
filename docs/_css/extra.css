@@ -18,7 +18,7 @@
 /* recommend（新增）：推荐内容 */
 .md-typeset .admonition.recommend,
 .md-typeset details.recommend {
-  border-color: rgba(54, 238, 167, 0.618);
+  border-color: rgba(54, 238, 167);
 }
 .md-typeset .recommend > .admonition-title,
 .md-typeset .recommend > summary {
@@ -26,7 +26,7 @@
 }
 .md-typeset .recommend > .admonition-title::before,
 .md-typeset .recommend > summary::before {
-  background-color: rgba(54,238,168,0.618);
+  background-color: rgba(54, 238, 167);
   -webkit-mask-image: var(--md-admonition-icon--recommend);
           mask-image: var(--md-admonition-icon--recommend);
 }

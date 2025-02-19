@@ -167,10 +167,10 @@ markdown_extensions:
       toc_depth: 3 # 目录深度
   - pymdownx.highlight: # 代码块高亮
       anchor_linenums: true
-      linenums: true # 显示行号
+      # linenums: true # 显示行号
       use_pygments: true # 代码高亮
       pygments_lang_class: true
-      auto_title: true # 显示编程语言名称
+      # auto_title: true # 显示编程语言名称
       linenums_style: pymdownx-inline # 行号样式,防止复制的时候复制行号
   - pymdownx.betterem # 强调美化,比如**text**会被美化
   - pymdownx.caret # 上标和下标

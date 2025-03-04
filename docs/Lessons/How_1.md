@@ -79,18 +79,29 @@
 
     ---
 
-## 数据库系统
-Pre: None
+## DBS
+Pre: 准备课堂测试(PPT+[note](https://note.hobbitqia.cc/DB/db1/))
 
-Dur:
+Dur: 听课 PPT(&[note](https://note.hobbitqia.cc/DB/db1/))
 
-Aft: (实验) —— PPT(+复习) —— 讨论 —— 作业
+Aft: (实验) —— 复习(PPT+[note](https://note.hobbitqia.cc/DB/db1/)) (—— 讨论) —— 作业 —— 随堂小测 —— Quiz
 
 Rev:
 
 More: 探索MySQL操作 & 探索MySQL与C++/Python 的连接(数据库与前后端)
 
-## 计算机体系结构
+## CA
+Pre: 
+
+Dur: 可以边干其他事，但必须通过PPT、[note](https://note.hobbitqia.cc/CA/CA1/)跟上老师的节奏
+
+Aft: (先复习相关知识, 再实验)
+
+Rev:
+
+More: 
+
+## OOP
 Pre: 
 
 Dur:
@@ -100,3 +111,30 @@ Aft:
 Rev:
 
 More: 
+
+## 马原
+Pre: 
+
+Dur: 积极发言(推荐2~3次/课)
+
+Aft: 
+
+Rev:
+
+## 毛概
+Pre: 
+
+Dur:
+
+Aft: 
+
+Rev:
+
+## 习概
+Pre: 
+
+Dur:
+
+Aft: 
+
+Rev:

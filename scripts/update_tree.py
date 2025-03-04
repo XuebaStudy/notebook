@@ -22,10 +22,7 @@ def update_index(root, output_dir, yml_content, update_time):
 
 if __name__ == "__main__":
 
-    root = "Diary"
-    output_dir = f"./docs/{root}/"
     update_time = "2025.2.18"
-
     # yml文件内容注意正确缩进
     yml_content = """
     
@@ -49,5 +46,8 @@ if __name__ == "__main__":
       - '25.2_2': Diary/days_challenge/25.2_2.md
 
     """
+    root_re = re.compile(r'(\S*?):')
+    root = root_re.findall(yml_content)[0]
+    output_dir = f"./docs/{root}/"
 
     update_index(root, output_dir, yml_content, update_time)

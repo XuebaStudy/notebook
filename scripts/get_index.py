@@ -1,4 +1,5 @@
 import yaml
+import re
 
 def generate_markdown(root, data, prefix="    "):
     markdown = ""
@@ -60,36 +61,22 @@ def get_index(root, output_dir, yml_content, update_time):
         file.write(markdown)
 
 if __name__ == "__main__":
-
     # 千万小心这是覆盖写，原index.md会丢失！！！
-    root = "Diary"
-    output_dir = f"./docs/{root}/"
-    update_time = "2025.2.12"
+    update_time = "2025.3.4"
 
     # yml文件内容注意正确缩进
     yml_content = """
     
-  Diary: 
-    - Diary/index.md
-    - Reflection: 
-      - exams: Diary/Reflection/exams.md
-      - interview: Diary/Reflection/interview.md
-      - Others: Diary/Reflection/Others.md
-    - Research:
-      - Comp: Diary/Research/comp1.md
-      - Progress: Diary/Research/progress.md
-      - Experience: Diary/Research/experience.md
-    - Days_Challenge: 
-      - Diary/days_challenge/index.md
-      - '24.8': Diary/days_challenge/24.8.md
-      - '24.10': Diary/days_challenge/24.10.md
-      - '24.11': Diary/days_challenge/24.11.md
-      - '24.12': Diary/days_challenge/24.12.md
-      - '25.2': Diary/days_challenge/25.2.md
-    - Thinking:
-      - Diary/Thinking/index.md
-      - '24.12.5': Diary/Thinking/24.12.5.md
+Belief:  
+    - Belief/index.md
+    - charators: 
+      - 灰之魔女伊蕾娜: Belief/charactors/灰之魔女伊蕾娜.md
+      - 洛琪希: Belief/charactors/洛琪希.md
+    - sentences: Belief/sentences.md
 
     """
+    root_re = re.compile(r'(\S*?):')
+    root = root_re.findall(yml_content)[0]
+    output_dir = f"./docs/{root}/"
 
     get_index(root, output_dir, yml_content, update_time)

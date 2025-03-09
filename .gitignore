@@ -5,11 +5,12 @@
 .DS_Store
 
 # Local Generation Files
+__pycache__
 site
 
 # material src
 mkdocs-material
 
 # private
-_*
+
 

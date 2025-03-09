@@ -80,13 +80,13 @@
     ---
 
 ## DBS
-Pre: 准备课堂测试(PPT+[note](https://note.hobbitqia.cc/DB/db1/))
+Pre: 准备课堂测试(PPT+[note](https://note.noughtq.top/system/db/))
 
-Dur: 听课 PPT(&[note](https://note.hobbitqia.cc/DB/db1/))
+Dur: 听课 PPT(&[note](https://note.noughtq.top/system/db/))
 
-Aft: (实验) —— 复习(PPT+[note](https://note.hobbitqia.cc/DB/db1/)) (—— 讨论) —— 作业 —— 随堂小测 —— Quiz
+Aft: (实验) —— 复习([note](https://note.noughtq.top/system/db/)+PPT) (—— 讨论) —— 作业 —— 随堂小测 —— Quiz —— 课后所有习题
 
-Rev:
+Rev: 随堂小测&Quiz 复习
 
 More: 探索MySQL操作 & 探索MySQL与C++/Python 的连接(数据库与前后端)
 
@@ -106,11 +106,11 @@ Pre:
 
 Dur:
 
-Aft: 
+Aft: 复习 [note](https://note.hobbitqia.cc/OOP/oop1/) & PPT
 
 Rev:
 
-More: 
+More: 在维护[C++ game](https://github.com/XuebaStudy/Cpp_game)过程中学习
 
 ## 马原
 Pre: 
@@ -124,7 +124,7 @@ Rev:
 ## 毛概
 Pre: 
 
-Dur:
+Dur: 摸鱼
 
 Aft: 
 
@@ -133,7 +133,7 @@ Rev:
 ## 习概
 Pre: 
 
-Dur:
+Dur: 除非有事，否则摸鱼甚至翘课
 
 Aft: 
 

@@ -6,10 +6,10 @@
 
 # Local Generation Files
 __pycache__
-site
+/site
 
 # material src
-mkdocs-material
+/mkdocs-material
 
 # private
 

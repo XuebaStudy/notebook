@@ -80,7 +80,7 @@
     ---
 
 ## DBS
-Pre: 准备课堂测试(PPT+[note](https://note.noughtq.top/system/db/))
+Pre:
 
 Dur: 听课 PPT(&[note](https://note.noughtq.top/system/db/))
 
@@ -95,7 +95,7 @@ Pre:
 
 Dur: 可以边干其他事，但必须通过PPT、[note](https://note.hobbitqia.cc/CA/CA1/)跟上老师的节奏
 
-Aft: (先复习相关知识, 再实验)
+Aft: (先复习相关知识, 再实验) —— PPT&[note](https://note.hobbitqia.cc/CA/CA1/)
 
 Rev:
 

@@ -4,7 +4,7 @@ kind = 'Date'
 
 year_month = ' 2025.4.'
 date = '14'
-message = ' test'
+message = ' test2'
 
 
 name = kind + year_month + date + message

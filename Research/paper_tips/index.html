@@ -1213,7 +1213,7 @@
             
   
   <span class="md-ellipsis">
-    量化模型
+    Quantization
   </span>
   
 
@@ -1223,7 +1223,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_3">
             <span class="md-nav__icon md-icon"></span>
-            量化模型
+            Quantization
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -2916,13 +2916,16 @@
 <pre class="mermaid"><code>graph LR
     A[论文题目] -- 查找(如arXiv) --&gt; B[论文PDF]
     B -- 翻译 --&gt; C[网易arXiv论文翻译]
+    B -- 翻译 --&gt; C2[BabelDoc论文翻译]
     B -- 打印、阅读、做笔记 --&gt; D[纸质论文]
     B -- 输入GPT --&gt; E[解释疑难点 &amp; 整理概括]
     C -- 作为参考 --&gt; F[制作PPT]
+    C2 -- 作为参考 --&gt; F[制作PPT]
     D -- 作为参考 --&gt; F[制作PPT]
     E -- 作为参考 --&gt; F[制作PPT]
 
-    click C "https://fanyi.youdao.com/trans/#/home" _blank</code></pre></div>
+    click C "https://fanyi.youdao.com/trans/#/home" _blank
+    click C2 "https://app.immersivetranslate.com/babel-doc/" _blank</code></pre></div>
 
 
 

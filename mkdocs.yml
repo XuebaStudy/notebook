@@ -7,12 +7,14 @@ nav:
   - Home: 
     - index.md
     - Co-links: links.md
+
   - Lessons: 
     - Lessons/index.md
     - NJU ISC PA: Lessons/NJU ISC PA/Tasks.md
     - Learning Path (in ZJU): Lessons/How_1.md
     - Math:
       - 常微分方程: Lessons/Math/ODE/note.md
+
   - Code: 
     - Code/index.md
     - Python:
@@ -23,6 +25,7 @@ nav:
       - Code/CUMCM/index.md
       - 2020年 A题: Code/CUMCM/20A.md
     - Regex (正则表达式): Code/Regex.md
+
   - Research:
     - Research/index.md
     - 3DGS: 
@@ -37,6 +40,7 @@ nav:
       - Music/places/index.md
     - Others: 
       - mp3->mp4 (有声频谱): Music/Others/mp3_visualization.md
+
   - Tools:
     - Tools/index.md
     - Mkdocs: 
@@ -52,8 +56,9 @@ nav:
       - PS shortcuts: Tools/Adobe/PS_shortcut.md
     - Others: 
       - Terminal:如何使"命令"显示在"路径"下一行: Tools/Others/terminal_1.md
+
   - Diary: 
-    - Diary/index.mo
+    - Diary/index.md
     - Reflection: 
       - exams: Diary/Reflection/exams.md
       - interview: Diary/Reflection/interview.md
@@ -75,6 +80,7 @@ nav:
       - Diary/Thinking/index.md
       - '24.12.5': Diary/Thinking/24.12.5.md
       - 'Things' : Diary/Thinking/things.md
+      
   - Belief:  
     - Belief/index.md
     - charators: 

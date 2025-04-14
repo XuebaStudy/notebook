@@ -30,7 +30,7 @@ nav:
     - Research/index.md
     - 3DGS: 
       - 3D Gaussian Splatting for Real-Time Radiance Field Rendering: Research/3DGS/1.md
-    - 量化模型:
+    - Quantization:
       - (Survey) Model Quantization for DNN in Image Classification: Research/Quantization/1.md
       - (Survey) Model Quantization and Hardware Acceleration for Vision Transformers: Research/Quantization/2.md
     - Paper Tips: Research/paper_tips.md
@@ -80,7 +80,7 @@ nav:
       - Diary/Thinking/index.md
       - '24.12.5': Diary/Thinking/24.12.5.md
       - 'Things' : Diary/Thinking/things.md
-      
+
   - Belief:  
     - Belief/index.md
     - charators: 

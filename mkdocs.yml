@@ -30,6 +30,7 @@ nav:
     - 量化模型:
       - (Survey) Model Quantization for DNN in Image Classification: Research/Quantization/1.md
       - (Survey) Model Quantization and Hardware Acceleration for Vision Transformers: Research/Quantization/2.md
+    - Paper Tips: Research/paper_tips.md
   - Music:
     - Music/index.md
     - Music with places:
@@ -52,15 +53,15 @@ nav:
     - Others: 
       - Terminal:如何使"命令"显示在"路径"下一行: Tools/Others/terminal_1.md
   - Diary: 
-    - Diary/index.md
+    - Diary/index.mo
     - Reflection: 
       - exams: Diary/Reflection/exams.md
       - interview: Diary/Reflection/interview.md
-      - Others: Diary/Reflection/Others.md
+      - others: Diary/Reflection/Others.md
     - Research:
-      - Comp: Diary/Research/comp1.md
-      - Progress: Diary/Research/progress.md
-      - Experience: Diary/Research/experience.md
+      - 星伴明行: Diary/Research/comp1.md
+      - progress: Diary/Research/progress.md
+      - experience: Diary/Research/experience.md
     - Days_Challenge: 
       - Diary/days_challenge/index.md
       - '24.8': Diary/days_challenge/24.8.md
@@ -69,6 +70,7 @@ nav:
       - '24.12': Diary/days_challenge/24.12.md
       - '25.2': Diary/days_challenge/25.2.md
       - '25.2~3': Diary/days_challenge/25.2_2.md
+      - '25.4': Diary/days_challenge/25.4.md
     - Thinking:
       - Diary/Thinking/index.md
       - '24.12.5': Diary/Thinking/24.12.5.md

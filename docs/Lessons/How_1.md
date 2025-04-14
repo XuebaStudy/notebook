@@ -4,15 +4,15 @@
 ??? recommend "~~推荐的学习方式~~"
     ```mermaid
     graph LR
-      A[Start] --> B{Studing?};
-      B -->|Yes| C[Good!];
-      C -->|Energetic| B;
-      C -->|Tired| D[Ask yourself];
-      D -->|By changing task| B;
-      B -->|No| D;
-      D -->|Need break| E[Take a break];
-      E -->|OK| A;
-      A ----->F[Other things];
+      A[Start] --> B{Studying?}
+      B -->|Yes| C[Good!]
+      C -->|Energetic| B
+      C -->|Tired| D[Ask yourself]
+      D -->|By changing task| B
+      B -->|No| D
+      D -->|Need break| E[Take a break]
+      E -->|OK| A
+      A ----->F[Other things]
     ```
 ??? recommend "课程资料查询方式举隅"
     - [学在浙大](https://courses.zju.edu.cn/user/index)
@@ -80,13 +80,14 @@
     ---
 
 ## DBS
+- note: [Hobbitqia](https://note.hobbitqia.cc/DB/db1/), [NoughtQ](https://note.noughtq.top/system/db/)
 Pre:
 
-Dur: 听课 PPT(&[note](https://note.noughtq.top/system/db/))
+Dur: 听课 PPT(& note)
 
-Aft: (实验) —— 复习([note](https://note.noughtq.top/system/db/)+PPT) (—— 讨论) —— 作业 —— 随堂小测 —— Quiz —— 课后所有习题
+Aft: (实验) —— 复习(note + PPT) (—— 讨论) —— 作业 —— 随堂小测 —— Quiz —— 课后所有习题
 
-Rev: 随堂小测&Quiz 复习
+Rev: note —— 随堂小测 & Quiz复习
 
 More: 探索MySQL操作 & 探索MySQL与C++/Python 的连接(数据库与前后端)
 

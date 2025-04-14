@@ -8,15 +8,16 @@ nav:
     - index.md
     - Co-links: links.md
 
-  - Lessons: 
-    - Lessons/index.md
-    - NJU ISC PA: Lessons/NJU ISC PA/Tasks.md
-    - Learning Path (in ZJU): Lessons/How_1.md
+  - Lesson: 
+    - Lesson/index.md
+    - NJU ISC PA: Lesson/NJU ISC PA/Tasks.md
+    - Learning Path (in ZJU): Lesson/How_1.md
     - Math:
-      - 常微分方程: Lessons/Math/ODE/note.md
+      - 常微分方程: Lesson/Math/ODE/note.md
 
   - Code: 
     - Code/index.md
+    - C++: Code/C++/Cpp_note.md
     - Python:
       - matplotlib.pyplot: Code/Python/matplotlib.pyplot/1.md
       - Mix:
@@ -41,21 +42,21 @@ nav:
     - Others: 
       - mp3->mp4 (有声频谱): Music/Others/mp3_visualization.md
 
-  - Tools:
-    - Tools/index.md
+  - Tool:
+    - Tool/index.md
     - Mkdocs: 
-      - Commands: Tools/mkdocs/commands.md
-      - Others: Tools/mkdocs/others.md
+      - Commands: Tool/mkdocs/commands.md
+      - Others: Tool/mkdocs/others.md
     - Linux:
-      - Terminal: Tools/Linux/commands.md
+      - Terminal: Tool/Linux/commands.md
       - Vim: 
-        - Tools/Linux/Vim/tips.md
-      - Others: Tools/Linux/others.md
-    - Git: Tools/git.md
+        - Tool/Linux/Vim/tips.md
+      - Others: Tool/Linux/others.md
+    - Git: Tool/git.md
     - Adobe:
-      - PS shortcuts: Tools/Adobe/PS_shortcut.md
+      - PS shortcuts: Tool/Adobe/PS_shortcut.md
     - Others: 
-      - Terminal:如何使"命令"显示在"路径"下一行: Tools/Others/terminal_1.md
+      - Terminal:如何使"命令"显示在"路径"下一行: Tool/Others/terminal_1.md
 
   - Diary: 
     - Diary/index.md

@@ -1,4 +1,4 @@
-# Lessons
+# Lesson
 
 !!! abstract
 	

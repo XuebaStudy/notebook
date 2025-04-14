@@ -80,7 +80,8 @@
     ---
 
 ## DBS
-- note: [Hobbitqia](https://note.hobbitqia.cc/DB/db1/), [NoughtQ](https://note.noughtq.top/system/db/)
+- note: [Hobbitqia](https://note.hobbitqia.cc/DB/db1/), [NoughtQ](https://note.noughtq.top/system/db/)  
+
 Pre:
 
 Dur: 听课 PPT(& note)

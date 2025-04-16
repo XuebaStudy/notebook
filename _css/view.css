@@ -56,9 +56,10 @@
       background-color: var(--md-primary-fg-color);
     }
   }  */
-  /* 复制到此 */
+/* 以上是从 TonyCrane/note 仓库 custom.css 复制的 */
   
   /* 以下来源于 https://ronaldln.github.io/MyPamphlet-Blog/2023/10/25/mkdocs-material/ */
+
   /* 修改所有代码字体大小 */
   .md-typeset code {
     font-size: .65rem;
@@ -78,4 +79,6 @@
   .md-typeset hr {
     border-bottom: .10rem solid var(--md-default-fg-color--lightest);
   }
+  
+  /* 以上来源于 https://ronaldln.github.io/MyPamphlet-Blog/2023/10/25/mkdocs-material/ */
   

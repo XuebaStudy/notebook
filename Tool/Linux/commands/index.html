@@ -12,7 +12,7 @@
         <link rel="prev" href="../../mkdocs/others/">
       
       
-        <link rel="next" href="../Vim/tips/">
+        <link rel="next" href="../Linux_setup/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -1696,6 +1696,8 @@
       
         
       
+        
+      
     
     
       
@@ -1817,6 +1819,27 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../Linux_setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基本配置
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
       
@@ -1832,10 +1855,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_3" >
         
           
-          <label class="md-nav__link" for="__nav_6_3_2" id="__nav_6_3_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_3_3" id="__nav_6_3_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1846,8 +1869,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_3_2">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_3">
             <span class="md-nav__icon md-icon"></span>
             Vim
           </label>
@@ -2991,6 +3014,18 @@
 <tr>
 <td><code>find . -name "*.[ch]" | xargs grep "#include" | sort | uniq</code></td>
 <td>列出一个C语言项目中所有被包含过的头文件</td>
+</tr>
+<tr>
+<td><code>ps aux --sort=-%mem | head -n 6</code></td>
+<td>列出当前目录下占用内存最大的前5个进程</td>
+</tr>
+<tr>
+<td><code>sudo systemctl stop mysql</code></td>
+<td>停止 mysql 服务</td>
+</tr>
+<tr>
+<td><code>ps aux | grep mysqld</code></td>
+<td>查看mysql服务是否启动</td>
 </tr>
 </tbody>
 </table>

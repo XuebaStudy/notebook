@@ -9,6 +9,7 @@
         - [Others](mkdocs/others.md)
     - Linux
         - [Terminal](Linux/commands.md)
+        - [基本配置](Linux/Linux_setup.md)
         - Vim
             - [tips](Linux/Vim/tips.md)
         - [Others](Linux/others.md)
@@ -18,5 +19,5 @@
     - Others
         - [Terminal:如何使"命令"显示在"路径"下一行](Others/terminal_1.md)
 
-	>Latest update time: 2025.3.4
+	>Latest update time: 2025.4.16
 

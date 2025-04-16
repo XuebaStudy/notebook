@@ -52,12 +52,14 @@ nav:
       - Terminal: Tool/Linux/commands.md
       - 基本配置: Tool/Linux/Linux_setup.md
       - Vim: 
-        - Tool/Linux/Vim/tips.md
+        - Plug: Tool/Linux/Vim/plug.md
+        - Tip: Tool/Linux/Vim/tips.md
       - Others: Tool/Linux/others.md
     - Git: Tool/git.md
     - Adobe:
       - PS shortcuts: Tool/Adobe/PS_shortcut.md
     - Others: 
+      - Conda: Tool/Others/conda.md
       - Terminal:如何使"命令"显示在"路径"下一行: Tool/Others/terminal_1.md
 
   - Diary: 

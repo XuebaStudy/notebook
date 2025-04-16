@@ -62,17 +62,17 @@ def get_index(root, output_dir, yml_content, update_time):
 
 if __name__ == "__main__":
     # 千万小心这是覆盖写，原index.md会丢失！！！
-    update_time = "2025.3.4"
+    update_time = "2025.4.16"
 
     # yml文件内容注意正确缩进
     yml_content = """
     
-Belief:  
-    - Belief/index.md
-    - charators: 
-      - 灰之魔女伊蕾娜: Belief/charactors/灰之魔女伊蕾娜.md
-      - 洛琪希: Belief/charactors/洛琪希.md
-    - sentences: Belief/sentences.md
+Lesson: 
+    - Lesson/index.md
+    - NJU ISC PA: Lesson/NJU ISC PA/Tasks.md
+    - Learning Path (in ZJU): Lesson/How_1.md
+    - Math:
+      - 常微分方程: Lesson/Math/ODE/note.md
 
     """
     root_re = re.compile(r'(\S*?):')

@@ -12,6 +12,9 @@
 |---|---|
 |`find . -type f -name 'abc*' -delete`|删除该目录下以abc开头的文件（' '内可换为其他正则表达式）|
 |`find . -name "*.[ch]" | xargs grep "#include" | sort | uniq`|列出一个C语言项目中所有被包含过的头文件|
+|`ps aux --sort=-%mem | head -n 6`|列出当前目录下占用内存最大的前5个进程|
+|`sudo systemctl stop mysql`|停止 mysql 服务|
+|`ps aux | grep mysqld`|查看mysql服务是否启动|
 
 - markdown表格中可用`&#124;`代替`|`，或者把`|`置于<code>&#96;&#96;</code>内防止影响表格结构
 - <code>&#96; &#96;</code> 效果同`<code> </code>`; <code>&#96;</code> == `&#96`

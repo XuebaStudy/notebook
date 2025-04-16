@@ -35,6 +35,7 @@ nav:
       - (Survey) Model Quantization for DNN in Image Classification: Research/Quantization/1.md
       - (Survey) Model Quantization and Hardware Acceleration for Vision Transformers: Research/Quantization/2.md
     - Paper Tips: Research/paper_tips.md
+    
   - Music:
     - Music/index.md
     - Music with places:
@@ -49,6 +50,7 @@ nav:
       - Others: Tool/mkdocs/others.md
     - Linux:
       - Terminal: Tool/Linux/commands.md
+      - 基本配置: Tool/Linux/Linux_setup.md
       - Vim: 
         - Tool/Linux/Vim/tips.md
       - Others: Tool/Linux/others.md

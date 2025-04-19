@@ -31,31 +31,26 @@ def update_all_indexes(yml_content, update_time, base_output_dir="./docs/"):
 
 if __name__ == "__main__":
 
-    update_time = "2025.4.16"
+    update_time = "2025.4.19"
 
     base_output_dir="./docs/" 
 
     # yml文件内容注意正确缩进（且根级部分前没有"-"）
     yml_content = """
     
-  Tool:
-    - Tool/index.md
-    - Mkdocs: 
-      - Commands: Tool/mkdocs/commands.md
-      - Others: Tool/mkdocs/others.md
-    - Linux:
-      - Terminal: Tool/Linux/commands.md
-      - 基本配置: Tool/Linux/Linux_setup.md
-      - Vim: 
-        - Plug: Tool/Linux/Vim/plug.md
-        - Tip: Tool/Linux/Vim/tips.md
-      - Others: Tool/Linux/others.md
-    - Git: Tool/git.md
-    - Adobe:
-      - PS shortcuts: Tool/Adobe/PS_shortcut.md
-    - Others: 
-      - Conda: Tool/Others/conda.md
-      - Terminal:如何使"命令"显示在"路径"下一行: Tool/Others/terminal_1.md
+  Code: 
+    - Code/index.md
+    - C++: Code/C++/Cpp_note.md
+    - Python:
+      - matplotlib.pyplot: Code/Python/matplotlib.pyplot/1.md
+      - Mix:
+        - req_re_df_1: Code/Python/Mix/req_re_df_250209.md
+    - CUMCM:
+      - Code/CUMCM/index.md
+      - 2020年 A题: Code/CUMCM/20A.md
+    - Regex (正则表达式): Code/Regex.md
+    - Tips: 
+      - 提取目录下文件结构与所有文件内容: Code/Tips/CodeExport.md
       
     """
 

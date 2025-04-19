@@ -26,6 +26,8 @@ nav:
       - Code/CUMCM/index.md
       - 2020年 A题: Code/CUMCM/20A.md
     - Regex (正则表达式): Code/Regex.md
+    - Tips: 
+      - 提取目录下文件结构与所有文件内容: Code/Tips/CodeExport.md
 
   - Research:
     - Research/index.md

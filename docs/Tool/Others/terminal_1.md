@@ -21,7 +21,11 @@
     ```
     - 配合PowerShell的“命令高亮”使用更佳
 
-(PS: 面向 Windows)
+!!! warning
+    - 明显有更好的解决方案，比如用 oh my posh 美化PowerShell，可以达到相似效果且不易产生副作用，建议不要轻易用本文的操作。
+    - 本文面向 Windows
+
+
 
 1. 首先进入Terminal，用`Ctrl+,`打开设置:
 ![](../images/Others_1.png)
@@ -63,5 +67,5 @@
     ```
 !!! warning
     - PowerShell 使用这种方法会导致路径前无法显示conda环境名（如`(base)`（但可以用`conda env list`查看现在位于哪个环境），cmd 无影响。VSCode 中两者亦然。
-    - 同时也会让 PowerShell 和 cmd 每次打开的~~无用的~~提示信息不再输出（挺好的）
+    - 同时也会让 PowerShell 和 cmd 每次打开的 ~~无用的~~ 提示信息不再输出（挺好的）
 <br><br><br><br>

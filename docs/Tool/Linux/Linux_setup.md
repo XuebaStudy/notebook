@@ -58,8 +58,8 @@ default_channels:
   - https://mirrors.bfsu.edu.cn/anaconda/pkgs/msys2
 
 custom_channels:
-conda-forge: https://mirrors.bfsu.edu.cn/anaconda/cloud
-pytorch: https://mirrors.bfsu.edu.cn/anaconda/cloud
+  conda-forge: https://mirrors.bfsu.edu.cn/anaconda/cloud
+  pytorch: https://mirrors.bfsu.edu.cn/anaconda/cloud
 
 remote_read_timeout_secs: 1500.0
 remote_connect_timeout_secs: 20.0
@@ -104,7 +104,36 @@ fi
 
 # ...
 ```
+- bash 与 zsh 环境共享（同时设为使用zsh）
+```bash
+# .bashrc 文件末尾
 
+# ...
+
+if [[ $__USE_ZSH -eq 1 ]]; then
+    echo "ENTER ZSH!"
+    exec zsh
+fi
+
+```
+```bash
+# .zshrc 文件开头
+
+if [[ -v __USE_ZSH ]]; then
+  unset __USE_ZSH
+else
+  echo "ENTER BASH!"
+  export __USE_ZSH=1
+  exec bash
+fi
+
+# ...
+
+# 这样设置后，在进入终端时会先输出:
+# ENTER BASH!
+# ENTER ZSH!
+# 再显示zsh终端，此时既有bash又有zsh环境
+```
 
 
 ## 4. Vim 配置文件

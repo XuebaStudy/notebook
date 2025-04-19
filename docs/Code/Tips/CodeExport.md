@@ -9,37 +9,73 @@
     - `fileInclude`：需要导出内容的文件类型，务必在使用前检查是否完全涵盖要求    
         1. 不包含的也会出现在结构图中
         2. `.exe .doc`之类不易直接导出可视字符的文件类型不要包含在里面
+    - `excludePaths`：排除的路径，支持相对路径和绝对路径
+        1. `"$PWD\.vscode"` 精准匹配根目录下`\.vscode`文件夹
+        2. `".vscode"` 匹配所有`.vscode`文件夹
+        3. （但1、2是否“精准”，暂未全面测试）
 
-!!! note "单次输入版（可直接点右上角的复制，粘贴到 PowerShell 中使用）"
+!!! note "脚本"
     ```bash
-    $outFileName="ZZZ_CodeExport.txt";$outFile="$PWD\$outFileName";$fileInclude=@("*.py","*.js","*.html","*.css","*.json","*.txt","*.hpp","*.cpp","*.c","*.h","*.md");"==== 目录结构 ==== ([]代表文件夹)`n"|Out-File $outFile -Encoding utf8;function Format-DirectoryTree{param([string]$path,[string]$indent="")$items=Get-ChildItem -Path $path|Where-Object{$_.Name-ne$outFileName};foreach($item in $items){if($item.PSIsContainer){"$indent[$($item.Name)]"|Out-File $outFile -Encoding utf8 -Append;Format-DirectoryTree -path $item.FullName -indent ($indent+"   ")}else{"$indent$($item.Name)"|Out-File $outFile -Encoding utf8 -Append}}};Format-DirectoryTree -path $PWD.Path;"`n==== 文件内容 ====`n"|Out-File $outFile -Encoding utf8 -Append;Get-ChildItem -Recurse -Include $fileInclude|Where-Object{$_.Name-ne$outFileName}|ForEach-Object{"`n【文件路径】$($_.FullName)`n"+[System.IO.File]::ReadAllText($_.FullName,[System.Text.Encoding]::UTF8)|Out-File $outFile -Encoding utf8 -Append}
-    ```
+    $CodeExport = {
+        $outFileName = "ZZZ_CodeExport.txt"
+        $outFile = "$PWD\$outFileName"
+        $fileInclude = @("*.py", "*.js", "*.html", "*.css", "*.json", "*.txt", "*.hpp", "*.cpp", "*.c", "*.h", "*.md")
 
-!!! note "结构清晰版"
-    ```bash
-    $outFileName = "ZZZ_CodeExport.txt";
-    $outFile = "$PWD\$outFileName";
-    $fileInclude = @("*.py", "*.js", "*.html", "*.css", "*.json", "*.txt", "*.hpp", "*.cpp", "*.c", "*.h", "*.md");
-    "==== 目录结构 ==== ([]代表文件夹)`n" | Out-File $outFile -Encoding utf8;
-    function Format-DirectoryTree {
-        param([string]$path, [string]$indent = "")
-        $items = Get-ChildItem -Path $path | Where-Object { $_.Name -ne "ZZZ_CodeExport.txt" };
-        foreach ($item in $items) {
-            if ($item.PSIsContainer) {
-                "$indent[$($item.Name)]" | Out-File $outFile -Encoding utf8 -Append;
-                Format-DirectoryTree -path $item.FullName -indent ($indent + "   ")
+        $excludeRules = @(
+            "node_modules",
+            "__pycache__"
+        )
+
+        function Test-ExcludePath {
+            param([string]$Path)
+            
+            foreach ($rule in $excludeRules) {
+                if ($rule.Contains("\")) {
+                    if ($Path -like "$rule*") { return $true }
+                } else {
+                    $dirs = $Path -split '[\\/]'
+                    if ($dirs -contains $rule) { return $true }
+                }
             }
-            else {
-                "$indent$($item.Name)" | Out-File $outFile -Encoding utf8 -Append
+            return $false
+        }
+
+        "==== 目录结构 ==== ([]代表文件夹)`n" | Out-File $outFile -Encoding utf8
+
+        function Format-DirectoryTree {
+            param([string]$path, [string]$indent = "")
+            Get-ChildItem -Path $path | Where-Object { 
+                $_.Name -ne "ZZZ_CodeExport.txt" -and
+                -not (Test-ExcludePath -Path $_.FullName)
+            } | ForEach-Object {
+                if ($_.PSIsContainer) {
+                    "$indent[$($_.Name)]" | Out-File $outFile -Encoding utf8 -Append
+                    Format-DirectoryTree -path $_.FullName -indent ($indent + "   ")
+                } else {
+                    "$indent$($_.Name)" | Out-File $outFile -Encoding utf8 -Append
+                }
             }
         }
-    };
-    Format-DirectoryTree -path $PWD.Path;
-    "`n==== 文件内容 ====`n" | Out-File $outFile -Encoding utf8 -Append;
-    Get-ChildItem -Recurse -Include $fileInclude | Where-Object { $_.Name -ne "ZZZ_CodeExport.txt" } | ForEach-Object {
-        "`n【文件路径】$($_.FullName)`n" + [System.IO.File]::ReadAllText($_.FullName, [System.Text.Encoding]::UTF8) | Out-File $outFile -Encoding utf8 -Append
+
+        Format-DirectoryTree -path $PWD.Path
+
+        "`n==== 文件内容 ====`n" | Out-File $outFile -Encoding utf8 -Append
+
+        Get-ChildItem -Recurse -Include $fileInclude | Where-Object {
+            $_.Name -ne "ZZZ_CodeExport.txt" -and
+            -not (Test-ExcludePath -Path $_.FullName)
+        } | ForEach-Object {
+            "`n【文件路径】$($_.FullName)`n" + [System.IO.File]::ReadAllText($_.FullName, [System.Text.Encoding]::UTF8) | Out-File $outFile -Encoding utf8 -Append
+        }
     }
+    & $CodeExport
+
+    
     ```
+
+!!! note "运行方式"
+    1. 将上述脚本修改后输入 PowerShell 中执行
+    2. 之后如果不修改脚本中的设置，重新生成输出文件可以直接用`& $CodeExport`命令，覆盖旧文件（但使用新终端时需要重新输入脚本）
 
 !!! success "运行结果示例"
     ```

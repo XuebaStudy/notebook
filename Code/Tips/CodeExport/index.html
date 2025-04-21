@@ -123,7 +123,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#windows-powershell" class="md-skip">
           Skip to content
         </a>
       
@@ -2854,7 +2854,7 @@
   
 
 
-<div><h1 id="_1">提取目录下文件结构与所有文件内容<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
+<div><h1 id="windows-powershell">提取目录下文件结构与所有文件内容 (Windows PowerShell)<a class="headerlink" href="#windows-powershell" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">Abstract</p>
 <ul>
@@ -2887,53 +2887,54 @@
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nv">$fileInclude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>@<span class="o">(</span><span class="s2">"*.py"</span>,<span class="w"> </span><span class="s2">"*.js"</span>,<span class="w"> </span><span class="s2">"*.html"</span>,<span class="w"> </span><span class="s2">"*.css"</span>,<span class="w"> </span><span class="s2">"*.json"</span>,<span class="w"> </span><span class="s2">"*.txt"</span>,<span class="w"> </span><span class="s2">"*.hpp"</span>,<span class="w"> </span><span class="s2">"*.cpp"</span>,<span class="w"> </span><span class="s2">"*.c"</span>,<span class="w"> </span><span class="s2">"*.h"</span>,<span class="w"> </span><span class="s2">"*.md"</span><span class="o">)</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nv">$excludeRules</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>@<span class="o">(</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="s2">"node_modules"</span>,
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="s2">"__pycache__"</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="o">)</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="k">function</span><span class="w"> </span>Test-ExcludePath<span class="w"> </span><span class="o">{</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span>param<span class="o">([</span>string<span class="o">]</span><span class="nv">$Path</span><span class="o">)</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span>foreach<span class="w"> </span><span class="o">(</span><span class="nv">$rule</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$excludeRules</span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="o">(</span><span class="nv">$rule</span>.Contains<span class="o">(</span><span class="s2">"\")) {</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="s2">                if (</span><span class="nv">$Path</span><span class="s2"> -like "</span><span class="nv">$rule</span>*<span class="s2">") { return </span><span class="nv">$true</span><span class="s2"> }</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="s2">            } else {</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="s2">                </span><span class="nv">$dirs</span><span class="s2"> = </span><span class="nv">$Path</span><span class="s2"> -split '[\\/]'</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="s2">                if (</span><span class="nv">$dirs</span><span class="s2"> -contains </span><span class="nv">$rule</span><span class="s2">) { return </span><span class="nv">$true</span><span class="s2"> }</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="s2">            }</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="s2">        }</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="s2">        return </span><span class="nv">$false</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="s2">    }</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="s2">    "</span><span class="o">====</span><span class="w"> </span><span class="nv">目录结构</span><span class="w"> </span><span class="o">====</span><span class="w"> </span><span class="o">([]</span>代表文件夹<span class="o">)</span><span class="sb">`</span>n<span class="s2">" | Out-File </span><span class="nv">$outFile</span><span class="s2"> -Encoding utf8</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="s2">    function Format-DirectoryTree {</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="s2">        param([string]</span><span class="nv">$path</span><span class="s2">, [string]</span><span class="nv">$indent</span><span class="s2"> = "")</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="s2">        Get-ChildItem -Path </span><span class="nv">$path</span><span class="s2"> | Where-Object { </span>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="s2">            </span><span class="nv">$_</span><span class="s2">.Name -ne "</span>ZZZ_CodeExport.txt<span class="s2">" -and</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="s2">            -not (Test-ExcludePath -Path </span><span class="nv">$_</span><span class="s2">.FullName)</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="s2">        } | ForEach-Object {</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="s2">            if (</span><span class="nv">$_</span><span class="s2">.PSIsContainer) {</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="s2">                "</span><span class="nv">$indent</span><span class="o">[</span><span class="k">$(</span><span class="nv">$_</span>.Name<span class="k">)</span><span class="o">]</span><span class="s2">" | Out-File </span><span class="nv">$outFile</span><span class="s2"> -Encoding utf8 -Append</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="s2">                Format-DirectoryTree -path </span><span class="nv">$_</span><span class="s2">.FullName -indent (</span><span class="nv">$indent</span><span class="s2"> + "</span><span class="w">   </span><span class="s2">")</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="s2">            } else {</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="s2">                "</span><span class="nv">$indent</span><span class="k">$(</span><span class="nv">$_</span>.Name<span class="k">)</span><span class="s2">" | Out-File </span><span class="nv">$outFile</span><span class="s2"> -Encoding utf8 -Append</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="s2">            }</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="s2">        }</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="s2">    }</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>
-<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="s2">    Format-DirectoryTree -path </span><span class="nv">$PWD</span><span class="s2">.Path</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>
-<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="s2">    "</span><span class="sb">`</span><span class="nv">n</span><span class="o">====</span><span class="w"> </span><span class="nv">文件内容</span><span class="w"> </span><span class="o">====</span><span class="sb">`</span>n<span class="s2">" | Out-File </span><span class="nv">$outFile</span><span class="s2"> -Encoding utf8 -Append</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>
-<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="s2">    Get-ChildItem -Recurse -Include </span><span class="nv">$fileInclude</span><span class="s2"> | Where-Object {</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="s2">        </span><span class="nv">$_</span><span class="s2">.Name -ne "</span>ZZZ_CodeExport.txt<span class="s2">" -and</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="s2">        -not (Test-ExcludePath -Path </span><span class="nv">$_</span><span class="s2">.FullName)</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="s2">    } | ForEach-Object {</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="s2">        "</span><span class="sb">`</span>n【文件路径】<span class="k">$(</span><span class="nv">$_</span>.FullName<span class="k">)</span><span class="sb">`</span>n<span class="s2">" + [System.IO.File]::ReadAllText(</span><span class="nv">$_</span><span class="s2">.FullName, [System.Text.Encoding]::UTF8) | Out-File </span><span class="nv">$outFile</span><span class="s2"> -Encoding utf8 -Append</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="s2">    }</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="s2">}</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="s2">&amp; </span><span class="nv">$CodeExport</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">\.git"</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="s2">"node_modules"</span>,
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="s2">"__pycache__"</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="o">)</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="k">function</span><span class="w"> </span>Test-ExcludePath<span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span>param<span class="o">([</span>string<span class="o">]</span><span class="nv">$Path</span><span class="o">)</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span>foreach<span class="w"> </span><span class="o">(</span><span class="nv">$rule</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$excludeRules</span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="o">(</span><span class="nv">$rule</span>.Contains<span class="o">(</span><span class="s2">"\")) {</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="s2">                if (</span><span class="nv">$Path</span><span class="s2"> -like "</span><span class="nv">$rule</span>*<span class="s2">") { return </span><span class="nv">$true</span><span class="s2"> }</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="s2">            } else {</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="s2">                </span><span class="nv">$dirs</span><span class="s2"> = </span><span class="nv">$Path</span><span class="s2"> -split '[\\/]'</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="s2">                if (</span><span class="nv">$dirs</span><span class="s2"> -contains </span><span class="nv">$rule</span><span class="s2">) { return </span><span class="nv">$true</span><span class="s2"> }</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="s2">            }</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="s2">        }</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="s2">        return </span><span class="nv">$false</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="s2">    }</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="s2">    "</span><span class="o">====</span><span class="w"> </span><span class="nv">目录结构</span><span class="w"> </span><span class="o">====</span><span class="w"> </span><span class="o">([]</span>代表文件夹<span class="o">)</span><span class="sb">`</span>n<span class="s2">" | Out-File </span><span class="nv">$outFile</span><span class="s2"> -Encoding utf8</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="s2">    function Format-DirectoryTree {</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="s2">        param([string]</span><span class="nv">$path</span><span class="s2">, [string]</span><span class="nv">$indent</span><span class="s2"> = "")</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="s2">        Get-ChildItem -Path </span><span class="nv">$path</span><span class="s2"> | Where-Object { </span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="s2">            </span><span class="nv">$_</span><span class="s2">.Name -ne "</span>ZZZ_CodeExport.txt<span class="s2">" -and</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="s2">            -not (Test-ExcludePath -Path </span><span class="nv">$_</span><span class="s2">.FullName)</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="s2">        } | ForEach-Object {</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="s2">            if (</span><span class="nv">$_</span><span class="s2">.PSIsContainer) {</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="s2">                "</span><span class="nv">$indent</span><span class="o">[</span><span class="k">$(</span><span class="nv">$_</span>.Name<span class="k">)</span><span class="o">]</span><span class="s2">" | Out-File </span><span class="nv">$outFile</span><span class="s2"> -Encoding utf8 -Append</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="s2">                Format-DirectoryTree -path </span><span class="nv">$_</span><span class="s2">.FullName -indent (</span><span class="nv">$indent</span><span class="s2"> + "</span><span class="w">   </span><span class="s2">")</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="s2">            } else {</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="s2">                "</span><span class="nv">$indent</span><span class="k">$(</span><span class="nv">$_</span>.Name<span class="k">)</span><span class="s2">" | Out-File </span><span class="nv">$outFile</span><span class="s2"> -Encoding utf8 -Append</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="s2">            }</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="s2">        }</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="s2">    }</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="s2">    Format-DirectoryTree -path </span><span class="nv">$PWD</span><span class="s2">.Path</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="s2">    "</span><span class="sb">`</span><span class="nv">n</span><span class="o">====</span><span class="w"> </span><span class="nv">文件内容</span><span class="w"> </span><span class="o">====</span><span class="sb">`</span>n<span class="s2">" | Out-File </span><span class="nv">$outFile</span><span class="s2"> -Encoding utf8 -Append</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="s2">    Get-ChildItem -Recurse -Include </span><span class="nv">$fileInclude</span><span class="s2"> | Where-Object {</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="s2">        </span><span class="nv">$_</span><span class="s2">.Name -ne "</span>ZZZ_CodeExport.txt<span class="s2">" -and</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="s2">        -not (Test-ExcludePath -Path </span><span class="nv">$_</span><span class="s2">.FullName)</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="s2">    } | ForEach-Object {</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="s2">        "</span><span class="sb">`</span>n【文件路径】<span class="k">$(</span><span class="nv">$_</span>.FullName<span class="k">)</span><span class="sb">`</span>n<span class="s2">" + [System.IO.File]::ReadAllText(</span><span class="nv">$_</span><span class="s2">.FullName, [System.Text.Encoding]::UTF8) | Out-File </span><span class="nv">$outFile</span><span class="s2"> -Encoding utf8 -Append</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="s2">    }</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="s2">}</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="s2">&amp; </span><span class="nv">$CodeExport</span>
 </code></pre></div>
 </div>
 <div class="admonition note">

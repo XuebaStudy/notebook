@@ -1,4 +1,4 @@
-# 提取目录下文件结构与所有文件内容
+# 提取目录下文件结构与所有文件内容 (Windows PowerShell)
 
 !!! abstract
     - “我现在有一个里面有比较复杂的文件结构的项目，我想要把整个项目的代码发给 GPT 看一下，解决问题，但是这样必须得一点一点的点开各个文件夹，然后上传文件，好麻烦（毕竟目前大多数 GPT 都不支持上传文件夹或压缩包”
@@ -22,6 +22,7 @@
         $fileInclude = @("*.py", "*.js", "*.html", "*.css", "*.json", "*.txt", "*.hpp", "*.cpp", "*.c", "*.h", "*.md")
 
         $excludeRules = @(
+            "$PWD\.git"
             "node_modules",
             "__pycache__"
         )

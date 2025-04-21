@@ -9,5 +9,31 @@ git checkout -b <branch_name>   # 创建新分支branch_name，并checkout(将�
 git checkout pa0        # checkout 分支pa0
 
 git diff                # 查看与上一次提交的差别
-git diff <branch_name> master   # 显示branch_name分支与master的差别
+git diff <branch_name> main   # 显示branch_name分支与main分支的差别
+
+git log --oneline --graph --all
+```
+
+```
+❯ git pull origin main
+fatal: 'origin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+❯ git remote -v
+Git_test        git@github.com:XuebaStudy/Git_test.git (fetch)
+Git_test        git@github.com:XuebaStudy/Git_test.git (push)
+
+❯ git remote rename Git_test origin
+Renaming remote references: 100% (1/1), done.
+
+❯ git remote -v
+origin  git@github.com:XuebaStudy/Git_test.git (fetch)
+origin  git@github.com:XuebaStudy/Git_test.git (push)
+
+❯ git pull origin main
+From github.com:XuebaStudy/Git_test
+ * branch            main       -> FETCH_HEAD
 ```

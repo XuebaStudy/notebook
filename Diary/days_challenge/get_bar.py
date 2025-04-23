@@ -12,7 +12,7 @@ def get_mid(h1,m1,h2,m2):
     h2 = h2 if h2>2 else h2+24
     half_diff = round(get_diff(h1,m1,h2,m2)/2)
     h = h1+half_diff//60
-    m = m1+half_diff%60
+    m = (m1+half_diff)%60
     return f'{h}:{m}'
 
 input_dir = r'D:\desktop\Blog\docs\Diary\days_challenge\timedata.txt'

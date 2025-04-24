@@ -3970,12 +3970,14 @@
 <a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">        </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"A()"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
 <a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">showValue</span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
-<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="p">};</span>
-<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>
-<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="kt">void</span><span class="w"> </span><span class="nf">showValue</span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="n">a</span><span class="p">)</span>
-<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="p">{</span>
-<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">    </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="p">.</span><span class="n">val</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
-<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="p">}</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">B</span><span class="p">;</span><span class="w"> </span><span class="c1">// B类是A类的友元类，其成员函数和变量都是友元</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">C::showAValue</span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="p">};</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="kt">void</span><span class="w"> </span><span class="nf">showValue</span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="n">a</span><span class="p">)</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="p">{</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="w">    </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="p">.</span><span class="n">val</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="26">2.6 多态和虚函数<a class="headerlink" href="#26" title="Permanent link">¶</a></h3>
 <ul>
@@ -4094,7 +4096,7 @@
 <p>纯虚函数：<code>virtual int func() = 0;</code> 表明该函数没有主体，基类中没有给出有意义的实现方式，需要在派生类中进行扩展</p>
 </li>
 <li>
-<p>override语法：派生类中可以用override关键字来声明，表示对基类虚函数的重载</p>
+<p>override语法：派生类中可以用override关键字来声明，表示对基类虚函数的重载（非虚函数不可以用override声明重载。override的使用是可选的）</p>
 </li>
 <li>
 <p>虚函数需要借助指针和引用达到多态的效果</p>
@@ -4139,11 +4141,11 @@
 </li>
 <li>
 <p>接口(C++抽象类)</p>
-</li>
-<li>
-<p>描述了一个类应该有的功能和行为，但是不用在这个类中实现，而是在派生类中实现</p>
-</li>
+<ul>
+<li>描述了一个类应该有的功能和行为，但是不用在这个类中实现，而是在派生类中实现</li>
 <li>可以使用纯虚函数来实现抽象类的定义，比如：</li>
+</ul>
+</li>
 </ul>
 <div class="language-c++ highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Shape</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="k">public</span><span class="o">:</span>

@@ -517,6 +517,8 @@ int main()
           cout<<"A()"<<endl;
       }
       friend void showValue(A a);
+      friend class B; // B类是A类的友元类，其成员函数和变量都是友元
+      friend void C::showAValue(A a);
   };
   
   void showValue(A a)
@@ -631,7 +633,7 @@ int main()
   
   - 纯虚函数：`virtual int func() = 0;` 表明该函数没有主体，基类中没有给出有意义的实现方式，需要在派生类中进行扩展
   
-  - override语法：派生类中可以用override关键字来声明，表示对基类虚函数的重载
+  - override语法：派生类中可以用override关键字来声明，表示对基类虚函数的重载（非虚函数不可以用override声明重载。override的使用是可选的）
   
   - 虚函数需要借助指针和引用达到多态的效果
     
@@ -674,8 +676,8 @@ int main()
 
 - 接口(C++抽象类)
   
-  - 描述了一个类应该有的功能和行为，但是不用在这个类中实现，而是在派生类中实现
-  - 可以使用纯虚函数来实现抽象类的定义，比如：
+    - 描述了一个类应该有的功能和行为，但是不用在这个类中实现，而是在派生类中实现
+    - 可以使用纯虚函数来实现抽象类的定义，比如：
 
 ```c++
 class Shape {

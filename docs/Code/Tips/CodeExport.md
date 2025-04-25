@@ -9,27 +9,29 @@
     - `fileInclude`：需要导出内容的文件类型，务必在使用前检查是否完全涵盖要求    
         1. 不包含的也会出现在结构图中
         2. `.exe .doc`之类不易直接导出可视字符的文件类型不要包含在里面
-    - `excludePaths`：排除的路径，支持相对路径和绝对路径
+    - `excludeRules`：排除的路径，支持相对路径和绝对路径
         1. `"$PWD\.vscode"` 精准匹配根目录下`\.vscode`文件夹
         2. `".vscode"` 匹配所有`.vscode`文件夹
         3. （但1、2是否“精准”，暂未全面测试）
+        4. `"Icon233*.vue"` 匹配所有以`Icon233`开头的`.vue`文件
 
 !!! note "脚本"
     ```bash
     $CodeExport = {
         $outFileName = "ZZZ_CodeExport.txt"
         $outFile = "$PWD\$outFileName"
-        $fileInclude = @("*.py", "*.js", "*.html", "*.css", "*.json", "*.txt", "*.hpp", "*.cpp", "*.c", "*.h", "*.md")
+        $fileInclude = @("*.py", "*.vue", "*.js", "*.html", "*.css", "*.json", "*.txt", "*.hpp", "*.cpp", "*.c", "*.h", "*.md")
 
         $excludeRules = @(
-            "$PWD\.git"
+            ".git"
             "node_modules",
-            "__pycache__"
+            "__pycache__",
+            "Icon233*.vue"
         )
 
         function Test-ExcludePath {
             param([string]$Path)
-            
+
             foreach ($rule in $excludeRules) {
                 if ($rule.Contains("\")) {
                     if ($Path -like "$rule*") { return $true }
@@ -38,6 +40,12 @@
                     if ($dirs -contains $rule) { return $true }
                 }
             }
+
+            # 新增文件名匹配逻辑
+            foreach ($rule in $excludeRules) {
+                if ($Path -like "*\$rule") { return $true }
+            }
+
             return $false
         }
 
@@ -70,7 +78,6 @@
         }
     }
     & $CodeExport
-
     
     ```
 

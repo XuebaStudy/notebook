@@ -112,7 +112,7 @@ Aft: 复习 [note](https://note.hobbitqia.cc/OOP/oop1/) & PPT
 
 Rev:
 
-More: 在维护[C++ game](https://github.com/XuebaStudy/Cpp_game)过程中学习
+More: 在维护 C++ game 过程中学习
 
 ## 马原
 Pre: 

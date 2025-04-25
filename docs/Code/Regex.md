@@ -39,7 +39,7 @@
 |\r|匹配一个回车符，相当于 \x0d \cM|
 |\t|匹配一个制表符，相当于 \x09 \cI|
 |\v|匹配一个垂直制表符，相当于 \x0b \cK|
-|\s|匹配任何空白字符，相当于 [ \f\n\r\t\v]，unicode 下也会匹配全角空格符|
+|\s|匹配任何空白字符，相当于 [ \f\n\r\t\v] （注意首位有个空格），unicode 下也会匹配全角空格符|
 |\S|匹配任何非空白符，相当于 [^ \f\n\r\t\v]|
 
 ### 1.3 限定符
@@ -140,7 +140,6 @@ python 的 re 模块提供了正则表达式的相关方法：
     - string：原字符串
     - count：替换的最大次数，是 0 时表示替换全部
     - flags：修饰符
-- re.compile(pattern, flags=0)：编译一个正则表达式，返回一个 re.Pattern
 - re.findall(pattern, string, flags=0)：在 string 中查找所有匹配 pattern 的结果，返回列表
 - re.finditer(pattern, string, flags=0)：在 string 中查找所有匹配 pattern 的部分，返回迭代器
 - re.split(pattern, string, maxsplit=0, flags=0)：
@@ -153,7 +152,7 @@ python 的 re 模块提供了正则表达式的相关方法：
 
 ### 4.1 re.Pattern
 用法类似直接使用 re，只是进行了预编译，并且固定了 pattern 和 flags
-
+- re.compile(pattern, flags=0)：编译一个正则表达式，返回一个 re.Pattern
 - Pattern.search(string[, pos[, endpos]])
 - Pattern.match(string[, pos[, endpos]])
 - Pattern.fullmatch(string[, pos[, endpos]])
@@ -188,12 +187,10 @@ re.Match 是 match 和 search 在成功匹配时返回的类型
 |标识符|含义|
 |:--:|:--|
 |re.I|忽略大小写|
-|re.L|本地化识别匹配（不可靠）|
 |re.M|多行匹配，使 ^ 和 $ 匹配每一行的开始和结束，而不仅仅是整个字符串的开始和结束。|
-|re.S|单行匹配，使 . 同样匹配换行符|
-|re.DOTALL|使 . 匹配任何字符，包括换行符|
+|re.S|使 . 匹配任何字符，包括换行符|
 |re.U|使用 unicode，影响 \w\W\b\B|
-|re.X|使用 python 一样的注释，并且有多行 pattern 的优化，使正则更易读|
+|re.X|使用 python 一样的注释，忽略空格和注释，并且有多行 pattern 的优化，可以更清晰地组织复杂的正则表达式|
 
 同时使用多个标识符，用 | 隔开（如 re.I | re.M 表示多行且忽略大小写）
 

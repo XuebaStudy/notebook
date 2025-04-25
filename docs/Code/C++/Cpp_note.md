@@ -425,7 +425,7 @@ int main()
     - **可以访问类定义中的静态成员变量**，但是**不能直接访问普通的**成员变量
     - 需要在函数定义之前加static关键字
 
-### 2.3 Inline Function内联函数
+### 2.3 inline function内联函数
 
 - 需要在函数名前面加关键字`inline` 
   - 内联函数在编译期会被编译器在调用处直接扩展为一个完整的函数，因此可以减少运行时调用函数的cost
@@ -434,7 +434,7 @@ int main()
   - class中的函数都是**默认inline**的
 - an inline function is expanded in place, like a preprocessormacro, so the overhead of the function call is eliminated,不需要函数调用产生的开销，由编译器**直接优化**，但是可能会使得需要编译的代码量增大(虽然写的人是看不出来的)，主要作用是减小函数调用时的开销，一般在函数比较小的时候才会使用
 
-### 2.4 继承Inheritance
+### 2.4 继承 Inheritance
 
 - composition 组合：把其他的类作为自己的成员变量
 

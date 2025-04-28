@@ -123,7 +123,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#windows-powershell" class="md-skip">
+        <a href="#windows-powershell-linux-bash" class="md-skip">
           Skip to content
         </a>
       
@@ -1130,6 +1130,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    提取目录下文件结构与所有文件内容
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1139,6 +1150,52 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      PowerShell 脚本
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bash 脚本
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      运行结果示例
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2838,6 +2895,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      PowerShell 脚本
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bash 脚本
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      运行结果示例
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2854,147 +2946,283 @@
   
 
 
-<div><h1 id="windows-powershell">提取目录下文件结构与所有文件内容 (Windows PowerShell)<a class="headerlink" href="#windows-powershell" title="Permanent link">¶</a></h1>
+<div><h1 id="windows-powershell-linux-bash">提取目录下文件结构与所有文件内容 (Windows PowerShell &amp; Linux Bash)<a class="headerlink" href="#windows-powershell-linux-bash" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">Abstract</p>
 <ul>
 <li>“我现在有一个里面有比较复杂的文件结构的项目，我想要把整个项目的代码发给 GPT 看一下，解决问题，但是这样必须得一点一点的点开各个文件夹，然后上传文件，好麻烦（毕竟目前大多数 GPT 都不支持上传文件夹或压缩包”</li>
-<li>“那我们就把目录下文件结构与所有文件内容提取到一个 .txt 文件中，把这个文件发给 GPT 吧😆”</li>
+<li>“那我们就把<strong>当前目录下</strong>文件结构与所有文件内容提取到一个 .txt 文件中，把这个文件发给 GPT 吧😆”</li>
 </ul>
 </div>
 <div class="admonition info">
 <p class="admonition-title">参数解释</p>
 <ul>
+<li><code>outDir</code>：输出文件目录（可以是绝对路径或相对路径，相对路径是基于脚本运行时的工作目录（$PWD），而非脚本所在目录）</li>
 <li><code>outFileName</code>：输出文件名</li>
 <li><code>fileInclude</code>：需要导出内容的文件类型，务必在使用前检查是否完全涵盖要求    <ol>
-<li>不包含的也会出现在结构图中</li>
+<li>在这当中<strong>不包含</strong>的文件：也会出现在“目录结构”中，但不输出到“文件内容”中</li>
 <li><code>.exe .doc</code>之类不易直接导出可视字符的文件类型不要包含在里面</li>
 </ol>
 </li>
-<li><code>excludeRules</code>：排除的路径，支持相对路径和绝对路径<ol>
+<li><code>excludeRules</code>：排除的路径（支持相对路径和绝对路径）<ol>
+<li>在这当中<strong>包含</strong>的文件：“目录结构”、“文件内容”中都不出现</li>
 <li><code>"$PWD\.vscode"</code> 精准匹配根目录下<code>\.vscode</code>文件夹</li>
 <li><code>".vscode"</code> 匹配所有<code>.vscode</code>文件夹</li>
-<li>（但1、2是否“精准”，暂未全面测试）</li>
 <li><code>"Icon233*.vue"</code> 匹配所有以<code>Icon233</code>开头的<code>.vue</code>文件</li>
 </ol>
 </li>
 </ul>
 </div>
-<div class="admonition note">
-<p class="admonition-title">脚本</p>
+<h2 id="powershell">PowerShell 脚本<a class="headerlink" href="#powershell" title="Permanent link">¶</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">$CodeExport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">{</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nv">$outFileName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ZZZ_CodeExport.txt"</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nv">$outFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">\$outFileName"</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nv">$fileInclude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>@<span class="o">(</span><span class="s2">"*.py"</span>,<span class="w"> </span><span class="s2">"*.vue"</span>,<span class="w"> </span><span class="s2">"*.js"</span>,<span class="w"> </span><span class="s2">"*.html"</span>,<span class="w"> </span><span class="s2">"*.css"</span>,<span class="w"> </span><span class="s2">"*.json"</span>,<span class="w"> </span><span class="s2">"*.txt"</span>,<span class="w"> </span><span class="s2">"*.hpp"</span>,<span class="w"> </span><span class="s2">"*.cpp"</span>,<span class="w"> </span><span class="s2">"*.c"</span>,<span class="w"> </span><span class="s2">"*.h"</span>,<span class="w"> </span><span class="s2">"*.md"</span><span class="o">)</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nv">$excludeRules</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>@<span class="o">(</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="s2">".git"</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="s2">"node_modules"</span>,
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="s2">"__pycache__"</span>,
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="s2">"Icon233*.vue"</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="o">)</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="k">function</span><span class="w"> </span>Test-ExcludePath<span class="w"> </span><span class="o">{</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span>param<span class="o">([</span>string<span class="o">]</span><span class="nv">$Path</span><span class="o">)</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span>foreach<span class="w"> </span><span class="o">(</span><span class="nv">$rule</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$excludeRules</span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="o">(</span><span class="nv">$rule</span>.Contains<span class="o">(</span><span class="s2">"\")) {</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="s2">                if (</span><span class="nv">$Path</span><span class="s2"> -like "</span><span class="nv">$rule</span>*<span class="s2">") { return </span><span class="nv">$true</span><span class="s2"> }</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="s2">            } else {</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="s2">                </span><span class="nv">$dirs</span><span class="s2"> = </span><span class="nv">$Path</span><span class="s2"> -split '[\\/]'</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="s2">                if (</span><span class="nv">$dirs</span><span class="s2"> -contains </span><span class="nv">$rule</span><span class="s2">) { return </span><span class="nv">$true</span><span class="s2"> }</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="s2">            }</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="s2">        }</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="s2">        # 新增文件名匹配逻辑</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="s2">        foreach (</span><span class="nv">$rule</span><span class="s2"> in </span><span class="nv">$excludeRules</span><span class="s2">) {</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="s2">            if (</span><span class="nv">$Path</span><span class="s2"> -like "</span>*<span class="se">\$</span>rule<span class="s2">") { return </span><span class="nv">$true</span><span class="s2"> }</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="s2">        }</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="s2">        return </span><span class="nv">$false</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="s2">    }</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="s2">    "</span><span class="o">====</span><span class="w"> </span><span class="nv">目录结构</span><span class="w"> </span><span class="o">====</span><span class="w"> </span><span class="o">([]</span>代表文件夹<span class="o">)</span><span class="sb">`</span>n<span class="s2">" | Out-File </span><span class="nv">$outFile</span><span class="s2"> -Encoding utf8</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="c1"># &gt;&gt;&gt; 参数设置 &gt;&gt;&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nv">$outDir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"."</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nv">$outFileName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ZZZ_CodeExport.txt"</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nv">$fileInclude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>@<span class="o">(</span><span class="s2">"*.py"</span>,<span class="w"> </span><span class="s2">"*.vue"</span>,<span class="w"> </span><span class="s2">"*.js"</span>,<span class="w"> </span><span class="s2">"*.html"</span>,<span class="w"> </span><span class="s2">"*.css"</span>,<span class="w"> </span><span class="s2">"*.json"</span>,<span class="w"> </span><span class="s2">"*.txt"</span>,<span class="w"> </span><span class="s2">"*.hpp"</span>,<span class="w"> </span><span class="s2">"*.cpp"</span>,<span class="w"> </span><span class="s2">"*.c"</span>,<span class="w"> </span><span class="s2">"*.h"</span>,<span class="w"> </span><span class="s2">"*.md"</span><span class="o">)</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nv">$excludeRules</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>@<span class="o">(</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="s2">".git"</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="s2">"node_modules"</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="s2">"__pycache__"</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="s2">"Icon233*.vue"</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="o">)</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="c1"># &lt;&lt;&lt; 参数设置 &lt;&lt;&lt;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="c1"># 创建输出目录（自动递归创建）</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="nv">$outDir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>System.IO.Path<span class="o">]</span>::GetFullPath<span class="o">((</span>Join-Path<span class="w"> </span><span class="nv">$PWD</span><span class="w"> </span><span class="nv">$outDir</span><span class="o">))</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">(</span>-not<span class="w"> </span><span class="o">(</span>Test-Path<span class="w"> </span><span class="nv">$outDir</span><span class="o">))</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">        </span>New-Item<span class="w"> </span>-ItemType<span class="w"> </span>Directory<span class="w"> </span>-Path<span class="w"> </span><span class="nv">$outDir</span><span class="w"> </span>-Force<span class="w"> </span><span class="p">|</span><span class="w"> </span>Out-Null
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="o">}</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="nv">$outFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>Join-Path<span class="w"> </span><span class="nv">$outDir</span><span class="w"> </span><span class="nv">$outFileName</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span>Write-Host<span class="w"> </span><span class="s2">"输出文件路径：</span><span class="nv">$outFile</span><span class="s2">"</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="k">function</span><span class="w"> </span>Test-ExcludePath<span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">        </span>param<span class="o">([</span>string<span class="o">]</span><span class="nv">$Path</span><span class="o">)</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">        </span>foreach<span class="w"> </span><span class="o">(</span><span class="nv">$rule</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$excludeRules</span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="o">(</span><span class="nv">$rule</span>.Contains<span class="o">(</span><span class="s2">"\")) {</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="s2">                if (</span><span class="nv">$Path</span><span class="s2"> -like "</span><span class="nv">$rule</span>*<span class="s2">") { return </span><span class="nv">$true</span><span class="s2"> }</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="s2">            } else {</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="s2">                </span><span class="nv">$dirs</span><span class="s2"> = </span><span class="nv">$Path</span><span class="s2"> -split '[\\/]'</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="s2">                if (</span><span class="nv">$dirs</span><span class="s2"> -contains </span><span class="nv">$rule</span><span class="s2">) { return </span><span class="nv">$true</span><span class="s2"> }</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="s2">            }</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="s2">        }</span>
 <a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="s2">    function Format-DirectoryTree {</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="s2">        param([string]</span><span class="nv">$path</span><span class="s2">, [string]</span><span class="nv">$indent</span><span class="s2"> = "")</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="s2">        Get-ChildItem -Path </span><span class="nv">$path</span><span class="s2"> | Where-Object { </span>
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="s2">            </span><span class="nv">$_</span><span class="s2">.Name -ne "</span>ZZZ_CodeExport.txt<span class="s2">" -and</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="s2">            -not (Test-ExcludePath -Path </span><span class="nv">$_</span><span class="s2">.FullName)</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="s2">        } | ForEach-Object {</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="s2">            if (</span><span class="nv">$_</span><span class="s2">.PSIsContainer) {</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="s2">                "</span><span class="nv">$indent</span><span class="o">[</span><span class="k">$(</span><span class="nv">$_</span>.Name<span class="k">)</span><span class="o">]</span><span class="s2">" | Out-File </span><span class="nv">$outFile</span><span class="s2"> -Encoding utf8 -Append</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="s2">                Format-DirectoryTree -path </span><span class="nv">$_</span><span class="s2">.FullName -indent (</span><span class="nv">$indent</span><span class="s2"> + "</span><span class="w">   </span><span class="s2">")</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="s2">            } else {</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="s2">                "</span><span class="nv">$indent</span><span class="k">$(</span><span class="nv">$_</span>.Name<span class="k">)</span><span class="s2">" | Out-File </span><span class="nv">$outFile</span><span class="s2"> -Encoding utf8 -Append</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="s2">            }</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="s2">        }</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="s2">    }</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>
-<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="s2">    Format-DirectoryTree -path </span><span class="nv">$PWD</span><span class="s2">.Path</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>
-<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="s2">    "</span><span class="sb">`</span><span class="nv">n</span><span class="o">====</span><span class="w"> </span><span class="nv">文件内容</span><span class="w"> </span><span class="o">====</span><span class="sb">`</span>n<span class="s2">" | Out-File </span><span class="nv">$outFile</span><span class="s2"> -Encoding utf8 -Append</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>
-<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="s2">    Get-ChildItem -Recurse -Include </span><span class="nv">$fileInclude</span><span class="s2"> | Where-Object {</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="s2">        </span><span class="nv">$_</span><span class="s2">.Name -ne "</span>ZZZ_CodeExport.txt<span class="s2">" -and</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="s2">        -not (Test-ExcludePath -Path </span><span class="nv">$_</span><span class="s2">.FullName)</span>
-<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="s2">    } | ForEach-Object {</span>
-<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="s2">        "</span><span class="sb">`</span>n【文件路径】<span class="k">$(</span><span class="nv">$_</span>.FullName<span class="k">)</span><span class="sb">`</span>n<span class="s2">" + [System.IO.File]::ReadAllText(</span><span class="nv">$_</span><span class="s2">.FullName, [System.Text.Encoding]::UTF8) | Out-File </span><span class="nv">$outFile</span><span class="s2"> -Encoding utf8 -Append</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="s2">    }</span>
-<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="s2">}</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="s2">&amp; </span><span class="nv">$CodeExport</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="s2">        # 文件名匹配逻辑</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="s2">        foreach (</span><span class="nv">$rule</span><span class="s2"> in </span><span class="nv">$excludeRules</span><span class="s2">) {</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="s2">            if (</span><span class="nv">$Path</span><span class="s2"> -like "</span>*<span class="se">\$</span>rule<span class="s2">") { return </span><span class="nv">$true</span><span class="s2"> }</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="s2">            # 处理通配符规则</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="s2">            if (</span><span class="nv">$rule</span><span class="s2"> -like "</span>*<span class="sb">`</span>**<span class="s2">") {</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="s2">                </span><span class="nv">$fileName</span><span class="s2"> = [System.IO.Path]::GetFileName(</span><span class="nv">$Path</span><span class="s2">)</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="s2">                if (</span><span class="nv">$fileName</span><span class="s2"> -like </span><span class="nv">$rule</span><span class="s2">) { return </span><span class="nv">$true</span><span class="s2"> }</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="s2">            }</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="s2">        }</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="s2">        return </span><span class="nv">$false</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="s2">    }</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="s2">    # 清空或创建输出文件</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="s2">    "</span><span class="o">====</span><span class="w"> </span><span class="nv">目录结构</span><span class="w"> </span><span class="o">====</span><span class="w"> </span><span class="o">([]</span>代表文件夹<span class="o">)</span><span class="sb">`</span>n<span class="s2">" | Out-File </span><span class="nv">$outFile</span><span class="s2"> -Encoding utf8</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="s2">    function Format-DirectoryTree {</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="s2">        param([string]</span><span class="nv">$path</span><span class="s2">, [string]</span><span class="nv">$indent</span><span class="s2"> = "")</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="s2">        Get-ChildItem -Path </span><span class="nv">$path</span><span class="s2"> | Where-Object { </span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="s2">            </span><span class="nv">$_</span><span class="s2">.Name -ne </span><span class="nv">$outFileName</span><span class="s2"> -and</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="s2">            -not (Test-ExcludePath -Path </span><span class="nv">$_</span><span class="s2">.FullName)</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="s2">        } | ForEach-Object {</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="s2">            if (</span><span class="nv">$_</span><span class="s2">.PSIsContainer) {</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="s2">                "</span><span class="nv">$indent</span><span class="o">[</span><span class="k">$(</span><span class="nv">$_</span>.Name<span class="k">)</span><span class="o">]</span><span class="s2">" | Out-File </span><span class="nv">$outFile</span><span class="s2"> -Encoding utf8 -Append</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="s2">                Format-DirectoryTree -path </span><span class="nv">$_</span><span class="s2">.FullName -indent (</span><span class="nv">$indent</span><span class="s2"> + "</span><span class="w">   </span><span class="s2">")</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="s2">            } else {</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="s2">                "</span><span class="nv">$indent</span><span class="k">$(</span><span class="nv">$_</span>.Name<span class="k">)</span><span class="s2">" | Out-File </span><span class="nv">$outFile</span><span class="s2"> -Encoding utf8 -Append</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a><span class="s2">            }</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="s2">        }</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="s2">    }</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>
+<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a><span class="s2">    Format-DirectoryTree -path </span><span class="nv">$PWD</span><span class="s2">.Path</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>
+<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a><span class="s2">    "</span><span class="sb">`</span><span class="nv">n</span><span class="o">====</span><span class="w"> </span><span class="nv">文件内容</span><span class="w"> </span><span class="o">====</span><span class="sb">`</span>n<span class="s2">" | Out-File </span><span class="nv">$outFile</span><span class="s2"> -Encoding utf8 -Append</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>
+<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a><span class="s2">    Get-ChildItem -Recurse -Include </span><span class="nv">$fileInclude</span><span class="s2"> | Where-Object {</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a><span class="s2">        </span><span class="nv">$_</span><span class="s2">.Name -ne </span><span class="nv">$outFileName</span><span class="s2"> -and</span>
+<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a><span class="s2">        -not (Test-ExcludePath -Path </span><span class="nv">$_</span><span class="s2">.FullName)</span>
+<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a><span class="s2">    } | ForEach-Object {</span>
+<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a><span class="s2">        try {</span>
+<a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a><span class="s2">            </span><span class="nv">$content</span><span class="s2"> = [System.IO.File]::ReadAllText(</span><span class="nv">$_</span><span class="s2">.FullName, [System.Text.Encoding]::UTF8)</span>
+<a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a><span class="s2">            "</span><span class="sb">`</span>n【文件路径】<span class="k">$(</span><span class="nv">$_</span>.FullName<span class="k">)</span><span class="sb">`</span>n<span class="nv">$content</span><span class="s2">" | Out-File </span><span class="nv">$outFile</span><span class="s2"> -Encoding utf8 -Append</span>
+<a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a><span class="s2">        } catch {</span>
+<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a><span class="s2">            Write-Warning "</span>无法读取文件:<span class="w"> </span><span class="k">$(</span><span class="nv">$_</span>.FullName<span class="k">)</span><span class="s2">"</span>
+<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a><span class="s2">        }</span>
+<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a><span class="s2">    }</span>
+<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>
+<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a><span class="s2">    Write-Host "</span>代码导出完成，结果保存在：<span class="nv">$outFile</span><span class="s2">"</span>
+<a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a><span class="s2">}</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a><span class="s2">&amp; </span><span class="nv">$CodeExport</span>
 </code></pre></div>
-</div>
-<div class="admonition note">
+<div class="admonition info">
 <p class="admonition-title">运行方式</p>
 <ol>
-<li>将上述脚本修改后输入 PowerShell 中执行</li>
+<li>将上述脚本修改参数后粘贴到 PowerShell 终端对应路径下执行</li>
 <li>之后如果不修改脚本中的设置，重新生成输出文件可以直接用<code>&amp; $CodeExport</code>命令，覆盖旧文件（但使用新终端时需要重新输入脚本）</li>
 </ol>
 </div>
-<div class="admonition success">
-<p class="admonition-title">运行结果示例</p>
-<div class="language-text highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>==== 目录结构 ==== ([]代表文件夹)
+<h2 id="bash">Bash 脚本<a class="headerlink" href="#bash" title="Permanent link">¶</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>[.vscode]
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>settings.json
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>[test1]
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>[test11]
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    test123.txt
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>test12.txt
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>hello.c
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>==== 文件内容 ====
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>【文件路径】D:\desktop\test\.vscode\settings.json
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>{
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    "files.associations": {
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>        "*.sqlbook": "sql",
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>        "*.ndjson": "jsonl",
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>    }
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>}
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># &gt;&gt;&gt; 参数设置 &gt;&gt;&gt;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nv">outDir</span><span class="o">=</span><span class="s2">"."</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nv">outFileName</span><span class="o">=</span><span class="s2">"ZZZ_CodeExport.txt"</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nv">fileInclude</span><span class="o">=(</span><span class="s2">"*.py"</span><span class="w"> </span><span class="s2">"*.vue"</span><span class="w"> </span><span class="s2">"*.js"</span><span class="w"> </span><span class="s2">"*.html"</span><span class="w"> </span><span class="s2">"*.css"</span><span class="w"> </span><span class="s2">"*.json"</span><span class="w"> </span><span class="s2">"*.txt"</span><span class="w"> </span><span class="s2">"*.hpp"</span><span class="w"> </span><span class="s2">"*.cpp"</span><span class="w"> </span><span class="s2">"*.c"</span><span class="w"> </span><span class="s2">"*.h"</span><span class="w"> </span><span class="s2">"*.md"</span><span class="o">)</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nv">excludeRules</span><span class="o">=(</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="s2">".git"</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="s2">"node_modules"</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="s2">"__pycache__"</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="s2">"Icon233*.vue"</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="o">)</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="c1"># &lt;&lt;&lt; 参数设置 &lt;&lt;&lt;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="c1"># 创建输出目录（自动递归创建）</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$outDir</span><span class="s2">"</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"错误：无法创建目录 </span><span class="nv">$outDir</span><span class="s2">"</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="o">}</span>
 <a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>【文件路径】D:\desktop\test\test1\test11\test123.txt
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>Here is the content of test123.txt.
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>
-<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>2333
-<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>
-<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>【文件路径】D:\desktop\test\test1\test12.txt
-<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>Here is the content of test12.txt
-<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>
-<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>Hello World!
-<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>
-<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>
-<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>【文件路径】D:\desktop\test\hello.c
-<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>#include &lt;stdio.h&gt;
-<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>
-<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>int main() {
-<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>    printf("Hello, World!\n");
-<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>    return 0;
-<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>}
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="c1"># 获取输出文件的绝对路径（避免相对路径问题）</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="nv">outFile</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>realpath<span class="w"> </span><span class="s2">"</span><span class="nv">$outDir</span><span class="s2">"</span><span class="k">)</span><span class="s2">/</span><span class="nv">$outFileName</span><span class="s2">"</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"输出文件路径：</span><span class="nv">$outFile</span><span class="s2">"</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="c1"># 清空或创建输出文件</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"==== 目录结构 ==== ([]代表文件夹)"</span><span class="w"> </span>&gt;<span class="w"> </span><span class="s2">"</span><span class="nv">$outFile</span><span class="s2">"</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="c1"># 生成目录树结构</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="k">function</span><span class="w"> </span>format_directory_tree<span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">path</span><span class="o">=</span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">indent</span><span class="o">=</span><span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span>item<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">"</span><span class="nv">$path</span><span class="s2">"</span>/*<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">        </span><span class="c1"># 跳过输出文件本身</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>basename<span class="w"> </span><span class="s2">"</span><span class="nv">$item</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"</span><span class="nv">$outFileName</span><span class="s2">"</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">            </span><span class="k">continue</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">        </span><span class="k">fi</span>
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="w">        </span><span class="c1"># 检查是否在排除规则中</span>
+<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="w">        </span><span class="nv">exclude</span><span class="o">=</span><span class="nb">false</span>
+<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span>rule<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">excludeRules</span><span class="p">[@]</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$item</span><span class="s2">"</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>*<span class="s2">"/</span><span class="nv">$rule</span><span class="s2">"</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">"</span><span class="nv">$item</span><span class="s2">"</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>*<span class="s2">"/</span><span class="nv">$rule</span><span class="s2">/"</span>*<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>basename<span class="w"> </span><span class="s2">"</span><span class="nv">$item</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"</span><span class="nv">$rule</span><span class="s2">"</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">                </span><span class="nv">exclude</span><span class="o">=</span><span class="nb">true</span>
+<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">                </span><span class="k">break</span>
+<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="w">            </span><span class="k">fi</span>
+<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="w">            </span><span class="c1"># 处理通配符规则</span>
+<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$rule</span><span class="s2">"</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>*<span class="s2">"*"</span>*<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>basename<span class="w"> </span><span class="s2">"</span><span class="nv">$item</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="si">${</span><span class="nv">rule</span><span class="si">}</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a><span class="w">                    </span><span class="nv">exclude</span><span class="o">=</span><span class="nb">true</span>
+<a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a><span class="w">                    </span><span class="k">break</span>
+<a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a><span class="w">                </span><span class="k">fi</span>
+<a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a><span class="w">            </span><span class="k">fi</span>
+<a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a><span class="w">        </span><span class="k">done</span>
+<a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a>
+<a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$exclude</span><span class="s2">"</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">"</span><span class="nv">$item</span><span class="s2">"</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a><span class="w">                </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">indent</span><span class="si">}</span><span class="s2">[</span><span class="k">$(</span>basename<span class="w"> </span><span class="s2">"</span><span class="nv">$item</span><span class="s2">"</span><span class="k">)</span><span class="s2">]"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">"</span><span class="nv">$outFile</span><span class="s2">"</span>
+<a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a><span class="w">                </span>format_directory_tree<span class="w"> </span><span class="s2">"</span><span class="nv">$item</span><span class="s2">"</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">indent</span><span class="si">}</span><span class="s2">   "</span>
+<a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a><span class="w">            </span><span class="k">else</span>
+<a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a><span class="w">                </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">indent</span><span class="si">}</span><span class="k">$(</span>basename<span class="w"> </span><span class="s2">"</span><span class="nv">$item</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">"</span><span class="nv">$outFile</span><span class="s2">"</span>
+<a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a><span class="w">            </span><span class="k">fi</span>
+<a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a><span class="w">        </span><span class="k">fi</span>
+<a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a><span class="w">    </span><span class="k">done</span>
+<a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a><span class="o">}</span>
+<a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a>
+<a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a>format_directory_tree<span class="w"> </span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">"</span><span class="w"> </span><span class="s2">""</span>
+<a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a>
+<a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">"\n==== 文件内容 ====\n"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">"</span><span class="nv">$outFile</span><span class="s2">"</span>
+<a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a>
+<a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a><span class="c1"># 动态生成 find 的 -name 参数</span>
+<a id="__codelineno-1-72" name="__codelineno-1-72" href="#__codelineno-1-72"></a><span class="nv">find_args</span><span class="o">=()</span>
+<a id="__codelineno-1-73" name="__codelineno-1-73" href="#__codelineno-1-73"></a><span class="k">for</span><span class="w"> </span>pattern<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">fileInclude</span><span class="p">[@]</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-1-74" name="__codelineno-1-74" href="#__codelineno-1-74"></a><span class="w">    </span><span class="nv">find_args</span><span class="o">+=(</span><span class="s2">"-o"</span><span class="w"> </span><span class="s2">"-name"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$pattern</span><span class="s2">"</span><span class="o">)</span>
+<a id="__codelineno-1-75" name="__codelineno-1-75" href="#__codelineno-1-75"></a><span class="k">done</span>
+<a id="__codelineno-1-76" name="__codelineno-1-76" href="#__codelineno-1-76"></a><span class="nv">find_args</span><span class="o">=(</span><span class="s2">"</span><span class="si">${</span><span class="nv">find_args</span><span class="p">[@]:</span><span class="nv">1</span><span class="si">}</span><span class="s2">"</span><span class="o">)</span><span class="w">  </span><span class="c1"># 移除第一个多余的 "-o"</span>
+<a id="__codelineno-1-77" name="__codelineno-1-77" href="#__codelineno-1-77"></a>
+<a id="__codelineno-1-78" name="__codelineno-1-78" href="#__codelineno-1-78"></a><span class="c1"># 查找并输出文件内容</span>
+<a id="__codelineno-1-79" name="__codelineno-1-79" href="#__codelineno-1-79"></a>find<span class="w"> </span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">"</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span><span class="se">\(</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">find_args</span><span class="p">[@]</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="se">\)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>file<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-1-80" name="__codelineno-1-80" href="#__codelineno-1-80"></a><span class="w">    </span><span class="c1"># 跳过输出文件本身</span>
+<a id="__codelineno-1-81" name="__codelineno-1-81" href="#__codelineno-1-81"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>basename<span class="w"> </span><span class="s2">"</span><span class="nv">$file</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"</span><span class="nv">$outFileName</span><span class="s2">"</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-1-82" name="__codelineno-1-82" href="#__codelineno-1-82"></a><span class="w">        </span><span class="k">continue</span>
+<a id="__codelineno-1-83" name="__codelineno-1-83" href="#__codelineno-1-83"></a><span class="w">    </span><span class="k">fi</span>
+<a id="__codelineno-1-84" name="__codelineno-1-84" href="#__codelineno-1-84"></a>
+<a id="__codelineno-1-85" name="__codelineno-1-85" href="#__codelineno-1-85"></a><span class="w">    </span><span class="c1"># 检查排除规则</span>
+<a id="__codelineno-1-86" name="__codelineno-1-86" href="#__codelineno-1-86"></a><span class="w">    </span><span class="nv">exclude</span><span class="o">=</span><span class="nb">false</span>
+<a id="__codelineno-1-87" name="__codelineno-1-87" href="#__codelineno-1-87"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span>rule<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">excludeRules</span><span class="p">[@]</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-1-88" name="__codelineno-1-88" href="#__codelineno-1-88"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$file</span><span class="s2">"</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>*<span class="s2">"/</span><span class="nv">$rule</span><span class="s2">"</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">"</span><span class="nv">$file</span><span class="s2">"</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>*<span class="s2">"/</span><span class="nv">$rule</span><span class="s2">/"</span>*<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-1-89" name="__codelineno-1-89" href="#__codelineno-1-89"></a><span class="w">            </span><span class="nv">exclude</span><span class="o">=</span><span class="nb">true</span>
+<a id="__codelineno-1-90" name="__codelineno-1-90" href="#__codelineno-1-90"></a><span class="w">            </span><span class="k">break</span>
+<a id="__codelineno-1-91" name="__codelineno-1-91" href="#__codelineno-1-91"></a><span class="w">        </span><span class="k">fi</span>
+<a id="__codelineno-1-92" name="__codelineno-1-92" href="#__codelineno-1-92"></a><span class="w">        </span><span class="c1"># 处理通配符规则</span>
+<a id="__codelineno-1-93" name="__codelineno-1-93" href="#__codelineno-1-93"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$rule</span><span class="s2">"</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>*<span class="s2">"*"</span>*<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-1-94" name="__codelineno-1-94" href="#__codelineno-1-94"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>basename<span class="w"> </span><span class="s2">"</span><span class="nv">$file</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="si">${</span><span class="nv">rule</span><span class="si">}</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-1-95" name="__codelineno-1-95" href="#__codelineno-1-95"></a><span class="w">                </span><span class="nv">exclude</span><span class="o">=</span><span class="nb">true</span>
+<a id="__codelineno-1-96" name="__codelineno-1-96" href="#__codelineno-1-96"></a><span class="w">                </span><span class="k">break</span>
+<a id="__codelineno-1-97" name="__codelineno-1-97" href="#__codelineno-1-97"></a><span class="w">            </span><span class="k">fi</span>
+<a id="__codelineno-1-98" name="__codelineno-1-98" href="#__codelineno-1-98"></a><span class="w">        </span><span class="k">fi</span>
+<a id="__codelineno-1-99" name="__codelineno-1-99" href="#__codelineno-1-99"></a><span class="w">    </span><span class="k">done</span>
+<a id="__codelineno-1-100" name="__codelineno-1-100" href="#__codelineno-1-100"></a>
+<a id="__codelineno-1-101" name="__codelineno-1-101" href="#__codelineno-1-101"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$exclude</span><span class="s2">"</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-1-102" name="__codelineno-1-102" href="#__codelineno-1-102"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">"\n【文件路径】</span><span class="nv">$file</span><span class="s2">\n"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">"</span><span class="nv">$outFile</span><span class="s2">"</span>
+<a id="__codelineno-1-103" name="__codelineno-1-103" href="#__codelineno-1-103"></a><span class="w">        </span>cat<span class="w"> </span><span class="s2">"</span><span class="nv">$file</span><span class="s2">"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">"</span><span class="nv">$outFile</span><span class="s2">"</span>
+<a id="__codelineno-1-104" name="__codelineno-1-104" href="#__codelineno-1-104"></a><span class="w">    </span><span class="k">fi</span>
+<a id="__codelineno-1-105" name="__codelineno-1-105" href="#__codelineno-1-105"></a><span class="k">done</span>
+<a id="__codelineno-1-106" name="__codelineno-1-106" href="#__codelineno-1-106"></a>
+<a id="__codelineno-1-107" name="__codelineno-1-107" href="#__codelineno-1-107"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"代码导出完成，结果保存在：</span><span class="nv">$outFile</span><span class="s2">"</span>
 </code></pre></div>
-</div></div>
+<div class="admonition info">
+<p class="admonition-title">运行方式</p>
+<ol>
+<li>将上述脚本保存为<code>CodeExport.sh</code>文件  </li>
+<li>在对应终端路径下运行<code>bash CodeExport.sh</code>或<code>bash &lt;Path_to_CodeExport&gt;</code>  </li>
+</ol>
+</div>
+<h2 id="_1">运行结果示例<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<div class="language-text highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>==== 目录结构 ==== ([]代表文件夹)
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>[.vscode]
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>settings.json
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>[test1]
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>[test11]
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    test123.txt
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>test12.txt
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>hello.c
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>==== 文件内容 ====
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>【文件路径】D:\desktop\test\.vscode\settings.json
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>{
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    "files.associations": {
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>        "*.sqlbook": "sql",
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>        "*.ndjson": "jsonl",
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>    }
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>}
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>【文件路径】D:\desktop\test\test1\test11\test123.txt
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>Here is the content of test123.txt.
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>2333
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>【文件路径】D:\desktop\test\test1\test12.txt
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>Here is the content of test12.txt
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>Hello World!
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>【文件路径】D:\desktop\test\hello.c
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>#include &lt;stdio.h&gt;
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a>int main() {
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>    printf("Hello, World!\n");
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>    return 0;
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>}
+</code></pre></div></div>
 
 
 

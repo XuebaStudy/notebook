@@ -3417,7 +3417,9 @@
 <li>或 <code>|</code></li>
 </ul>
 <h2 id="4-python-re">4 Python re 模块<a class="headerlink" href="#4-python-re" title="Permanent link">¶</a></h2>
+<blockquote>
 <p>python 的 re 模块提供了正则表达式的相关方法：</p>
+</blockquote>
 <ul>
 <li>re.match(pattern, string, flags=0)：使用 pattern <strong>从头</strong>匹配 string，flags 为修饰符。<br>匹配失败返回 None，匹配成功返回一个 re.Match</li>
 <li>re.search(pattern, string, flags=0)：使用 pattern 扫描整个 string，返回第一个匹配的 re.Match</li>
@@ -3445,21 +3447,27 @@
 <li>re.escape(pattern)：转义 pattern 中的特殊字符</li>
 </ul>
 <h3 id="41-repattern">4.1 re.Pattern<a class="headerlink" href="#41-repattern" title="Permanent link">¶</a></h3>
-<p>用法类似直接使用 re，只是进行了预编译，并且固定了 pattern 和 flags
-- re.compile(pattern, flags=0)：编译一个正则表达式，返回一个 re.Pattern
-- Pattern.search(string[, pos[, endpos]])
-- Pattern.match(string[, pos[, endpos]])
-- Pattern.fullmatch(string[, pos[, endpos]])
-- Pattern.split(string, maxsplit=0)
-- Pattern.findall(string[, pos[, endpos]])
-- Pattern.finditer(string[, pos[, endpos]])
-- Pattern.sub(repl, string, count=0)
-- Pattern.pattern：正则表达式
-- Pattern.flags：修饰符
-- Pattern.groups：int 值，pattern 中捕获组的个数
-- Pattern.groupindex：一个字典，如果 pattern 中包含 (?P&lt;name&gt;...) 则包含一个从 name 映射到捕获组编号的键值对</p>
+<blockquote>
+<p>用法类似直接使用 re，只是进行了预编译，并且固定了 pattern 和 flags  </p>
+</blockquote>
+<ul>
+<li>re.compile(pattern, flags=0)：编译一个正则表达式，返回一个 re.Pattern</li>
+<li>Pattern.search(string[, pos[, endpos]])</li>
+<li>Pattern.match(string[, pos[, endpos]])</li>
+<li>Pattern.fullmatch(string[, pos[, endpos]])</li>
+<li>Pattern.split(string, maxsplit=0)</li>
+<li>Pattern.findall(string[, pos[, endpos]])</li>
+<li>Pattern.finditer(string[, pos[, endpos]])</li>
+<li>Pattern.sub(repl, string, count=0)</li>
+<li>Pattern.pattern：正则表达式</li>
+<li>Pattern.flags：修饰符</li>
+<li>Pattern.groups：int 值，pattern 中捕获组的个数</li>
+<li>Pattern.groupindex：一个字典，如果 pattern 中包含 (?P&lt;name&gt;...) 则包含一个从 name 映射到捕获组编号的键值对</li>
+</ul>
 <h3 id="42-rematch">4.2 re.Match<a class="headerlink" href="#42-rematch" title="Permanent link">¶</a></h3>
+<blockquote>
 <p>re.Match 是 match 和 search 在成功匹配时返回的类型</p>
+</blockquote>
 <ul>
 <li>Match.group([group])：返回字符串<ul>
 <li>group() 或 group(0) 返回匹配的完整字符串</li>

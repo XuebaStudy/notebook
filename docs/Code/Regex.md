@@ -129,7 +129,7 @@
 - 或 `|`
 
 ## 4 Python re 模块
-python 的 re 模块提供了正则表达式的相关方法：
+> python 的 re 模块提供了正则表达式的相关方法：
 
 - re.match(pattern, string, flags=0)：使用 pattern **从头**匹配 string，flags 为修饰符。<br/>匹配失败返回 None，匹配成功返回一个 re.Match
 - re.search(pattern, string, flags=0)：使用 pattern 扫描整个 string，返回第一个匹配的 re.Match
@@ -151,7 +151,8 @@ python 的 re 模块提供了正则表达式的相关方法：
 - re.escape(pattern)：转义 pattern 中的特殊字符
 
 ### 4.1 re.Pattern
-用法类似直接使用 re，只是进行了预编译，并且固定了 pattern 和 flags
+> 用法类似直接使用 re，只是进行了预编译，并且固定了 pattern 和 flags  
+
 - re.compile(pattern, flags=0)：编译一个正则表达式，返回一个 re.Pattern
 - Pattern.search(string[, pos[, endpos]])
 - Pattern.match(string[, pos[, endpos]])
@@ -166,7 +167,7 @@ python 的 re 模块提供了正则表达式的相关方法：
 - Pattern.groupindex：一个字典，如果 pattern 中包含 (?P<name\>...) 则包含一个从 name 映射到捕获组编号的键值对
 
 ### 4.2 re.Match
-re.Match 是 match 和 search 在成功匹配时返回的类型
+> re.Match 是 match 和 search 在成功匹配时返回的类型
 
 - Match.group([group])：返回字符串
     - group() 或 group(0) 返回匹配的完整字符串

@@ -51,6 +51,7 @@ git branch -r # 列出所有远程分支
 git branch -a # 列出所有远程和本地分支
 git branch -vv # 列出本地每个分支的最新提交信息以及它们所跟踪的远程分支信息（配合 -a 使用可以同时查看远程仓库最新提交信息）
 git branch <branch-name> # 创建一个新分支
+git branch <branch-name> <commit> # 在某一提交处创建一个新分支
 git branch -d <branch-name> # 删除本地分支
 git branch -D <branch-name> # 强制删除本地分支（即使未合并）
 git branch -m <old-name> <new-name> # 重命名本地分支

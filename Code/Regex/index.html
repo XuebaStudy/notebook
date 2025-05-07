@@ -3326,7 +3326,7 @@
 <p>定位符只能单独使用，不能附加限制符指定个数</p>
 <h3 id="15">1.5 分组<a class="headerlink" href="#15" title="Permanent link">¶</a></h3>
 <p>用 () 可以指定匹配一个组，使用 () 可以指定不同选项，每一项间用 | 分隔</p>
-<p>同时 () 也是捕获分组，即括号内匹配的内容会被缓存，如果要避免这种，需要使用 (?:) 非捕获元来进行匹配</p>
+<p>同时 () 也是捕获分组，即括号内匹配的内容会被缓存，如果要避免这种，需要使用 (?:) 非捕获元来进行匹配，如 <code>(?:\w+)</code></p>
 <h4 id="151">1.5.1 反向引用<a class="headerlink" href="#151" title="Permanent link">¶</a></h4>
 <p>被缓存的捕获分组可以直接使用 \n 再次引用，其中 n 是 1 到 2 位的十进制数<br>
 捕获分组的编号从 1 开始，最多 99 个，\1 即表示和第一个圆括号中匹配的结果相同的部分</p>
@@ -3359,6 +3359,7 @@
 </tr>
 </tbody>
 </table>
+<p><strong>其中后行断言有些语言不支持（python re 支持固定长度的）</strong></p>
 <p>和定位符类似，它只匹配位置，不匹配内容，所以叫做零宽（zero-width），这些位置的规则是：</p>
 <ul>
 <li>(?=pattern)：匹配后面可以匹配 pattern 的位置</li>
@@ -3370,7 +3371,6 @@
 <summary>例子</summary>
 <p><img alt="" src="../../assets/images/Code/lookassert.png"></p>
 </details>
-<p>其中后行断言有些语言不支持（python re 支持）</p>
 <h2 id="2">2 修饰符<a class="headerlink" href="#2" title="Permanent link">¶</a></h2>
 <p>修饰符不属于表达式的内容，但是指定了匹配的规则，js 中的正则写法为 /pattern/flags<br>
 其中 flags 就是修饰符</p>

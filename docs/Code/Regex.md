@@ -75,7 +75,7 @@
 ### 1.5 分组
 用 () 可以指定匹配一个组，使用 () 可以指定不同选项，每一项间用 | 分隔
 
-同时 () 也是捕获分组，即括号内匹配的内容会被缓存，如果要避免这种，需要使用 (?:) 非捕获元来进行匹配
+同时 () 也是捕获分组，即括号内匹配的内容会被缓存，如果要避免这种，需要使用 (?:) 非捕获元来进行匹配，如 `(?:\w+)`
 
 #### 1.5.1 反向引用
 被缓存的捕获分组可以直接使用 \n 再次引用，其中 n 是 1 到 2 位的十进制数<br/>
@@ -93,6 +93,8 @@
 |<div style="font-variant-ligatures: none;">(?<=pattern)</div>|零宽正向后行断言<br/>zero-width positive lookbehind assertion|
 |(?<!pattern)|零宽负向后行断言<br/>zero-width negative lookbehind assertion|
 
+**其中后行断言有些语言不支持（python re 支持固定长度的）**
+
 和定位符类似，它只匹配位置，不匹配内容，所以叫做零宽（zero-width），这些位置的规则是：
 
 - (?=pattern)：匹配后面可以匹配 pattern 的位置
@@ -100,10 +102,10 @@
 - <span style="font-variant-ligatures: none;">(?<=pattern)</span>：匹配前面可以匹配 pattern 的位置
 - (?<!pattern)：匹配前面无法匹配 pattern 的位置
 
+
 ???+ example "例子"
     ![](../assets/images/Code/lookassert.png)
 
-其中后行断言有些语言不支持（python re 支持）
 
 ## 2 修饰符
 修饰符不属于表达式的内容，但是指定了匹配的规则，js 中的正则写法为 /pattern/flags<br/>

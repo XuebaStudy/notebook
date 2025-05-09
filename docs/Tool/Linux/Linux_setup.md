@@ -1,7 +1,7 @@
 # Linux 基础配置
 
 !!! abstract
-    当你使用一个新的Linux系统时，你需要进行的一些基础配置。
+    当你使用一个新的Linux系统时，你需要进行的一些基础配置。（本内容由 Ubuntu 22.04 为基础）
 
 ## 1. git
 
@@ -21,7 +21,7 @@ git config --global user.email "<your_email@example.com>"
 git config --global color.ui auto    # 启用颜色输出
 
 ls ~/.ssh    # 查看 ssh 密钥（例如：id_ed25519是私钥文件，id_ed25519.pub是公钥文件，可能有其他类型，如果没有需要自行创建...）
-
+ssh-keygen -t ed25519 -C "<your_email@example.com>" # 生成 ed25519 ssh 密钥
 
 ssh -T git@github.com    # 查看 ssh 公钥是否成功加入了 github.com
 
@@ -181,13 +181,16 @@ fi
     set laststatus=2 " 显示状态栏 (默认值为 1, 无法显示状态栏)
     set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ Ln\ %l,\ Col\ %c/%L%) " 设置在状态行显示的信息
 
+    set encoding=utf-8  " 设定打开文件的编码为utf-8
+    set fileencoding=utf-8  " 设定保存文件的编码为utf-8
+
     set foldenable " 开始折叠
     set foldmethod=syntax " 设置语法折叠
     set foldcolumn=0 " 设置折叠区域的宽度
     setlocal foldlevel=1 " 设置折叠层数为 1
     nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR> " 用空格键来开关折叠 (Normal Mode下)
 
-    inoremap jj <Esc> "输入 jj 时, 自动将其解释为按下 Esc , 即进入普通模式 (Insert Mode)
+    inoremap jj <Esc> "输入 jj 时, 自动将其解释为按下 Esc , 即进入Normal Mode (Insert Mode下)
     ```
   
 - 插件安装可以参考[ vim-plug 官方文档](https://github.com/junegunn/vim-plug)

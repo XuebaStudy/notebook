@@ -1,6 +1,6 @@
 ## 1.一些常用的命令行工具(记不住就man): 
 
-- 文件管理 - cd, pwd, mkdir, rmdir, ls, cp, rm, mv, tar
+- 文件管理 - cd, pwd, mkdir, rmdir, ls, cp, rm, mv, tar, du
 - 文件检索 - cat, more, less, head, tail, file, find
 - 输入输出控制 - 重定向, 管道, tee, xargs
 - 文本处理 - vim, grep, awk, sed, sort, wc, uniq, cut, tr
@@ -15,6 +15,7 @@
 |`ps aux --sort=-%mem | head -n 6`|列出当前目录下占用内存最大的前5个进程|
 |`sudo systemctl stop mysql`|停止 mysql 服务|
 |`ps aux | grep mysqld`|查看mysql服务是否启动|
+|`du -h .`|查看当前目录下所有文件占用内存大小 (加上`-s`表示非递归)|
 
 - markdown表格中可用`&#124;`代替`|`，或者把`|`置于<code>&#96;&#96;</code>内防止影响表格结构
 - <code>&#96; &#96;</code> 效果同`<code> </code>`; <code>&#96;</code> == `&#96`

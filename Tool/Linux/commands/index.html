@@ -2944,7 +2944,7 @@
 
 <div><h2 id="1man">1.一些常用的命令行工具(记不住就man):<a class="headerlink" href="#1man" title="Permanent link">¶</a></h2>
 <ul>
-<li>文件管理 - cd, pwd, mkdir, rmdir, ls, cp, rm, mv, tar</li>
+<li>文件管理 - cd, pwd, mkdir, rmdir, ls, cp, rm, mv, tar, du</li>
 <li>文件检索 - cat, more, less, head, tail, file, find</li>
 <li>输入输出控制 - 重定向, 管道, tee, xargs</li>
 <li>文本处理 - vim, grep, awk, sed, sort, wc, uniq, cut, tr</li>
@@ -2979,6 +2979,10 @@
 <tr>
 <td><code>ps aux | grep mysqld</code></td>
 <td>查看mysql服务是否启动</td>
+</tr>
+<tr>
+<td><code>du -h .</code></td>
+<td>查看当前目录下所有文件占用内存大小 (加上<code>-s</code>表示非递归)</td>
 </tr>
 </tbody>
 </table>

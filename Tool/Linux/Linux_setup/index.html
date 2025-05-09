@@ -2967,7 +2967,7 @@
 <div><h1 id="linux">Linux 基础配置<a class="headerlink" href="#linux" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">Abstract</p>
-<p>当你使用一个新的Linux系统时，你需要进行的一些基础配置。</p>
+<p>当你使用一个新的Linux系统时，你需要进行的一些基础配置。（本内容由 Ubuntu 22.04 为基础）</p>
 </div>
 <h2 id="1-git">1. git<a class="headerlink" href="#1-git" title="Permanent link">¶</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>--version<span class="w">    </span><span class="c1"># 查看 git 版本</span>
@@ -2985,7 +2985,7 @@
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>color.ui<span class="w"> </span>auto<span class="w">    </span><span class="c1"># 启用颜色输出</span>
 <a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
 <a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>ls<span class="w"> </span>~/.ssh<span class="w">    </span><span class="c1"># 查看 ssh 密钥（例如：id_ed25519是私钥文件，id_ed25519.pub是公钥文件，可能有其他类型，如果没有需要自行创建...）</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">"&lt;your_email@example.com&gt;"</span><span class="w"> </span><span class="c1"># 生成 ed25519 ssh 密钥</span>
 <a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
 <a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>ssh<span class="w"> </span>-T<span class="w"> </span>git@github.com<span class="w">    </span><span class="c1"># 查看 ssh 公钥是否成功加入了 github.com</span>
 </code></pre></div>
@@ -3120,13 +3120,16 @@
 <a id="__codelineno-8-36" name="__codelineno-8-36" href="#__codelineno-8-36"></a><span class="k">set</span> <span class="nb">laststatus</span><span class="p">=</span><span class="m">2</span> <span class="c">" 显示状态栏 (默认值为 1, 无法显示状态栏)</span>
 <a id="__codelineno-8-37" name="__codelineno-8-37" href="#__codelineno-8-37"></a><span class="k">set</span> <span class="nb">statusline</span><span class="p">=</span>\ %<span class="p">&lt;</span>%F[%<span class="m">1</span>*%M%*%<span class="k">n</span>%R%H]%<span class="p">=</span>\ %<span class="k">y</span>\ %<span class="m">0</span><span class="p">(</span>%{&amp;<span class="nb">fileformat</span>}\ %{&amp;<span class="nb">encoding</span>}\ Ln\ %<span class="k">l</span><span class="p">,</span>\ Col\ %<span class="k">c</span>/%L%<span class="p">)</span> <span class="c">" 设置在状态行显示的信息</span>
 <a id="__codelineno-8-38" name="__codelineno-8-38" href="#__codelineno-8-38"></a>
-<a id="__codelineno-8-39" name="__codelineno-8-39" href="#__codelineno-8-39"></a><span class="k">set</span> <span class="nb">foldenable</span> <span class="c">" 开始折叠</span>
-<a id="__codelineno-8-40" name="__codelineno-8-40" href="#__codelineno-8-40"></a><span class="k">set</span> <span class="nb">foldmethod</span><span class="p">=</span><span class="nb">syntax</span> <span class="c">" 设置语法折叠</span>
-<a id="__codelineno-8-41" name="__codelineno-8-41" href="#__codelineno-8-41"></a><span class="k">set</span> <span class="nb">foldcolumn</span><span class="p">=</span><span class="m">0</span> <span class="c">" 设置折叠区域的宽度</span>
-<a id="__codelineno-8-42" name="__codelineno-8-42" href="#__codelineno-8-42"></a><span class="k">setlocal</span> <span class="nb">foldlevel</span><span class="p">=</span><span class="m">1</span> <span class="c">" 设置折叠层数为 1</span>
-<a id="__codelineno-8-43" name="__codelineno-8-43" href="#__codelineno-8-43"></a><span class="nb">nnoremap</span> <span class="p">&lt;</span>space<span class="p">&gt;</span> @<span class="p">=((</span>foldclosed<span class="p">(</span>line<span class="p">(</span><span class="s1">'.'</span><span class="p">))</span> <span class="p">&lt;</span> <span class="m">0</span><span class="p">)</span> ? <span class="s1">'zc'</span> : <span class="s1">'zo'</span><span class="p">)&lt;</span>CR<span class="p">&gt;</span> <span class="c">" 用空格键来开关折叠 (Normal Mode下)</span>
-<a id="__codelineno-8-44" name="__codelineno-8-44" href="#__codelineno-8-44"></a>
-<a id="__codelineno-8-45" name="__codelineno-8-45" href="#__codelineno-8-45"></a><span class="nb">inoremap</span> jj <span class="p">&lt;</span>Esc<span class="p">&gt;</span> <span class="c">"输入 jj 时, 自动将其解释为按下 Esc , 即进入普通模式 (Insert Mode)</span>
+<a id="__codelineno-8-39" name="__codelineno-8-39" href="#__codelineno-8-39"></a><span class="k">set</span> <span class="nb">encoding</span><span class="p">=</span>utf<span class="m">-8</span>  <span class="c">" 设定打开文件的编码为utf-8</span>
+<a id="__codelineno-8-40" name="__codelineno-8-40" href="#__codelineno-8-40"></a><span class="k">set</span> <span class="nb">fileencoding</span><span class="p">=</span>utf<span class="m">-8</span>  <span class="c">" 设定保存文件的编码为utf-8</span>
+<a id="__codelineno-8-41" name="__codelineno-8-41" href="#__codelineno-8-41"></a>
+<a id="__codelineno-8-42" name="__codelineno-8-42" href="#__codelineno-8-42"></a><span class="k">set</span> <span class="nb">foldenable</span> <span class="c">" 开始折叠</span>
+<a id="__codelineno-8-43" name="__codelineno-8-43" href="#__codelineno-8-43"></a><span class="k">set</span> <span class="nb">foldmethod</span><span class="p">=</span><span class="nb">syntax</span> <span class="c">" 设置语法折叠</span>
+<a id="__codelineno-8-44" name="__codelineno-8-44" href="#__codelineno-8-44"></a><span class="k">set</span> <span class="nb">foldcolumn</span><span class="p">=</span><span class="m">0</span> <span class="c">" 设置折叠区域的宽度</span>
+<a id="__codelineno-8-45" name="__codelineno-8-45" href="#__codelineno-8-45"></a><span class="k">setlocal</span> <span class="nb">foldlevel</span><span class="p">=</span><span class="m">1</span> <span class="c">" 设置折叠层数为 1</span>
+<a id="__codelineno-8-46" name="__codelineno-8-46" href="#__codelineno-8-46"></a><span class="nb">nnoremap</span> <span class="p">&lt;</span>space<span class="p">&gt;</span> @<span class="p">=((</span>foldclosed<span class="p">(</span>line<span class="p">(</span><span class="s1">'.'</span><span class="p">))</span> <span class="p">&lt;</span> <span class="m">0</span><span class="p">)</span> ? <span class="s1">'zc'</span> : <span class="s1">'zo'</span><span class="p">)&lt;</span>CR<span class="p">&gt;</span> <span class="c">" 用空格键来开关折叠 (Normal Mode下)</span>
+<a id="__codelineno-8-47" name="__codelineno-8-47" href="#__codelineno-8-47"></a>
+<a id="__codelineno-8-48" name="__codelineno-8-48" href="#__codelineno-8-48"></a><span class="nb">inoremap</span> jj <span class="p">&lt;</span>Esc<span class="p">&gt;</span> <span class="c">"输入 jj 时, 自动将其解释为按下 Esc , 即进入Normal Mode (Insert Mode下)</span>
 </code></pre></div>
 </details>
 <ul>

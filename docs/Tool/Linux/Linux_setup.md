@@ -2,6 +2,8 @@
 
 !!! abstract
     当你使用一个新的Linux系统时，你需要进行的一些基础配置。（本内容由 Ubuntu 22.04 为基础）
+    - 同步设置：`.bashrc`, `.bash_custom`, `.viminfo`, `.condarc`, `git设置`
+    - 完全克隆（加上）：`.ssh`
 
 ## 1. git
 

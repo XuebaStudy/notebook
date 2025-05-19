@@ -96,6 +96,11 @@ git diff <commit1>..<commit2> # 查看两次提交之间的积累差异（顺序
 git diff <branch1>..<branch2> # 查看两个分支之间目前的差异
 # ".." 可简化为空格
 
+# 查看某一提交的代码
+git checkout <commit> # 查看某一提交的代码（进入“分离头指针”状态）
+git checkout <branch-name> # 切换到某一分支（从“分离头指针”状态恢复到最新提交的代码，比如 main 分支）
+
+
 # 撤销操作
 git restore . # 撤销工作区所有未暂存的修改
 git reset <file> # 从暂存区撤销指定文件的修改（保留工作区的修改）

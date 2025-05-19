@@ -2867,7 +2867,7 @@
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>&lt;new_env_name&gt;<span class="w"> </span>--clone<span class="w"> </span>&lt;old_env_name&gt;<span class="w"> </span>
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="c1"># 删除（务必先退出相关环境）（“重命名 = 复制 + 删除”）</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>conda<span class="w"> </span>remove<span class="w"> </span>--name<span class="w"> </span>&lt;nv_name&gt;<span class="w"> </span>--all
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>conda<span class="w"> </span>remove<span class="w"> </span>--name<span class="w"> </span>&lt;env_name&gt;<span class="w"> </span>--all
 <a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
 <a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="c1"># 删除环境中的某个包</span>
 <a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>conda<span class="w"> </span>remove<span class="w"> </span>--name<span class="w"> </span>&lt;env_name&gt;<span class="w">  </span>&lt;package&gt;
@@ -2880,8 +2880,8 @@
 <a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
 <a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="c1"># 分享</span>
 <a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>conda<span class="w"> </span>env<span class="w"> </span><span class="nb">export</span><span class="w"> </span>&gt;<span class="w"> </span>environment.yml<span class="w">  </span><span class="c1"># 当前工作目录下生成一个environment.yml</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml<span class="w"> </span><span class="c1"># 拿到environment.yml文件后，将该文件放在工作目录下，可以通过以下命令从该文件创建环境</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>&lt;env_name&gt;<span class="w"> </span>-f<span class="w"> </span>environment.yml<span class="w"> </span><span class="c1"># 拿到environment.yml文件后，将该文件放在工作目录下，可以通过以下命令从该文件创建环境</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="c1"># 如果你的环境中有 pip 安装的包，这个方法可能会无效...(TODO)</span>
 <a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
 <a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="c1"># 列举包</span>
 <a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>conda<span class="w"> </span>list

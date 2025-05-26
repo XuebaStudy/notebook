@@ -65,7 +65,7 @@ custom_channels:
 
 remote_read_timeout_secs: 1500.0
 remote_connect_timeout_secs: 20.0
-auto_activate_base: false
+auto_activate_base: true
 
 
 ```

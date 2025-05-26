@@ -56,11 +56,19 @@ git branch -d <branch-name> # 删除本地分支
 git branch -D <branch-name> # 强制删除本地分支（即使未合并）
 git branch -m <old-name> <new-name> # 重命名本地分支
 
-# 切换分支
+# 切换分支 & 分离头指针
 git switch <branch-name> # 切换到指定分支
 git switch -c <branch-name> # 创建并切换到新分支
 git switch --track origin/<branch-name> # 创建并切换到远程分支的本地跟踪分支（本地名为：origin/branch-name）
-git switch <commit> # 切换到指定提交（进入“分离头指针”状态）
+
+git switch <commit> --detach # 切换到指定提交（进入“分离头指针”状态）
+git switch <branch-name> # 切换到某一分支（从“分离头指针”状态恢复到最新提交的代码，比如 main 分支）
+git switch - # 切换回上一个分支
+
+# 以下3个命令等价于上面的3个命令
+git checkout <commit>
+git checkout <branch-name>
+git checkout -
 
 # 合并分支
 git merge <branch-name> # 将指定分支合并到当前分支
@@ -77,6 +85,7 @@ git pull --rebase # 使用 rebase 拉取更新
 git push origin <branch-name> # 推送本地分支到远程仓库
 git push -u origin <branch-name> # 推送并设置上游分支
 git push --set-upstream origin <branch-name> # 推送并设置上游分支（命令全称）
+git push origin --delete <branch-name> # 删除远程分支（与删除本地分支互不影响）
 git push --force # 强制推送（谨慎使用）
 git push --force-with-lease # 安全的强制推送
 
@@ -96,13 +105,14 @@ git diff <commit1>..<commit2> # 查看两次提交之间的积累差异（顺序
 git diff <branch1>..<branch2> # 查看两个分支之间目前的差异
 # ".." 可简化为空格
 
-# 查看某一提交的代码
-git checkout <commit> # 查看某一提交的代码（进入“分离头指针”状态）
-git checkout <branch-name> # 切换到某一分支（从“分离头指针”状态恢复到最新提交的代码，比如 main 分支）
-
 
 # 撤销操作
-git restore . # 撤销工作区所有未暂存的修改
+git restore . # 撤销工作区所有未暂存的修改（有文件增减时：
+# 1. 新增文件：如果你在工作区中添加了新的文件，这些文件默认是未被 Git 跟踪的。
+# git restore . 不会处理这些新增的文件，因为 Git 默认不会对未跟踪的文件进行操作。
+# 2. 删除文件：如果你从工作区中删除了文件，但没有将这些删除操作暂存到暂存区，git restore . 也不会恢复这些文件。
+# 因为 Git 认为这些文件已经被删除，不会从暂存区恢复它们。
+# 可以单独指定文件来恢复：git restore <file>
 git reset <file> # 从暂存区撤销指定文件的修改（保留工作区的修改）
 git reset --soft <commit> # 回退到指定提交，保留暂存区和工作区的修改
 git reset --mixed <commit> # 回退到指定提交，保留工作区的修改（默认行为）

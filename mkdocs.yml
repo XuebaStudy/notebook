@@ -52,7 +52,8 @@ nav:
       - Others: Tool/mkdocs/others.md
     - Linux:
       - Terminal: Tool/Linux/commands.md
-      - 基本配置: Tool/Linux/Linux_setup.md
+      - Server: Tool/Linux/server.md
+      - Config: Tool/Linux/Linux_setup.md
       - Vim: 
         - Plug: Tool/Linux/Vim/plug.md
         - Tip: Tool/Linux/Vim/tips.md

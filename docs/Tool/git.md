@@ -11,6 +11,7 @@ git init # 初始化一个空的 Git 仓库
 
 # 克隆仓库
 git clone [url] # 克隆远程仓库到本地
+git clone [url] <folder-name> # 克隆远程仓库到本地（指定本地文件夹名称）
 git clone [url] --depth 1 # 浅克隆，只获取最近一次提交的历史记录
 git clone [url] --branch <branch-name> # 克隆指定分支
 

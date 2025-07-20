@@ -89,6 +89,39 @@
         └── Videos
         ```
     ??? warning "Windows下使用方式不同"
-        可参考: https://blog.csdn.net/abments/article/details/142247510
+        - Windows 自带的`tree`命令功能非常少，甚至不支持层数限制，建议使用以下 PowerShell 脚本替代：
+
+        ```powershell
+        function Get-DirectoryTree {
+            param (
+                [string]$Path,
+                [int]$Depth = 0,
+                [int]$MaxDepth = 2,
+                [string]$Indent = ""
+            )
+
+            if ($Depth -ge $MaxDepth) { return }
+
+            $items = Get-ChildItem -Path $Path
+            $lastItemIndex = $items.Count - 1
+
+            foreach ($item in $items) {
+                $isLastItem = $item -eq $items[$lastItemIndex]
+                if ($item.PSIsContainer) {
+                    $connector = if ($isLastItem) { "└── " } else { "├── " }
+                    Write-Host "$Indent$connector$($item.Name)"
+                    $newIndent = if ($isLastItem) { "$Indent    " } else { "$Indent│   " }
+                    Get-DirectoryTree -Path $item.FullName -Depth ($Depth + 1) -MaxDepth $MaxDepth -Indent $newIndent
+                } else {
+                    $connector = if ($isLastItem) { "└── " } else { "├── " }
+                    Write-Host "$Indent$connector$($item.Name)"
+                }
+            }
+        }
+
+        # 调用函数，指定路径和最大深度，注意修改 D:\xxx\xxx 为实际路径
+        Get-DirectoryTree -Path "D:\xxx\xxx" -MaxDepth 2
+
+        ```
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

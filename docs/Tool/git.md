@@ -93,6 +93,7 @@ git push --force-with-lease # 安全的强制推送
 # 查看远程仓库信息（<remote-name> 为远程仓库的本地别名，常用 origin）
 git remote -v # 查看远程仓库的 URL 和别名
 git remote add <remote-name> <url> # 添加远程仓库
+git remote set-url <remote-name> <new-url> # 修改远程仓库的 URL
 git remote remove <remote-name> # 删除远程仓库
 git remote rename <old-name> <new-name> # 重命名远程仓库的本地别名
 git remote update # 更新远程仓库的引用信息

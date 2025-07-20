@@ -3102,7 +3102,39 @@
 </details>
 <details class="warning">
 <summary>Windows下使用方式不同</summary>
-<p>可参考: <a href="https://blog.csdn.net/abments/article/details/142247510">https://blog.csdn.net/abments/article/details/142247510</a></p>
+<ul>
+<li>Windows 自带的<code>tree</code>命令功能非常少，甚至不支持层数限制，建议使用以下 PowerShell 脚本替代：</li>
+</ul>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">function</span> <span class="nb">Get-DirectoryTree</span> <span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="k">param</span> <span class="p">(</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        <span class="no">[string]</span><span class="nv">$Path</span><span class="p">,</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        <span class="no">[int]</span><span class="nv">$Depth</span> <span class="p">=</span> <span class="n">0</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        <span class="no">[int]</span><span class="nv">$MaxDepth</span> <span class="p">=</span> <span class="n">2</span><span class="p">,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        <span class="no">[string]</span><span class="nv">$Indent</span> <span class="p">=</span> <span class="s2">""</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="p">)</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$Depth</span> <span class="o">-ge</span> <span class="nv">$MaxDepth</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="nv">$items</span> <span class="p">=</span> <span class="nb">Get-ChildItem</span> <span class="n">-Path</span> <span class="nv">$Path</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="nv">$lastItemIndex</span> <span class="p">=</span> <span class="nv">$items</span><span class="p">.</span><span class="n">Count</span> <span class="p">-</span> <span class="n">1</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$item</span> <span class="k">in</span> <span class="nv">$items</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>        <span class="nv">$isLastItem</span> <span class="p">=</span> <span class="nv">$item</span> <span class="o">-eq</span> <span class="nv">$items</span><span class="p">[</span><span class="nv">$lastItemIndex</span><span class="p">]</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>        <span class="k">if</span> <span class="p">(</span><span class="nv">$item</span><span class="p">.</span><span class="n">PSIsContainer</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>            <span class="nv">$connector</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$isLastItem</span><span class="p">)</span> <span class="p">{</span> <span class="s2">"└── "</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="s2">"├── "</span> <span class="p">}</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>            <span class="nb">Write-Host</span> <span class="s2">"$Indent$connector</span><span class="p">$(</span><span class="nv">$item</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span><span class="s2">"</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>            <span class="nv">$newIndent</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$isLastItem</span><span class="p">)</span> <span class="p">{</span> <span class="s2">"$Indent    "</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="s2">"$Indent│   "</span> <span class="p">}</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>            <span class="nb">Get-DirectoryTree</span> <span class="n">-Path</span> <span class="nv">$item</span><span class="p">.</span><span class="n">FullName</span> <span class="n">-Depth</span> <span class="p">(</span><span class="nv">$Depth</span> <span class="p">+</span> <span class="n">1</span><span class="p">)</span> <span class="n">-MaxDepth</span> <span class="nv">$MaxDepth</span> <span class="n">-Indent</span> <span class="nv">$newIndent</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>            <span class="nv">$connector</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$isLastItem</span><span class="p">)</span> <span class="p">{</span> <span class="s2">"└── "</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="s2">"├── "</span> <span class="p">}</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>            <span class="nb">Write-Host</span> <span class="s2">"$Indent$connector</span><span class="p">$(</span><span class="nv">$item</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span><span class="s2">"</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>        <span class="p">}</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>    <span class="p">}</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="p">}</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="c"># 调用函数，指定路径和最大深度，注意修改 D:\xxx\xxx 为实际路径</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="nb">Get-DirectoryTree</span> <span class="n">-Path</span> <span class="s2">"D:\xxx\xxx"</span> <span class="n">-MaxDepth</span> <span class="n">2</span>
+</code></pre></div>
 </details>
 </details>
 <p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p></div>

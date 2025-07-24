@@ -80,15 +80,16 @@ auto_activate_base: true
 vim ~/.bash_custom    # 创建个性化设置文件（可通用）
 vim ~/.bashrc
 source ~/.bashrc
-# 这样就可以用 'act base' 命令代替 'conda activate base' 了（其他可自行添加）
+
 ```
 
 ```bash
 # .bash_custom 文件
-
 # >>> conda >>>
+
 alias act='conda activate'
 alias deact='conda deactivate'
+# 这样就可以用 'act base' 命令代替 'conda activate base' 了（其他可自行添加）
 
 # <<< conda <<<
 

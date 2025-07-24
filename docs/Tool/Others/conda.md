@@ -26,6 +26,7 @@ conda deactivate
 
 # 分享
 conda env export > environment.yml  # 当前工作目录下生成一个environment.yml
+conda env export -n <env_name> > <PATH>/<env_name>.yml # 导出指定环境的包列表到指定路径
 conda env create -n <env_name> -f environment.yml # 拿到environment.yml文件后，将该文件放在工作目录下，可以通过以下命令从该文件创建环境
 # 如果你的环境中有 pip 安装的包，这个方法可能会无效...(TODO)
 

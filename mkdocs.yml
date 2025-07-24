@@ -154,13 +154,7 @@ plugins:
   - search
   - mkdocs-video
   - mkdocs-pdf
-  # - add-number:
-  #     strict_mode: False
-  #     order: 1
-  #     excludes: 
-  #     includes:
-  #       - Code\Regex.md
-
+  
 markdown_extensions:
   - admonition # 警告语法
   - def_list

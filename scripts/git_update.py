@@ -2,8 +2,8 @@ import os
 
 kind = 'Date'
 
-year_month = ' 2025.7.'
-date = '24'
+year_month = ' 2025.8.'
+date = '21'
 message = ' '
 
 

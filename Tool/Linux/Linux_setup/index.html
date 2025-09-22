@@ -3321,7 +3321,7 @@
 <a id="__codelineno-8-45" name="__codelineno-8-45" href="#__codelineno-8-45"></a><span class="k">setlocal</span> <span class="nb">foldlevel</span><span class="p">=</span><span class="m">1</span> <span class="c">" 设置折叠层数为 1</span>
 <a id="__codelineno-8-46" name="__codelineno-8-46" href="#__codelineno-8-46"></a><span class="nb">nnoremap</span> <span class="p">&lt;</span>space<span class="p">&gt;</span> @<span class="p">=((</span>foldclosed<span class="p">(</span>line<span class="p">(</span><span class="s1">'.'</span><span class="p">))</span> <span class="p">&lt;</span> <span class="m">0</span><span class="p">)</span> ? <span class="s1">'zc'</span> : <span class="s1">'zo'</span><span class="p">)&lt;</span>CR<span class="p">&gt;</span> <span class="c">" 用空格键来开关折叠 (Normal Mode下)</span>
 <a id="__codelineno-8-47" name="__codelineno-8-47" href="#__codelineno-8-47"></a>
-<a id="__codelineno-8-48" name="__codelineno-8-48" href="#__codelineno-8-48"></a><span class="nb">inoremap</span> jj <span class="p">&lt;</span>Esc<span class="p">&gt;</span> <span class="c">"输入 jj 时, 自动将其解释为按下 Esc , 即进入Normal Mode (Insert Mode下)</span>
+<a id="__codelineno-8-48" name="__codelineno-8-48" href="#__codelineno-8-48"></a><span class="nb">inoremap</span> jj <span class="p">&lt;</span>Esc<span class="p">&gt;</span><span class="k">h</span>  <span class="c">" 输入 jj 时, 自动将其解释为按下 Esc , 即进入Normal Mode (Insert Mode下) , h 是为了防止光标跳到下一行行首</span>
 </code></pre></div>
 </details>
 <ul>

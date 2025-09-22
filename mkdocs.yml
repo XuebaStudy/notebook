@@ -59,10 +59,10 @@ nav:
         - Tip: Tool/Linux/Vim/tips.md
       - Others: Tool/Linux/others.md
     - Git: Tool/git.md
+    - Conda: Tool/conda.md
     - Adobe:
       - PS shortcuts: Tool/Adobe/PS_shortcut.md
     - Others: 
-      - Conda: Tool/Others/conda.md
       - Terminal:如何使"命令"显示在"路径"下一行: Tool/Others/terminal_1.md
 
   - Diary: 

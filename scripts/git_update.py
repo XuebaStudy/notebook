@@ -2,12 +2,12 @@ import os
 
 kind = 'Date'
 
-year_month = ' 2025.9.'
+year_month = '2025.9.'
 date = '22'
 message = ' '
 
 
-name = kind + year_month + date + message
+name = kind + ' ' + year_month + date + ' ' + message
 
 os.system('git add .')
 com =''.join(['git commit -m "',name,'"'])

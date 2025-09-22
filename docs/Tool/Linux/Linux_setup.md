@@ -193,7 +193,7 @@ fi
     setlocal foldlevel=1 " 设置折叠层数为 1
     nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR> " 用空格键来开关折叠 (Normal Mode下)
 
-    inoremap jj <Esc> "输入 jj 时, 自动将其解释为按下 Esc , 即进入Normal Mode (Insert Mode下)
+    inoremap jj <Esc>h  " 输入 jj 时, 自动将其解释为按下 Esc , 即进入Normal Mode (Insert Mode下) , h 是为了防止光标跳到下一行行首
     ```
   
 - 插件安装可以参考[ vim-plug 官方文档](https://github.com/junegunn/vim-plug)

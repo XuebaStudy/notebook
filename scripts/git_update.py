@@ -2,9 +2,9 @@ import os
 
 kind = 'Date'
 
-year_month = '2025.10.'
-date = '6'
-message = ' '
+year_month = '2026.1.'
+date = '24'
+message = ''
 
 
 name = kind + ' ' + year_month + date + ' ' + message

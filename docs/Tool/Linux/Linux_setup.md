@@ -3,11 +3,11 @@
 !!! abstract
     当你使用一个新的Linux系统时，你需要进行的一些基础配置。（本内容由 Ubuntu 22.04 为基础）
 
-    - 同步设置：`.bashrc`, `.bash_custom`, `.viminfo`, `.condarc`, `git设置`
+    - 同步设置：`.bashrc`, `.bash_custom`, `.vimrc`, `.condarc`, `git设置`
     
     - 完全克隆（加上）：`.ssh`
 
-## 1. git
+## git
 
 ```bash
 git --version    # 查看 git 版本
@@ -33,7 +33,7 @@ ssh -T git@github.com    # 查看 ssh 公钥是否成功加入了 github.com
 
 
 
-## 2. Miniconda
+## Miniconda
 
 ```bash
 
@@ -74,7 +74,7 @@ auto_activate_base: true
 
 
 
-## 3. Bash 个性化设置
+## Bash 个性化设置
 
 - 添加自定义命令（别名）
 
@@ -109,39 +109,39 @@ fi
 
 # ...
 ```
-- bash 与 zsh 环境共享（同时设为使用zsh）
-```bash
-# .bashrc 文件末尾
+??? note "bash 与 zsh 环境共享（同时设为使用zsh）"
+    ```bash
+    # .bashrc 文件末尾
 
-# ...
+    # ...
 
-if [[ $__USE_ZSH -eq 1 ]]; then
-    echo "ENTER ZSH!"
-    exec zsh
-fi
+    if [[ $__USE_ZSH -eq 1 ]]; then
+        echo "ENTER ZSH!"
+        exec zsh
+    fi
 
-```
-```bash
-# .zshrc 文件开头
+    ```
+    ```bash
+    # .zshrc 文件开头
 
-if [[ -v __USE_ZSH ]]; then
-  unset __USE_ZSH
-else
-  echo "ENTER BASH!"
-  export __USE_ZSH=1
-  exec bash
-fi
+    if [[ -v __USE_ZSH ]]; then
+      unset __USE_ZSH
+    else
+      echo "ENTER BASH!"
+      export __USE_ZSH=1
+      exec bash
+    fi
 
-# ...
+    # ...
 
-# 这样设置后，在进入终端时会先输出:
-# ENTER BASH!
-# ENTER ZSH!
-# 再显示zsh终端，此时既有bash又有zsh环境
-```
+    # 这样设置后，在进入终端时会先输出:
+    # ENTER BASH!
+    # ENTER ZSH!
+    # 再显示zsh终端，此时既有bash又有zsh环境
+    ```
 
 
-## 4. Vim 配置文件
+## Vim 配置文件
 
 - 全局的可见`/etc/vim/vimrc`, 用户的可见`~/.vimrc`
     ```
@@ -201,5 +201,56 @@ fi
 - 插件安装可以参考[ vim-plug 官方文档](https://github.com/junegunn/vim-plug)
 
 
+## 挂载数据盘
+note ??? "挂载数据盘相关命令（以 vdb 为例）"
+    ```bash
+    # 查看磁盘信息，确认数据盘设备名称（如 vdb）
+    lsblk
+    # 输出示例：
+    # root@v100-node1:~# lsblk
+    # NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+    # loop0    7:0    0 79.9M  1 loop /snap/lxd/22923
+    # loop1    7:1    0   62M  1 loop /snap/core20/1587
+    # loop2    7:2    0 91.6M  1 loop /snap/lxd/37982
+    # loop3    7:3    0 48.1M  1 loop /snap/snapd/25935
+    # vda    252:0    0  100G  0 disk 
+    # └─vda1 252:1    0  100G  0 part /
+    # vdb    252:16   0  300G  0 disk 
+
+    # 1. 格式化数据盘为 ext4 文件系统 (速度快，稳定)
+    # 注意：这会清空 vdb 上的所有数据，因为是新盘，直接执行即可
+    mkfs.ext4 /dev/vdb
+
+    # 2. 创建挂载点目录 (我们将数据盘挂载到 /data 目录)
+    mkdir -p /data
+
+    # 3. 挂载磁盘
+    mount /dev/vdb /data
+
+    # 4. 验证挂载是否成功
+    df -h
+    # 输出示例：
+    # Filesystem      Size  Used Avail Use% Mounted on
+    # ...
+    # /dev/vdb        292G   24K  277G   1% /data
+
+
+    # 以下设置开机自动挂载
+    # 如果不做这一步，一旦重启服务器，/data 目录就会变空，需要重新挂载。
+    # 1. 获取数据盘的 UUID (唯一标识符)
+    UUID=$(blkid -s UUID -o value /dev/vdb)
+    echo "Found UUID: $UUID"
+
+    # 2. 将挂载信息写入 /etc/fstab 文件
+    # 这行命令会自动追加配置，确保开机自动挂载
+    echo "UUID=$UUID /data ext4 defaults 0 0" >> /etc/fstab
+
+    # 3. 测试配置是否正确 (如果不报错，说明成功)
+    mount -a
+
+    # 4. 再次确认
+    df -h | grep data
+    # 如果最后一步显示了 /data 的信息，说明挂载成功并且配置正确了。
+    ```
 
 

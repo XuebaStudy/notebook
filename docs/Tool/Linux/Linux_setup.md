@@ -251,6 +251,9 @@ note ??? "挂载数据盘相关命令（以 vdb 为例）"
     # 4. 再次确认
     df -h | grep data
     # 如果最后一步显示了 /data 的信息，说明挂载成功并且配置正确了。
+
+    # PS：权限问题 (可选)，如果您后续遇到 Permission denied，可以开放一下权限：
+    chmod 777 /data
     ```
 
 

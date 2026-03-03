@@ -6,21 +6,19 @@
 docker pull <xx/xx/xxx>:<latest>
 
 # 创建并命名容器、挂载目录、进入容器（仅需初始执行一次）
-docker run -it --name <container_name> -v /d/desktop/workdir:/root/workdir <xx/xx/xxx>:<latest> /bin/bash && cd /root/workdir
+docker run -it --name <container_name> -v /d/desktop/workdir:/root/workdir <xx/xx/xxx>:<latest> /bin/bash
 
 # 进入已经创建（未运行）的容器
 docker start -i <container_name>
 # 进入正在运行的容器并切换到工作目录
-docker exec -it <container_name> /bin/bash && cd /root/workdir
+docker exec -it <container_name> /bin/bash -c "cd /root/workdir && exec bash"
 
-
-# 交互式进入容器
-docker run -it <xx/xx/xxx>:<latest> /bin/bash
-# 挂载本地目录到容器
-docker run -v /d/desktop/workdir:/root/workdir <xx/xx/xxx>:<latest>
 # 停止、删除容器（务必先退出相关容器）
 docker stop <container_name>
 docker rm <container_name>
+# 创建并进入容器
+docker run -it <xx/xx/xxx>:<latest> /bin/bash
+
 
 ```
 
@@ -31,4 +29,7 @@ docker ps -a
 
 # 查看正在运行的容器
 docker ps
+
+# 查看容器内进程
+docker top <container_name>
 ```

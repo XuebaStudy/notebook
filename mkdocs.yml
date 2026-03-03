@@ -60,6 +60,7 @@ nav:
       - Others: Tool/Linux/others.md
     - Git: Tool/git.md
     - Conda: Tool/conda.md
+    - Docker: Tool/docker.md
     - Adobe:
       - PS shortcuts: Tool/Adobe/PS_shortcut.md
     - Others: 

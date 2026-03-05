@@ -20,7 +20,7 @@
     
     
       
-        <title>Terminal - xueba's notebook</title>
+        <title>Commands - xueba's notebook</title>
       
     
     
@@ -123,7 +123,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1man" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -157,7 +157,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Terminal
+              Commands
             
           </span>
         </div>
@@ -1923,7 +1923,7 @@
   
   
   <span class="md-ellipsis">
-    Terminal
+    Commands
     
   </span>
   
@@ -1936,7 +1936,7 @@
   
   
   <span class="md-ellipsis">
-    Terminal
+    Commands
     
   </span>
   
@@ -1957,27 +1957,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1man" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      1.一些常用的命令行工具(记不住就man):
+      压缩与解压
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      2.命令使用举隅
+      内存管理
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      3.其他
+      其他
     </span>
   </a>
   
@@ -3110,27 +3110,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1man" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      1.一些常用的命令行工具(记不住就man):
+      压缩与解压
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      2.命令使用举隅
+      内存管理
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      3.其他
+      其他
     </span>
   </a>
   
@@ -3155,18 +3155,51 @@
   
 
 
-  <h1>Terminal</h1>
+  <h1>Commands</h1>
 
-<div><h2 id="1man">1.一些常用的命令行工具(记不住就man):<a class="headerlink" href="#1man" title="Permanent link">¶</a></h2>
-<ul>
-<li>文件管理 - cd, pwd, mkdir, rmdir, ls, cp, rm, mv, tar, du</li>
-<li>文件检索 - cat, more, less, head, tail, file, find</li>
-<li>输入输出控制 - 重定向, 管道, tee, xargs</li>
-<li>文本处理 - vim, grep, awk, sed, sort, wc, uniq, cut, tr</li>
-<li>正则表达式</li>
-<li>系统监控 - jobs, ps, top, kill, free, dmesg, lsof</li>
-</ul>
-<h2 id="2">2.命令使用举隅<a class="headerlink" href="#2" title="Permanent link">¶</a></h2>
+<div><h2 id="_1">压缩与解压<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<blockquote>
+<p><code>sudo apt install p7zip-full</code> 安装7z工具</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Command</th>
+<th style="text-align: left;">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>7z a -tzip [archive.zip] [source]</code></td>
+<td style="text-align: left;"><strong>压缩单个文件夹/文件</strong><br><code>a</code>: Add (添加/压缩), <code>-tzip</code>: 指定 zip 格式</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>7z a -tzip [zip_name] [f1] [f2]</code></td>
+<td style="text-align: left;"><strong>压缩多个文件/文件夹</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>-mx=0</code> / <code>-mx=9</code></td>
+<td style="text-align: left;"><strong>设置压缩级别 (0-9)</strong><br><code>-mx=0</code>: 仅存储, <code>-mx=9</code>: 最大压缩</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>-p[password]</code></td>
+<td style="text-align: left;"><strong>(压缩)设置/(解压)解开密码保护</strong><br><code>-p</code> 后无空格直接接密码（可用单引号包裹，防止特殊字符出错），<br>也可以后不接密码以交互式输入（更安全）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>-x![pattern]</code></td>
+<td style="text-align: left;"><strong>排除特定文件</strong> (支持通配符 <code>*</code>)<br><code>-x!</code>: 排除模式</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>7z x [zip_name]</code></td>
+<td style="text-align: left;"><strong>解压到当前目录</strong><br><code>x</code>: Extract with full paths</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>7z x [zip_name] -o[dir]</code></td>
+<td style="text-align: left;"><strong>解压到指定目录</strong><br><code>-o</code> 后无空格直接接路径</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">内存管理<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
@@ -3176,36 +3209,11 @@
 </thead>
 <tbody>
 <tr>
-<td><code>find . -type f -name 'abc*' -delete</code></td>
-<td>删除该目录下以abc开头的文件（' '内可换为其他正则表达式）</td>
-</tr>
-<tr>
-<td><code>find . -name "*.[ch]" | xargs grep "#include" | sort | uniq</code></td>
-<td>列出一个C语言项目中所有被包含过的头文件</td>
-</tr>
-<tr>
-<td><code>ps aux --sort=-%mem | head -n 6</code></td>
-<td>列出当前目录下占用内存最大的前5个进程</td>
-</tr>
-<tr>
-<td><code>sudo systemctl stop mysql</code></td>
-<td>停止 mysql 服务</td>
-</tr>
-<tr>
-<td><code>ps aux | grep mysqld</code></td>
-<td>查看mysql服务是否启动</td>
-</tr>
-<tr>
 <td><code>du -h .</code></td>
 <td>查看当前目录下所有文件占用内存大小 (加上<code>-s</code>表示非递归)</td>
 </tr>
 </tbody>
 </table>
-<ul>
-<li>markdown表格中可用<code>&amp;#124;</code>代替<code>|</code>，或者把<code>|</code>置于<code>``</code>内防止影响表格结构</li>
-<li><code>` `</code> 效果同<code>&lt;code&gt; &lt;/code&gt;</code>; <code>`</code> == <code>&amp;#96;</code></li>
-</ul>
-<h2 id="3">3.其他<a class="headerlink" href="#3" title="Permanent link">¶</a></h2>
 <details class="note">
 <summary>光标与阅读</summary>
 <table>
@@ -3329,6 +3337,44 @@
 </code></pre></div>
 </details>
 </details>
+<h2 id="_3">其他<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>find . -type f -name 'abc*' -delete</code></td>
+<td>删除该目录下以abc开头的文件（' '内可换为其他正则表达式）</td>
+</tr>
+<tr>
+<td><code>find . -name "*.[ch]" | xargs grep "#include" | sort | uniq</code></td>
+<td>列出一个C语言项目中所有被包含过的头文件</td>
+</tr>
+<tr>
+<td><code>ps aux --sort=-%mem | head -n 6</code></td>
+<td>列出当前目录下占用内存最大的前5个进程</td>
+</tr>
+<tr>
+<td><code>ps aux | grep mysqld</code></td>
+<td>查看 mysql 服务是否启动</td>
+</tr>
+<tr>
+<td><code>sudo systemctl stop mysql</code></td>
+<td>停止 mysql 服务</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">markdown 表格中的特殊字符</p>
+<ul>
+<li>markdown表格中可用<code>&amp;#124;</code>代替<code>|</code>，或者把<code>|</code>置于<code>``</code>内防止影响表格结构</li>
+<li><code>` `</code> 效果同<code>&lt;code&gt; &lt;/code&gt;</code>; <code>`</code> == <code>&amp;#96;</code></li>
+</ul>
+</div>
 <p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p></div>
 
 

@@ -1,25 +1,25 @@
-## 1.一些常用的命令行工具(记不住就man): 
 
-- 文件管理 - cd, pwd, mkdir, rmdir, ls, cp, rm, mv, tar, du
-- 文件检索 - cat, more, less, head, tail, file, find
-- 输入输出控制 - 重定向, 管道, tee, xargs
-- 文本处理 - vim, grep, awk, sed, sort, wc, uniq, cut, tr
-- 正则表达式
-- 系统监控 - jobs, ps, top, kill, free, dmesg, lsof
 
-## 2.命令使用举隅  
+## 压缩与解压
+> `sudo apt install p7zip-full` 安装7z工具
+
+
+| Command | Meaning |
+| :--- | :--- |
+| `7z a -tzip [archive.zip] [source]` | **压缩单个文件夹/文件**<br>`a`: Add (添加/压缩), `-tzip`: 指定 zip 格式 |
+| `7z a -tzip [zip_name] [f1] [f2]` | **压缩多个文件/文件夹** |
+| `-mx=0` / `-mx=9` | **设置压缩级别 (0-9)**<br>`-mx=0`: 仅存储, `-mx=9`: 最大压缩 |
+| `-p[password]` | **(压缩)设置/(解压)解开密码保护**<br>`-p` 后无空格直接接密码（可用单引号包裹，防止特殊字符出错），<br>也可以后不接密码以交互式输入（更安全） |
+| `-x![pattern]` | **排除特定文件** (支持通配符 `*`)<br>`-x!`: 排除模式 |
+| `7z x [zip_name]` | **解压到当前目录**<br>`x`: Extract with full paths |
+| `7z x [zip_name] -o[dir]` | **解压到指定目录**<br>`-o` 后无空格直接接路径 |
+
+## 内存管理
 |Command|Meaning|
 |---|---|
-|`find . -type f -name 'abc*' -delete`|删除该目录下以abc开头的文件（' '内可换为其他正则表达式）|
-|`find . -name "*.[ch]" | xargs grep "#include" | sort | uniq`|列出一个C语言项目中所有被包含过的头文件|
-|`ps aux --sort=-%mem | head -n 6`|列出当前目录下占用内存最大的前5个进程|
-|`sudo systemctl stop mysql`|停止 mysql 服务|
-|`ps aux | grep mysqld`|查看mysql服务是否启动|
 |`du -h .`|查看当前目录下所有文件占用内存大小 (加上`-s`表示非递归)|
 
-- markdown表格中可用`&#124;`代替`|`，或者把`|`置于<code>&#96;&#96;</code>内防止影响表格结构
-- <code>&#96; &#96;</code> 效果同`<code> </code>`; <code>&#96;</code> == `&#96`
-## 3.其他
+
 ??? note "光标与阅读"
     |Shortcut|Meaning|
     |---|---|
@@ -123,5 +123,20 @@
         Get-DirectoryTree -Path "D:\xxx\xxx" -MaxDepth 2
 
         ```
+
+## 其他
+|Command|Meaning|
+|---|---|
+|`find . -type f -name 'abc*' -delete`|删除该目录下以abc开头的文件（' '内可换为其他正则表达式）|
+|`find . -name "*.[ch]" | xargs grep "#include" | sort | uniq`|列出一个C语言项目中所有被包含过的头文件|
+|`ps aux --sort=-%mem | head -n 6`|列出当前目录下占用内存最大的前5个进程|
+|`ps aux | grep mysqld`|查看 mysql 服务是否启动|
+|`sudo systemctl stop mysql`|停止 mysql 服务|
+
+
+!!! warning "markdown 表格中的特殊字符"
+    - markdown表格中可用`&#124;`代替`|`，或者把`|`置于<code>&#96;&#96;</code>内防止影响表格结构
+    - <code>&#96; &#96;</code> 效果同`<code> </code>`; <code>&#96;</code> == `&#96`
+
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

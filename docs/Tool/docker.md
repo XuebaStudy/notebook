@@ -10,6 +10,7 @@ docker run -it --name <container_name> -v /d/desktop/workdir:/root/workdir <xx/x
 
 # 进入已经创建（未运行）的容器
 docker start -i <container_name>
+#（start 不可以直接接命令，但可以在容器内通过 echo "cd /root/workdir" >> ~/.bashrc 来设置默认进入工作目录）
 # 进入正在运行的容器并切换到工作目录
 docker exec -it <container_name> /bin/bash -c "cd /root/workdir && exec bash"
 

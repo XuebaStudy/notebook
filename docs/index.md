@@ -11,7 +11,7 @@
     </div>
     ---
     - :simple-github: [我的 GitHub 账号](https://github.com/XuebaStudy)  
-    - :material-email: [我的邮箱](mailto:xuebajames@outlook.com)  
+    - :material-email: [我的邮箱](mailto:xuebasy@outlook.com)  
     
 
 

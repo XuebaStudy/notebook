@@ -1,16 +1,10 @@
 import os
 
-kind = 'Date'
+message = 'update'
 
-year_month = '2026.3.'
-date = '5'
-message = ''
-
-
-name = kind + ' ' + year_month + date + ' ' + message
 
 os.system('git add .')
-com =''.join(['git commit -m "',name,'"'])
+com =''.join(['git commit -m "',message,'"'])
 os.system(com)
 os.system('git push -u origin main')
 os.system('mkdocs gh-deploy')

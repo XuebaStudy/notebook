@@ -1,12 +1,12 @@
 
 
 ## 压缩与解压
-> `sudo apt install p7zip-full` 安装7z工具
+> `sudo apt update && sudo apt install p7zip-full` 安装7z工具
 
 
 | Command | Meaning |
 | :--- | :--- |
-| `7z a -tzip [archive.zip] [source]` | **压缩单个文件夹/文件**<br>`a`: Add (添加/压缩), `-tzip`: 指定 zip 格式 |
+| `7z a -tzip [archive.zip] [source]` | **压缩单个文件夹/文件**<br>`a`: Add (添加/压缩), `-tzip`: 指定 zip 格式<br>如果`[source]`是一个路径，则zip包含该路径所有文件夹（多层） |
 | `7z a -tzip [zip_name] [f1] [f2]` | **压缩多个文件/文件夹** |
 | `-mx=0` / `-mx=9` | **设置压缩级别 (0-9)**<br>`-mx=0`: 仅存储, `-mx=9`: 最大压缩 |
 | `-p[password]` | **(压缩)设置/(解压)解开密码保护**<br>`-p` 后无空格直接接密码（可用单引号包裹，防止特殊字符出错），<br>也可以后不接密码以交互式输入（更安全） |

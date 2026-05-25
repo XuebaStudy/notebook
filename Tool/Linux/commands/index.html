@@ -3159,7 +3159,7 @@
 
 <div><h2 id="_1">压缩与解压<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <blockquote>
-<p><code>sudo apt install p7zip-full</code> 安装7z工具</p>
+<p><code>sudo apt update &amp;&amp; sudo apt install p7zip-full</code> 安装7z工具</p>
 </blockquote>
 <table>
 <thead>
@@ -3171,7 +3171,7 @@
 <tbody>
 <tr>
 <td style="text-align: left;"><code>7z a -tzip [archive.zip] [source]</code></td>
-<td style="text-align: left;"><strong>压缩单个文件夹/文件</strong><br><code>a</code>: Add (添加/压缩), <code>-tzip</code>: 指定 zip 格式</td>
+<td style="text-align: left;"><strong>压缩单个文件夹/文件</strong><br><code>a</code>: Add (添加/压缩), <code>-tzip</code>: 指定 zip 格式<br>如果<code>[source]</code>是一个路径，则zip包含该路径所有文件夹（多层）</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>7z a -tzip [zip_name] [f1] [f2]</code></td>

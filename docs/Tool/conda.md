@@ -22,10 +22,11 @@ conda activate <env_name>
 conda deactivate
 
 # 分享
-conda env export > environment.yml  # 当前工作目录下生成一个environment.yml
-conda env export -n <env_name> > <PATH>/<env_name>.yml # 导出指定环境的包列表到指定路径
+conda env export --no-builds > environment.yml  # 当前工作目录下生成一个environment.yml
+# （--no-builds 参数。这可以去除与特定平台相关的 build 字符串，从而避免跨平台（如从 Windows 迁移到 Linux）复现环境时出现兼容性问题。）
+conda env export --no-builds -n <env_name> > <PATH>/<env_name>.yml # 导出指定环境的包列表到指定路径
 conda env create -n <env_name> -f environment.yml # 拿到environment.yml文件后，将该文件放在工作目录下，可以通过以下命令从该文件创建环境
-# 如果你的环境中有 pip 安装的包，这个方法可能会无效...(TODO)
+# 如果你的环境中有 pip 安装的包，这个方法有可能会无效...(可以尝试先 conda install pip)
 
 # 列举包
 conda list

@@ -123,7 +123,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ncdu" class="md-skip">
+        <a href="#tmux" class="md-skip">
           Skip to content
         </a>
       
@@ -2127,6 +2127,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#tmux" class="md-nav__link">
+    <span class="md-ellipsis">
+      tmux
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ncdu" class="md-nav__link">
     <span class="md-ellipsis">
       ncdu
@@ -3092,6 +3101,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#tmux" class="md-nav__link">
+    <span class="md-ellipsis">
+      tmux
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ncdu" class="md-nav__link">
     <span class="md-ellipsis">
       ncdu
@@ -3121,18 +3139,57 @@
 
   <h1>Others</h1>
 
-<div><h2 id="ncdu">ncdu<a class="headerlink" href="#ncdu" title="Permanent link">¶</a></h2>
+<div><h2 id="tmux">tmux<a class="headerlink" href="#tmux" title="Permanent link">¶</a></h2>
+<p></p><div class="language-bash highlight"><span class="filename">Linux下使用示例</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">#安装 tmux（Ubuntu/Debian 系统）</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>tmux
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>tmux<span class="w">    </span><span class="c1">#启动 tmux（默认创建一个编号为 0 的新会话）</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>tmux<span class="w"> </span>new<span class="w"> </span>-s<span class="w"> </span>&lt;name&gt;<span class="w">    </span><span class="c1">#创建名为 name 的新会话</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1">#记前缀键为&lt;prefix&gt;，默认是 Ctrl+b，可以按后文配置修改为 Ctrl+a（更容易按），前缀键仅在 tmux 界面有用</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>&lt;prefix&gt;<span class="w"> </span>d<span class="w">    </span><span class="c1">#分离当前会话（会话继续后台运行）</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Alt+D<span class="w">   </span><span class="c1">#按下文修改配置后可以直接 detach</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>&lt;prefix&gt;<span class="w"> </span>s<span class="w">    </span><span class="c1">#弹出可视化会话列表，使用键盘的 ↑↓ 方向键选择会话，按 Enter 即可进入。</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>tmux<span class="w"> </span>ls<span class="w">   </span><span class="c1">#列出所有会话</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>tmux<span class="w"> </span>attach<span class="w"> </span>-t<span class="w"> </span>&lt;name&gt;<span class="w">   </span><span class="c1">#重新连接到指定会话</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>tmux<span class="w"> </span>kill-session<span class="w"> </span>-t<span class="w"> </span>&lt;会话名称/编号&gt;<span class="w">    </span><span class="c1">#删除会话</span>
+</code></pre></div>
+- 按下文修改配置后，可以在 tmux 界面按 <code>Ctrl+b :</code> 然后输入 <code>source-file ~/.tmux.conf</code> 重新加载配置。
+<details class="note">
+<summary>~/.tmux.conf</summary>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 设置前缀键为 Ctrl+a（比默认的 Ctrl+b 更容易按）</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>unbind<span class="w"> </span>C-b
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">set</span><span class="w"> </span>-g<span class="w"> </span>prefix<span class="w"> </span>C-a
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">bind</span><span class="w"> </span>C-a<span class="w"> </span>send-prefix
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># Alt+D 直接 detach</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>bind-key<span class="w"> </span>-n<span class="w"> </span>M-d<span class="w"> </span>detach-client
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1"># 启用鼠标支持（可以鼠标点击切换面板/窗口）</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nb">set</span><span class="w"> </span>-g<span class="w"> </span>mouse<span class="w"> </span>on
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="c1"># 设置状态栏颜色</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="nb">set</span><span class="w"> </span>-g<span class="w"> </span>status-bg<span class="w"> </span>colour235
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="nb">set</span><span class="w"> </span>-g<span class="w"> </span>status-fg<span class="w"> </span>colour250
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="c1"># 添加并加载一次后，以后修改配置只需要按 Ctrl+b 然后按 r，就能一键重载配置，并且屏幕底部还会弹出 "Config reloaded!" 的提示</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="nb">bind</span><span class="w"> </span>r<span class="w"> </span>source-file<span class="w"> </span>~/.tmux.conf<span class="w"> </span><span class="se">\;</span><span class="w"> </span>display-message<span class="w"> </span><span class="s2">"Config reloaded!"</span>
+</code></pre></div>
+</details>
+<h2 id="ncdu">ncdu<a class="headerlink" href="#ncdu" title="Permanent link">¶</a></h2>
 <blockquote>
 <p><code>ncdu</code> 是一个基于 ncurses 的磁盘使用分析器，提供了一个交互式的界面来查看和管理磁盘空间（比 <code>du</code> 更直观）</p>
 </blockquote>
-<div class="language-bash highlight"><span class="filename">Linux下使用示例</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 安装 ncdu</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ncdu
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># 使用 ncdu 扫描当前目录</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>ncdu<span class="w"> </span>.
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># 使用 ncdu 扫描除了mnt目录外的所有目录</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>ncdu<span class="w"> </span>--exclude<span class="w"> </span>mnt<span class="w"> </span>/
+<div class="language-bash highlight"><span class="filename">Linux下使用示例</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 安装 ncdu</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ncdu
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># 使用 ncdu 扫描当前目录</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>ncdu<span class="w"> </span>.
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># 使用 ncdu 扫描除了mnt目录外的所有目录</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>ncdu<span class="w"> </span>--exclude<span class="w"> </span>mnt<span class="w"> </span>/
 </code></pre></div>
 <div style="display: flex; align-items: flex-start; justify-content: center; gap: 16px;">
   <img src="../../images/ncdu_1.png" alt="ncdu 界面1" width="300">

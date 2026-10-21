@@ -3,11 +3,8 @@
 !!! abstract
     当你使用一个新的Linux系统时，你需要进行的一些基础配置。（本内容由 Ubuntu 22.04 为基础）
 
-    - 同步设置：`.bashrc`, `.bash_custom`, `.vimrc`, `.condarc`, `git设置`
-    
-    - 完全克隆（加上）：`.ssh`
 
-## git
+## Git
 
 ```bash
 git --version    # 查看 git 版本
@@ -48,29 +45,28 @@ source ~/.bashrc
 rm Miniconda3-latest-Linux-x86_64.sh
 ```
 
-- 将 ~/.condarc 改为以下推荐设置
+!!! note "~/.condarc 文件示例"
+    ```
+    show_channel_urls: true
 
-```
-show_channel_urls: true
+    channels:
+      - defaults
 
-channels:
-  - defaults
+    default_channels:
+      - https://mirrors.bfsu.edu.cn/anaconda/pkgs/main
+      - https://mirrors.bfsu.edu.cn/anaconda/pkgs/r
+      - https://mirrors.bfsu.edu.cn/anaconda/pkgs/msys2
 
-default_channels:
-  - https://mirrors.bfsu.edu.cn/anaconda/pkgs/main
-  - https://mirrors.bfsu.edu.cn/anaconda/pkgs/r
-  - https://mirrors.bfsu.edu.cn/anaconda/pkgs/msys2
+    custom_channels:
+      conda-forge: https://mirrors.bfsu.edu.cn/anaconda/cloud
+      pytorch: https://mirrors.bfsu.edu.cn/anaconda/cloud
 
-custom_channels:
-  conda-forge: https://mirrors.bfsu.edu.cn/anaconda/cloud
-  pytorch: https://mirrors.bfsu.edu.cn/anaconda/cloud
-
-remote_read_timeout_secs: 1500.0
-remote_connect_timeout_secs: 20.0
-auto_activate_base: true
+    remote_read_timeout_secs: 1500.0
+    remote_connect_timeout_secs: 20.0
+    auto_activate_base: true
 
 
-```
+    ```
 
 
 
@@ -79,22 +75,9 @@ auto_activate_base: true
 - 添加自定义命令（别名）
 
 ```bash
-vim ~/.bash_custom    # 创建个性化设置文件（可通用）
 vim ~/.bashrc
+vim ~/.bash_custom    # 创建个性化设置文件（可通用）
 source ~/.bashrc
-
-```
-
-```bash
-# .bash_custom 文件
-# >>> conda >>>
-
-alias act='conda activate'
-alias deact='conda deactivate'
-# 这样就可以用 'act base' 命令代替 'conda activate base' 了（其他可自行添加）
-
-# <<< conda <<<
-
 
 ```
 
@@ -109,6 +92,25 @@ fi
 
 # ...
 ```
+
+!!! note ".bash_custom 文件示例"
+    ```bash
+    # conda
+    alias act='conda activate'
+    alias deact='conda deactivate'
+
+    # tmux
+    alias ta='tmux attach'
+    alias tas='tmux attach-session -t'
+
+    # Modelscope & Huggingface
+    export MODELSCOPE_CACHE='$HOME/.cache/modelscope'
+    export HF_HOME='$HOME/.cache/huggingface'
+    export HF_ENDPOINT='https://hf-mirror.com'
+    export PIP_CACHE_DIR='$HOME/.cache/pip'
+
+    ```
+
 ??? note "bash 与 zsh 环境共享（同时设为使用zsh）"
     ```bash
     # .bashrc 文件末尾
@@ -145,7 +147,7 @@ fi
 
 - 全局的可见`/etc/vim/vimrc`, 用户的可见`~/.vimrc`
     ```
-??? note "~/.vimrc"
+!!! note "~/.vimrc 文件示例"
     ```vim
     
     set background=dark
@@ -200,9 +202,36 @@ fi
   
 - 插件安装可以参考[ vim-plug 官方文档](https://github.com/junegunn/vim-plug)
 
+## Tmux
+``` bash
+sudo apt-get install tmux
+# 也可以在 conda 中安装（建议在 base 环境下）：conda install -c conda-forge tmux -y
+```
+
+!!! note "~/.tmux.conf 文件示例"
+
+    ``` bash
+    # 设置前缀键为 Ctrl+a（比默认的 Ctrl+b 更容易按）
+    unbind C-b
+    set -g prefix C-a
+    bind C-a send-prefix
+    # Alt+D 直接 detach
+    bind-key -n M-d detach-client
+
+    # 启用鼠标支持（可以鼠标点击切换面板/窗口）
+    set -g mouse on
+
+    # 设置状态栏颜色
+    set -g status-bg colour235
+    set -g status-fg colour250
+
+    # 添加并加载一次后，以后修改配置只需要按 Ctrl+b 然后按 r，就能一键重载配置，并且屏幕底部还会弹出 "Config reloaded!" 的提示
+    bind r source-file ~/.tmux.conf \; display-message "Config reloaded!"
+    ```
+
 
 ## 挂载数据盘
-note ??? "挂载数据盘相关命令（以 vdb 为例）"
+??? note "挂载数据盘相关命令（以 vdb 为例）"
     ```bash
     # 查看磁盘信息，确认数据盘设备名称（如 vdb）
     lsblk
@@ -255,5 +284,6 @@ note ??? "挂载数据盘相关命令（以 vdb 为例）"
     # PS：权限问题 (可选)，如果您后续遇到 Permission denied，可以开放一下权限：
     chmod 777 /data
     ```
+
 
 

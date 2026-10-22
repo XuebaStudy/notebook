@@ -104,10 +104,10 @@ fi
     alias tas='tmux attach-session -t'
 
     # Modelscope & Huggingface
-    export MODELSCOPE_CACHE='$HOME/.cache/modelscope'
-    export HF_HOME='$HOME/.cache/huggingface'
-    export HF_ENDPOINT='https://hf-mirror.com'
-    export PIP_CACHE_DIR='$HOME/.cache/pip'
+    export MODELSCOPE_CACHE=$HOME/.cache/modelscope
+    export HF_HOME=$HOME/.cache/huggingface
+    export HF_ENDPOINT=https://hf-mirror.com
+    export PIP_CACHE_DIR=$HOME/.cache/pip
 
     ```
 
